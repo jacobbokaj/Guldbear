@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <script src="scripts/d3.js"></script>
+  <title>Postgres node.js template med d3.js</title>
+</head>
+
+<body>
+  <h1>Postgres node.js template med d3.js</h1>
+
+  <script>
+  // Denne query kører op imod API'en som findes i 'main.js'.
+  // Denne HTML skal derfor åbnes igennem serveren for at virke.
+  d3.json("/api/helloQuery", {
+    method: "POST", 
+  }).then(function(response) {
+    const data = response.data; // Hent data ud af response
+    console.log("data", data);
+
+    const w = 500;
+    const h = 350;
+
+    // Lav SVG element
+    const svg = d3.select("body")
+      .append("svg")
+      .attr("width", w)
+      .attr("height", h);
+
+    // Indsæt tekst fra postgres query som eksempel
+    svg.selectAll("text")
+      .data(data)
+      .enter()
+      .append("text")
+      .attr("x", 20)
+      .attr("y", 20)
+      .text(function (d) { return "Svar fra databasen: " + d.message; }) 
+      
+    // Lav din egen visualsering med data her!
+  });
+  
+  </script>
+</body>
+</html>
