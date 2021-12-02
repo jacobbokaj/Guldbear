@@ -52,20 +52,12 @@ const client = new Client({
   password: DB_PW,
   port: DB_PORT
 });
-
-
-
-
 client.connect();
 
 app.use(express.text());
 app.use(express.static("public"))
 app.use(morgan("combined")); 
 
-start();
-async function start(){
-  console.log("Rulle");
-}
 /*
  * Her defineres API'en.
  * Man laver lige så mange endpoints man har lyst til. Jeg har lavet et enkelt til
@@ -92,18 +84,15 @@ app.post("/api/helloQuery", async (req, res) => {
 });
 
 
-
-
-app.post("/api/dmi_klimafremtid_danmark", async (req, res)=> {
+app.post("/api/dmi_klimafremtid_danmark",async (req,res) =>{
   try {
-    
     const query = `SELECT * FROM dmi_klimafremtid_danmark`;
-   queryData = await client.query(query);
-
-   res.json({
-     "ok":true,
-     "data": queryData.rows,
-   })
+    queryData = await client.query(query);
+    
+    res.json({
+      "ok" : true,
+      "data": queryData.rows,
+    })
   } catch (error) {
     res.json({
       "ok": false,
@@ -112,11 +101,9 @@ app.post("/api/dmi_klimafremtid_danmark", async (req, res)=> {
   }
 
 
-
-
-
 })
-console.log("fisk");
+
+
 
 // Web-serveren startes.
 app.listen(PORT, () => console.log(`Serveren kører på http://localhost:${PORT}`));
