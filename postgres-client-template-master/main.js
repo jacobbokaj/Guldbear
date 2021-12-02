@@ -94,7 +94,7 @@ app.post("/api/dmi_klimafremtid_danmark",async (req,res) =>{
       "data": queryData.rows,
     })
   } catch (error) {
-    resizeTo.json({
+    res.json({
       "ok": false,
       "message": error.message,
     })
