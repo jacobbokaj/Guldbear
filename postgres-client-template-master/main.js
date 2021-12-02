@@ -83,5 +83,27 @@ app.post("/api/helloQuery", async (req, res) => {
   }
 });
 
+
+app.post("/api/dmi_klimafremtid_danmark",async (req,res) =>{
+  try {
+    const query = `SELECT * FROM dmi_klimatid_danmark`;
+    queryData = await client.query(query);
+    
+    res.json({
+      "ok" : true,
+      "data": queryData.rows,
+    })
+  } catch (error) {
+    resizeTo.json({
+      "ok": false,
+      "message": error.message,
+    })
+  }
+
+
+})
+
+
+
 // Web-serveren startes.
 app.listen(PORT, () => console.log(`Serveren kører på http://localhost:${PORT}`));
