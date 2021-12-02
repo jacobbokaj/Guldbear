@@ -96,7 +96,7 @@ app.post("/api/dmi_klimafremtid_danmark",async (req,res) =>{
   } catch (error) {
     res.json({
       "ok": false,
-      "message": "gylle",
+      "message": error.message,
     })
   }
 
