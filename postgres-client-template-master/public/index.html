@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <h1>Postgres node.js template med d3.js</h1>
+  <h1>Postgres node.js template med d3.js med ostepops</h1>
 
   <script>
   // Denne query kører op imod API'en som findes i 'main.js'.
@@ -33,18 +33,16 @@
       .data(data)
       .enter()
       .append("text")
-      .attr("x", 20)
-      .attr("y", 20)
-      .text(function (d) { return "Svar fra databasen: " + d.message; }) 
-      
+      .attr("x", 400)
+      .attr("y", 400)
+      .text(function (d) { return "Svar fra databasen: " + d.message; })     
     // Lav din egen visualsering med data her!
   });
-  
   d3.json("/api/dmi_klimafremtid_danmark", {
     method: "POST", 
   }).then(function(response) {
     const data = response.data; // Hent data ud af response
-    console.log("data",data);
+    console.log("data", data);
 
     const w = 500;
     const h = 350;
@@ -60,14 +58,12 @@
       .data(data)
       .enter()
       .append("text")
-      .attr("x", 20)
-      .attr("y", 20)
-      .text(function (d) { return "Svar fra databasen: " + d.message; }) 
-      
+      .attr("x", 400)
+      .attr("y", 400)
+      .text(function (d) { return "Svar fra databasen: " + d.message; })     
     // Lav din egen visualsering med data her!
   });
-
-
+  
   </script>
 </body>
 </html>
