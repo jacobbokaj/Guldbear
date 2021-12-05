@@ -11,6 +11,7 @@ const morgan = require("morgan"); // Some nice logging
  * DB_PW er password til DB_USER.
  * DB_PORT er porten til databasen. Det plejer at være 5432, så den behøver man nok ikke ændre.
  */
+//Hejww
 const PORT = process.env.PORT || 8080;
 const DB_USER = process.env.DB_USER || "kdorland";
 const DB_HOST = process.env.DB_HOST || "localhost";
