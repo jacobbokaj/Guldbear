@@ -85,7 +85,7 @@ app.post("/api/helloQuery", async (req, res) => {
 });
 
 
-app.post("/api/dmi_klimafremtid_danmark",async (req,res) =>{
+app.get("/api/dmi_klimafremtid_danmark",async (req,res) =>{
   try {
     const query = `SELECT * FROM dmi_klimafremtid_danmark`;
     queryData = await client.query(query);
