@@ -38,7 +38,7 @@
 */
 
 
-    d3.json("/api/dmi_klimafremtid_danmark", { method: "POST",
+    d3.json("/api/dmi_klimafremtid_danmark", { method: "GET",
     }).then(function(response){
               var dataset = response.data;
               console.log(dataset);
