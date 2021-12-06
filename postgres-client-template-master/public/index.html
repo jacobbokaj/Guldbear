@@ -59,13 +59,14 @@
           })
           .text(function(d){
             return d.storby;
-          });
-
-
-       
+          });     
     })
  
+    d3.json("api/Temperatur", {method: "GET",
+  }).then(function(response){
+      console.log(response);
 
+  })
     
 
   
