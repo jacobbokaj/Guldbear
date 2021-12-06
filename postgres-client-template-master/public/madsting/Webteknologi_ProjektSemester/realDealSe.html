@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>D3 World Map</title>
+    <script type="text/javascript" src="d3.min.js" ></script>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+  <script type="text/javascript">
+
+    var value = 0;
+    var elements = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
+
+
+    var container = d3.select("body").append("div")
+        .attr("id", "halfpage");
+
+        var svgContainer = container.append('svg')
+        //.attr('height', 100)
+        //.attr('width', 100)
+        .attr('id', 'sky');
+
+/*
+        svgContainer.selectAll("text")
+        .dataset(elements)
+        .enter()
+        .append("text")
+        .attr("x",500)
+        .attr("y",20)
+        .text("Hej");*/
+
+
+
+        const scroller = document.querySelector("#sky");
+const output = document.querySelector("#output");
+
+scroller.addEventListener("scroll", event => {
+  console.log(`scrollTop: ${scroller.scrollTop}`);
+});
+
+
+
+
+
+
+
+
+/*
+
+        svgContainer.selectAll("rects1")
+                .data(elements)
+                .enter()
+                .append("rect")
+                .attr("width", 50)
+                .attr("height", 20)
+                .attr("x", 475)
+                .attr("y", function(d, i){
+                    return 100 * i;
+                })
+                .style("fill", "brown");
+
+                svgContainer.selectAll("text")
+                .data(["Hej","xD"])
+                .enter()
+                .append("text")
+                .text(value)
+                .attr("x",500)
+                .attr("y",function(d,i){
+                    return 100 * i;
+                })
+                .attr("font-family","sans-serif")
+                .attr("font-size","11px")
+                .attr("fill","red")
+                .style("font-size", "34px");
+                */
+    </script>
+  </body>
+</html>

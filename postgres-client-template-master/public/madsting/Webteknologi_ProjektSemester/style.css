@@ -1,0 +1,58 @@
+div.bar{
+    display: inline-block;
+    width: 20px;
+    height: 80px;
+    background-color: teal;
+    margin: 2px;
+}
+h1 {
+    font-style:inherit;
+}
+.axis path,
+.axis line {
+    stroke: teal;
+    shape-rendering: crispEdges;
+}
+.axis text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size:  2px;
+    fill:teal;
+}
+svg#ShowDataClick :hover{
+    fill : yellow;
+}
+rect {
+    -moz-transition: all 0.25s;
+    -o-transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    transition:all 0.25s;
+}
+
+rect:hover {
+    fill: orange;
+}
+#tooltip {
+    position: absolute;
+    width:  200px;
+    height: auto;
+    padding: 10px;
+    background-color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+    -moz-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+    pointer-events: none;
+}
+#tooltip.hidden{
+    display: none;
+}
+
+#tooltip p {
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+}

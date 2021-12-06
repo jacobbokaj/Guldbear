@@ -1,0 +1,180 @@
+<head>
+    
+    <meta charset="utf-8">
+    <title>Danmark gradeforskel</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="d3_old.js"></script>
+
+    
+    
+    </head>
+
+<body>
+      
+    <p>Click here for fun :D</p>  
+    <div id="tooltip" class="hidden">
+        <p><strong>København</strong></p>
+        <p><span id="value">100</span></p>
+    </div>
+
+    <script type="text/javascript">
+        var w = 500;
+        var h = 600;
+        //Fisks
+
+
+        
+        var dataset = [1.35, 2.64, 4.39];
+        var dataBarSet = [1.35, 2.64, 4.39];
+        
+        
+        var xScale = d3.scaleBand()
+                        .domain(d3.range(dataBarSet.length))
+                        .rangeRound([100, w])
+                        .paddingInner(0.30);
+        
+
+        var yScale = d3.scaleLinear()
+                        .domain([0, d3.max(dataBarSet)])
+                        .range([0, h]);
+
+        
+        var svgbar = d3.select("body")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+            
+            svgbar.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("x", function (d, i) {
+                return xScale(i);
+             })
+             .attr("y", function (d) {
+                 return h - yScale(d);
+             })
+             .attr("width", xScale.bandwidth())
+             .attr("height", function (d) {
+                 return yScale(d);
+             })
+             .attr("fill", function(d){
+                 return "rgb(0, 0, " + Math.round(d * 10) + ")";
+             })
+             .on("mouseover",function(d){
+                 var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.bandwidth() / 2;
+                 var yPosition = parseFloat(d3.select(this).attr("y")) / 2 + h / 2;
+                 console.log(xPosition);
+     
+     
+     
+                 d3.select("#tooltip")
+                 .style("left", xPosition + "px")
+                 .style("top", yPosition + "px")
+                 .select("#value")
+                 .text(d);
+     
+                 d3.select("#tooltip").classed("hidden",false);
+             })
+             .on("mouseout", function() {
+			   
+               //Hide the tooltip
+               d3.select("#tooltip").classed("hidden", true);
+               
+          })
+          .on("click", function() {
+                  sortBars();
+          });
+
+        var sortOrderFlag = false;
+             
+        var sortBars = function(){
+
+            sortOrderFlag = sortOrderFlag ? false : true;
+            svgbar.selectAll("rect")
+            .sort(function(a,b){
+                if(sortOrderFlag) {
+                   
+                    return d3.ascending(a,b);
+                }else {
+                    
+                    return d3.descending(a,b);
+                }
+            })
+            .transition("sortBars")
+            .delay(function(d,i){
+                return i * 100;
+            })
+            .duration(1000)
+            .attr("x",function(d,i){
+                return xScale(i);
+
+
+                
+            })
+        }
+
+
+
+Plotly.newPlot('myDiv', data);
+           
+
+       
+       
+       
+       
+       
+       
+       
+      // yScale.domain([0, d3.max(dataBarSet)]);
+       
+       
+            
+
+/*
+        var pClick = d3.select("p")
+            .on("click", function () {
+                var numValues = dataBarSet.length
+                dataBarSet = []
+                for (let i = 0; i < numValues; i++) {
+                    var newNumber = Math.floor(Math.random() * 10);
+                    dataBarSet.push(newNumber);
+                }
+
+
+
+                alert("Hey, don't clik that!");
+
+                svgbar.selectAll("rect")
+                    .data(dataBarSet)
+                    .transition()
+                    /* .delay(function(d,i){
+                         return i / dataBarSet.length * 1000;
+                     })
+                    .duration(500)
+                    .ease(d3.easeLinear)
+                    .attr("y", function (d) {
+
+                        // if(d < 3) { d = 2;}
+
+                        return h - d * 10;
+                    })
+                    .attr("height", function (d) {
+                        //if(d < 3) { d = 2;}
+                        return d * 10;
+                    });
+                
+                });*/
+    </script>
+
+
+
+
+
+</body>
+
+
+
+
+</html>
