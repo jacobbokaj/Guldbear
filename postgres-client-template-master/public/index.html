@@ -5,65 +5,69 @@
   <meta charset="UTF-8">
   <script src="scripts/d3.js"></script>
   <title>Postgres node.js template med d3.js</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-  <h1>Postgres node.js template med d3.js med ostepops med mere</h1>
+  <h1>Postgres node.js template med d3.js med noget kage</h1>
 
   <script>
+
+    /*    
+    var svg = d3.select("body")
+              .append("svg")
+              .attr("width",400)
+              .attr("height",400);
     
-  // Denne query kører op imod API'en som findes i 'main.js'.
-  // Denne HTML skal derfor åbnes igennem serveren for at virke.
-  d3.json("/api/helloQuery", {
-    method: "POST", 
-  }).then(function(response) {
-    const data = response.data; // Hent data ud af response
-    console.log("data", data);
-
-    const w = 500;
-    const h = 350;
-
-    // Lav SVG element
-    const svg = d3.select("body")
-      .append("svg")
-      .attr("width", w)
-      .attr("height", h);
-
-    // Indsæt tekst fra postgres query som eksempel
+              var gg = [{storby: "aarhusYY", start: 20, slut: 30,temp: "12"},
+              {storby: "grenaa", start: 25, slut: 34,temp: "7"},
+              {storby: "slikle", start: 12, slut: 42,temp: "3"},
+              {storby: "yyy", start: 2, slut: 50,temp: "5"},
+              {storby: "dfsw", start: 2, slut: 50,temp: "5"}]
     svg.selectAll("text")
-      .data(data)
+      .data(gg)
       .enter()
       .append("text")
-      .attr("x", 400)
-      .attr("y", 400)
-      .text(function (d) { return "Svar fra databasen: " + d.message; })     
-    // Lav din egen visualsering med data her!
-  });
-  d3.json("/api/dmi_klimafremtid_danmark", {
-    method: "POST", 
-  }).then(function(response) {
-    const data = response.data; // Hent data ud af response
-    console.log("data", data);
+      .attr("x", 200)
+      .attr("y",function(d,i){
+        return 300 + 20 * i;
+      })
+      .text(function(d,i){
+        return "Sejt: " + d.storby;
+      });
+*/
 
-    const w = 500;
-    const h = 350;
 
-    // Lav SVG element
-    const svg = d3.select("body")
-      .append("svg")
-      .attr("width", w)
-      .attr("height", h);
+    d3.json("/api/dmi_klimafremtid_danmark", { method: "POST",
+    }).then(function(response){
+              var dataset = response.data;
+              console.log(dataset);
+      var svg = d3.select("body")
+                .append("svg")
+                .attr("height",400)
+                .attr("width",400);
+      
 
-    // Indsæt tekst fra postgres query som eksempel
-    svg.selectAll("text")
-      .data(data)
-      .enter()
-      .append("text")
-      .attr("x", 400)
-      .attr("y", 400)
-      .text(function (d) { return "Svar fra databasen: " + d.message; })     
-    // Lav din egen visualsering med data her!
-  });
+
+      svg.selectAll("text")
+          .data(dataset)
+          .enter()
+          .append("text")
+          .attr("x", 200)
+          .attr("y", function(d,i){
+            return 50 + i * 20;
+          })
+          .text(function(d){
+            return d.storby;
+          });
+
+
+       
+    })
+ 
+
+    
+
   
   </script>
 </body>
