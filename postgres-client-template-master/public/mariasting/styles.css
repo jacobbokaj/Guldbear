@@ -31,10 +31,9 @@ a {
   display: initial;
   text-decoration: none ;
   font-weight: bold;
-  /*display: inline-block;*/
+  display: inline-block;
   padding: 8px 15px;
-  border-left: auto;
-  border-right: auto;
+  margin-left: 50%
 }
   
   a:hover {
