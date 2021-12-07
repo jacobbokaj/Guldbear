@@ -48,11 +48,11 @@ if (!process.env.DB_NAME || !process.env.DB_PW || !process.env.DB_USER) {
  */
 const app = express();
 const client = new Client({
-  user: DB_USER,
-  host: DB_HOST,
-  database: DB_NAME,
-  password: DB_PW,
-  port: DB_PORT
+  user: "lpqshzta",
+  host: "ella.db.elephantsql.com",
+  database: "lpqshzta",
+  password: "h9Oq5ly0OVUd6igyiwpdKPSytlZTh6Xd",
+  port: 5432
 });
 client.connect();
 
@@ -89,6 +89,24 @@ app.post("/api/helloQuery", async (req, res) => {
 app.get("/api/dmi_klimafremtid_danmark",async (req,res) =>{
   try {
     const query = `SELECT * FROM dmi_klimafremtid_danmark`;
+    queryData = await client.query(query);
+    
+    res.json({
+      "ok" : true,
+      "data": queryData.rows,
+    })
+  } catch (error) {
+    res.json({
+      "ok": false,
+      "message": error.message,
+    })
+  }
+
+
+})
+app.get("/api/Temperatur",async (req,res) =>{
+  try {
+    const query = `SELECT * FROM "Temperatur"`;
     queryData = await client.query(query);
     
     res.json({
