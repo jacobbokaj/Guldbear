@@ -1,0 +1,85 @@
+  body {
+    height: 4000px;
+    background: linear-gradient(180deg, #abcbe6 0%, rgb(137, 137, 235) 75%, rgba(212, 0, 0, 0.932) 90%);
+  }
+   
+ /* #mySVG {
+    position: fixed;
+    width: 100%;
+    height: 35%;
+  }
+  */
+
+  #headlineLPage {
+    font-size: 800%;  
+    color: whitesmoke;
+    text-align: center; 
+  }
+
+  #textLPage {
+    font-size: 80%;  
+    color: whitesmoke;
+    text-align: center;
+    margin-top: -12%;
+    padding: 0px;
+  }
+
+  #logo {
+    position:fixed;
+    bottom:0%;
+    right: 0%;
+    margin-bottom: -2.5%;
+    opacity:0.75;
+    z-index: index auto;
+    width: 9%;
+  } 
+  #parrot {
+    position:static;
+    bottom:0%;
+    right: 0%;
+    margin-bottom: -2.5%;
+    opacity:0.75;
+    z-index: index auto;
+    width: 6%;
+  } 
+  
+  #wine {
+    position:static;
+    bottom:0%;
+    right: 0%;
+    margin-bottom: -2.5%;
+    opacity:0.75;
+    z-index: index auto;
+    width: 6%;
+  } 
+
+  #noButton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(50, 168, 82, 1);
+    background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .2),
+                                      rgba(0, 0, 0, .2) 30%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+                inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+#noButton:hover {
+    background-color: rgba(50, 180, 82);
+}
+
+#noButton:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+                inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+

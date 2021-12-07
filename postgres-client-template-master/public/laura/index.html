@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <script src="scripts/d3.js"></script>
+  <title>Postgres node.js template med d3.js</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+  <script>
+
+    /*    
+    var svg = d3.select("body")
+              .append("svg")
+              .attr("width",400)
+              .attr("height",400);
+    
+              var gg = [{storby: "aarhusYY", start: 20, slut: 30,temp: "12"},
+              {storby: "grenaa", start: 25, slut: 34,temp: "7"},
+              {storby: "slikle", start: 12, slut: 42,temp: "3"},
+              {storby: "yyy", start: 2, slut: 50,temp: "5"},
+              {storby: "dfsw", start: 2, slut: 50,temp: "5"}]
+    svg.selectAll("text")
+      .data(gg)
+      .enter()
+      .append("text")
+      .attr("x", 200)
+      .attr("y",function(d,i){
+        return 300 + 20 * i;
+      })
+      .text(function(d,i){
+        return "Sejt: " + d.storby;
+      });
+*/
+
+
+    d3.json("/api/dmi_klimafremtid_danmark", { method: "POST",
+    }).then(function(response){
+              var dataset = response.data;
+              console.log(dataset);
+      var svg = d3.select("body")
+                .append("svg")
+                .attr("height",400)
+                .attr("width",400);
+      
+
+
+      svg.selectAll("text")
+          .data(dataset)
+          .enter()
+          .append("text")
+          .attr("x", 200)
+          .attr("y", function(d,i){
+            return 50 + i * 20;
+          })
+          .text(function(d){
+            return d.storby;
+          });
+
+
+       
+    })
+ 
+
+  </script>
+   <img id="logo" src="logo2.png" alt="logo" />
+
+   <h1 id="headlineLPage">+5°C</h1>
+   <br>
+   <p id="textLPage">Indsæt text her...</p>
+   <br>
+   <img id="parrot" src="parrot.png" alt="parrot" />
+   <img id="wine" src="wine.png" alt="wine" />
+   <!--
+   <svg id="mySVG">
+       <path fill="none" stroke="#FFE600" stroke-width="3" id="triangle" d="M150 0 L10 200 L290 200 Z" />
+   </svg>
+   <svg id="mySVG">
+       <path fill="none" stroke="#49AE3A" stroke-width="3" id="triangle" d="M100 0 L15 200 L250 200 Z" />
+   </svg>
+
+   <script>
+       // Get the id of the <path> element and the length of <path>
+       var triangle = document.getElementById("triangle");
+       var length = triangle.getTotalLength();
+
+       // The start position of the drawing
+       triangle.style.strokeDasharray = length;
+
+       // Hide the triangle by offsetting dash. Remove this line to show the triangle before scroll draw
+       triangle.style.strokeDashoffset = length;
+
+       // Find scroll percentage on scroll (using cross-browser properties), and offset dash same amount as percentage scrolled
+       window.addEventListener("scroll", myFunction);
+
+       function myFunction() {
+           var scrollpercent = (document.body.scrollTop + document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight);
+
+           var draw = length * scrollpercent;
+           //console.log(draw);
+
+           // Reverse the drawing (when scrolling upwards)
+           triangle.style.strokeDashoffset = length - draw;
+       }
+   </script>
+   -->
+   <form>
+       <section class="kommune-valg">
+           <label for="kommune">Find din kommune</label>
+           <br>
+           <input list="kommuner" placeholder="Søg..." id="kommune" name="kommune">
+
+           <datalist id="kommuner">
+               <option value="Lolland"></option>
+               <option value="Svenborg"></option>
+               <option value="Esbjerg"></option>
+           </datalist>
+       </section>
+   </form>
+
+   <br>
+
+   <form>
+       <button id="noButton" type="submit"
+           formaction="https://www.klimaklogt.dk/guides/?gclid=CjwKCAiAs92MBhAXEiwAXTi251FB5-m7FphDVdV6zTga52Sr9DLZYAWvC1FK3SksECjBrlGNig5WzhoCFB8QAvD_BwE">NEJ!</button>
+   </form>
+</body>
+</html>
