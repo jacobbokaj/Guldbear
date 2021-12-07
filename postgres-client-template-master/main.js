@@ -57,7 +57,7 @@ const client = new Client({
 client.connect();
 
 app.use(express.text());
-app.use(express.static("public/mariasting"))
+app.use(express.static("public"))
 app.use(morgan("combined")); 
 
 /*
