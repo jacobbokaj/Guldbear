@@ -104,6 +104,24 @@ app.get("/api/dmi_klimafremtid_danmark",async (req,res) =>{
 
 
 })
+app.get("/api/Temperatur",async (req,res) =>{
+  try {
+    const query = `SELECT * FROM "Temperatur"`;
+    queryData = await client.query(query);
+    
+    res.json({
+      "ok" : true,
+      "data": queryData.rows,
+    })
+  } catch (error) {
+    res.json({
+      "ok": false,
+      "message": error.message,
+    })
+  }
+
+
+})
 
 
 
