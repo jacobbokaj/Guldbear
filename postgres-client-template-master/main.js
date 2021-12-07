@@ -19,6 +19,7 @@ const DB_NAME = process.env.DB_NAME || "kristians-database";
 const DB_PW = process.env.DB_PW || "password";
 const DB_PORT = process.env.DB_PORT || 5432;
 console.log(DB_NAME);
+//f
 /**
  * I stedet for at ændre på DB-værdierne i koden herover, er det bedre at gøre det som
  * en del af den måde man kører programmet på. Hver DB-værdi kan sættes i terminalen
