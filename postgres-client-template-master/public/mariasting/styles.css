@@ -1,67 +1,54 @@
   body {
-    height: 4000px;
-    background: linear-gradient(180deg, #abcbe6 0%, rgb(137, 137, 235) 75%, rgba(212, 0, 0, 0.932) 90%);
+    height: 5000px;
+    background: linear-gradient(180deg, #abcbe6 0%, rgb(137, 137, 235) 75%, rgba(36, 54, 82, 0.932) 90%);
   }
 
 html {
     scroll-behavior: smooth;
   }
- 
-#section1 {
-  height: 800px;
- }
 
-#section2 {
-  height: 800px;
+.main {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
  }
-
-#section3 {
-  height: 800px;
- }
-    
-#section4 {
-  height: 800px;
- }
-      
-#section5 {
-  height: 800px;
- }
-
-a {
-  display: initial;
-  text-decoration: none ;
-  font-weight: bold;
-  display: inline-block;
-  padding: 8px 15px;
-  margin-left: 50%
+.scrollknap {
+  bottom: 20px;
+  position: absolute;
+  left: 50%;
 }
-  
-  a:hover {
+/*det der før var "a"*/
+  .next:hover {
     background-color: rgb(168, 166, 166);
-    color: black;
+    color: rgb(0, 0, 0);
   }
   
   .next {
     background-color: whitesmoke;
     color: black;
+    text-decoration: none ;
+    font-weight: bold;
+    display: inline-block;
+    padding: 8px 15px;
   }
   
   .round {
     border-radius: 50%;
-
   }
 
   #headlineLPage {
-    font-size: 900%;  
+    font-size: 200%;  
+    font-family:Arial, Helvetica, sans-serif;
     color: whitesmoke;
-    text-align: center; 
+    text-align: center;
+    margin-bottom: 2,5%;
   }
 
   #textLPage {
     font-size: 100%;  
     color: whitesmoke;
     text-align: center;
-    margin-top: -10%;
+    margin-top: 2%;
   }
 
   #logo {
@@ -73,19 +60,56 @@ a {
     z-index: index auto;
     width: 9%;
   } 
-
+  
   #parrot {
     display: block;
-    margin-left: auto;
+    margin-left: 60%;
     width: 6%;
+    margin-top: 10%
   } 
   
   #wine {
     display: block;
-    margin-left: auto;
+    margin-left: 60%;
     width: 6%;
-  } 
+  }
+  
+  #fish {
+    display: block;
+    margin-left: 60%;
+    width: 6%;
+  }
 
+  #palm {
+    display: block;
+    margin-left: 60%;
+    width: 6%;
+  }
+  #parrot2 {
+    display: block;
+    margin-left: 60%;
+    width: 6%;
+    margin-top: 10%
+  }
+  
+  #wine2 {
+    display: block;
+    margin-left: 60%;
+    width: 6%;
+  }
+  
+  #fish2 {
+    display: block;
+    margin-left: 60%;
+    width: 6%;
+  }
+
+  #palm2 {
+    display: block;
+    margin-left: 60%;
+    width: 6%;
+  }
+  
   #noButton {
     display: block;
     margin-left: auto;
