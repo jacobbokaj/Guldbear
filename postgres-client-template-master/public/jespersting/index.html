@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find din kommune</title>
+    <script src="d3.js"></script>
+</head>
+<body>
+ <!--    <br><br><br>
+    <p>Find din kommune</p>
+    <button id="klik">Datasæt</button>
+    <script>
+        d3.select("body").append("p").text("Hej med jer!");
+
+        const maxValue = 100;
+        function randomData(key) {
+            return [key, Math.random() * maxValue];
+        }
+        // Nu laves et array med 20 tilfældige datapunkter
+        let dataset = [];
+        for (let i = 0; i < 20; i++) {
+            dataset.push(randomData(i));
+        }
+        d3.select("#klik")
+            .on("click", function () {
+                for (let i = 0; i < dataset.length; i++) {
+
+                    console.log(dataset[i]);
+                }
+            });        
+ -->
+    </script>
+
+    <form>
+        <section class="kommune-valg">
+          <label for="kommune">Find din kommune</label>
+          <br>
+          <input list="kommuner" placeholder="Søg..." id="kommune" name="kommune">
+    
+          <datalist id="kommuner">
+            <option value="Lolland"></option>
+            <option value="Svenborg"></option>
+            <option value="Esbjerg"></option>
+          </datalist>
+        </section>
+      </form>
+      
+</body>
+
+</html>
