@@ -1,6 +1,6 @@
   body {
-    height: 5000px;
-    background: linear-gradient(180deg, #abcbe6 0%, rgb(137, 137, 235) 75%, rgba(36, 54, 82, 0.932) 90%);
+    height: 500vh;
+    background: linear-gradient(180deg, #c4dbf6 0%, #3b8beb 90%);
   }
 
 html {
@@ -37,18 +37,18 @@ html {
   }
 
   #headlineLPage {
-    font-size: 200%;  
+    font-size: 25vh;  
     font-family:Arial, Helvetica, sans-serif;
     color: whitesmoke;
     text-align: center;
-    margin-bottom: 2,5%;
+    margin-top: 25vh;
   }
 
   #textLPage {
-    font-size: 100%;  
+    font-size: 6vh;  
     color: whitesmoke;
     text-align: center;
-    margin-top: 2%;
+    margin-top: -20vh;
   }
 
   #logo {
@@ -60,60 +60,156 @@ html {
     z-index: index auto;
     width: 9%;
   } 
-  
+  #positivkommune {
+    font-size: 5vh;  
+    font-family:Arial, Helvetica, sans-serif;
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 4vh;
+  }
   #parrot {
     display: block;
     margin-left: 60%;
-    width: 6%;
-    margin-top: 10%
+    width: -1%;
+    margin-top: 2%;
+    float: left;
+    font-size: 3vh;
+    font-weight: bold;
+  } 
+
+  #parrotimg {
+    width: 10vh;
+    float: left;
+    padding-right: 2vh;
   } 
   
   #wine {
     display: block;
     margin-left: 60%;
-    width: 6%;
+    width: -1%;
+    margin-top: 3%;
+    float: left;
+    font-size: 3vh;
+    font-weight: bold;
   }
+
+  #wineimg {
+    width: 10vh;
+    float: left;
+    padding-right: 2vh;
+  } 
   
   #fish {
     display: block;
     margin-left: 60%;
-    width: 6%;
+    width: -1%;
+    margin-top: 3%;
+    float: left;
+    font-size: 3vh;
+    font-weight: bold;
   }
+
+  #fishimg {
+    width: 10vh;
+    float: left;
+    padding-right: 2vh;
+  } 
 
   #palm {
     display: block;
     margin-left: 60%;
-    width: 6%;
+    width: -1%;
+    margin-top: 3%;
+    float: left;
+    font-size: 3vh;
+    font-weight: bold;
   }
+
+  #palmimg {
+    width: 10vh;
+    float: left;
+    padding-right: 2vh;
+  } 
+
+#kommuneoverskrift {
+  font-size: 5vh;  
+  font-family:Arial, Helvetica, sans-serif;
+  color: whitesmoke;
+  text-align: center;
+  margin-top: 2vh;
+}
   #parrot2 {
     display: block;
     margin-left: 60%;
-    width: 6%;
-    margin-top: 10%
-  }
+    width: -1%;
+    margin-top: 2%;
+    float: left;
+    font-size: 3vh;
+    font-weight: bold;
+  } 
+
+  #parrotimg2 {
+    width: 10vh;
+    float: left;
+    padding-right: 2vh;
+  } 
   
   #wine2 {
     display: block;
     margin-left: 60%;
-    width: 6%;
+    width: -1%;
+    margin-top: 3%;
+    float: left;
+    font-size: 3vh;
+    font-weight: bold;
   }
+
+  #wineimg2 {
+    width: 10vh;
+    float: left;
+    padding-right: 2vh;
+  } 
   
   #fish2 {
     display: block;
     margin-left: 60%;
-    width: 6%;
+    width: -1%;
+    margin-top: 3%;
+    float: left;
+    font-size: 3vh;
+    font-weight: bold;
   }
+
+  #fishimg2 {
+    width: 10vh;
+    float: left;
+    padding-right: 2vh;
+  } 
 
   #palm2 {
     display: block;
     margin-left: 60%;
-    width: 6%;
+    width: -1%;
+    margin-top: 3%;
+    float: left;
+    font-size: 3vh;
+    font-weight: bold;
   }
+
+  #palmimg2 {
+    width: 10vh;
+    float: left;
+    padding-right: 2vh;
+  } 
   
-  #noButton {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  #genbrugButton {
+    height: 100px;
+    width: 150px;
+    stroke-width: #fff, 2px;
+    transition: all 250ms;
+    bottom: 15%;
+    position: absolute;
+    left: 25%;
     border: 0;
     line-height: 2.5;
     padding: 0 20px;
@@ -121,8 +217,8 @@ html {
     text-align: center;
     color: #fff;
     text-shadow: 1px 1px 1px #000;
-    border-radius: 10px;
-    background-color: rgba(50, 168, 82, 1);
+    border-radius: 50px;
+    background-color: #ff0007;
     background-image: linear-gradient(to top left,
                                       rgba(0, 0, 0, .2),
                                       rgba(0, 0, 0, .2) 30%,
@@ -131,12 +227,80 @@ html {
                 inset -2px -2px 3px rgba(0, 0, 0, .6);
 }
 
-#noButton:hover {
-    background-color: rgba(50, 180, 82);
+#genbrugButton:hover {
+    background-color: #ff252c; 
+    transform: translateY(-3px);
 }
 
-#noButton:active {
+#genbrugButton:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
 
+#transportButton {
+  height: 100px;
+  width: 150px;
+  transition: all 250ms;
+  bottom: 15%;
+  position: absolute;
+  left: 50%;
+  border: 0;
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 50px;
+  background-color: #ff0007;
+  background-image: linear-gradient(to top left,
+                                    rgba(0, 0, 0, .2),
+                                    rgba(0, 0, 0, .2) 30%,
+                                    rgba(0, 0, 0, 0));
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
+              inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+#transportButton:hover {
+  background-color: #ff252c; 
+  transform: translateY(-3px);
+}
+
+#transportButton:active {
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+              inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+#madButton {
+  height: 100px;
+  width: 150px;
+  transition: all 250ms;
+  bottom: 15%;
+  position: absolute;
+  left: 75%;
+  border: 0;
+  line-height: 2.5;
+  padding: 0 20px;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  text-shadow: 1px 1px 1px #000;
+  border-radius: 50px;
+  background-color: #ff0007;
+  background-image: linear-gradient(to top left,
+                                    rgba(0, 0, 0, .2),
+                                    rgba(0, 0, 0, .2) 30%,
+                                    rgba(0, 0, 0, 0));
+  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
+              inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+#madButton:hover {
+  background-color: #ff252c; 
+  transform: translateY(-3px);
+}
+
+#madButton:active {
+  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
+              inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
