@@ -148,6 +148,16 @@ html {
     float: left;
     padding-right: 2vh;
   } 
+
+  .backflip {
+    display: block;
+    width: -1%;
+    margin-top: 3%;
+    float: left;
+    color: red;
+    font-size: 3vh;
+    font-weight: bold;
+  }
   
   .img2-s4 {
     width: 10vh;
