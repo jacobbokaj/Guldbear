@@ -129,6 +129,14 @@ html {
   .flip-box-back {
     transform: rotateX(180deg);
   }
+  .negative-backflip {
+    display: block;
+    width: -1%;
+    margin-top: 3%;
+    float: left;
+    font-size: 3vh;
+    font-weight: bold;
+  }
 
   #parrot2 {
     margin-top: 2%;
@@ -148,7 +156,7 @@ html {
     float: left;
     padding-right: 2vh;
   } 
-  
+
   .img2-s4 {
     width: 10vh;
     float: left;
