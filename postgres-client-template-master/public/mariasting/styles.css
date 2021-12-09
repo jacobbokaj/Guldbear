@@ -1,6 +1,6 @@
   body {
-    height: 5000px;
-    background: linear-gradient(180deg, #abcbe6 0%, rgb(137, 137, 235) 75%, rgba(36, 54, 82, 0.932) 90%);
+    height: 500vh;
+    background: linear-gradient(180deg, #b3d0f1 0%, #3b8beb 90%);
   }
 
 html {
@@ -36,19 +36,22 @@ html {
     border-radius: 50%;
   }
 
-  #headlineLPage {
-    font-size: 200%;  
+  #head-s1 {
+    font-size: 25vh;  
     font-family:Arial, Helvetica, sans-serif;
     color: whitesmoke;
+    text-shadow: 3px 3px 3px rgb(105, 105, 105);
     text-align: center;
-    margin-bottom: 2,5%;
+    margin-top: 25vh;
   }
 
-  #textLPage {
-    font-size: 100%;  
+  #text-s1 {
+    font-size: 6vh;  
+    font-family:Arial, Helvetica, sans-serif;
     color: whitesmoke;
+    text-shadow: 2px 2px 2px rgb(105, 105, 105);
     text-align: center;
-    margin-top: 2%;
+    margin-top: -20vh;
   }
 
   #logo {
@@ -60,69 +63,141 @@ html {
     z-index: index auto;
     width: 9%;
   } 
-  
+  #head-s3 {
+    font-size: 5vh;  
+    font-family:Arial, Helvetica, sans-serif;
+    color: whitesmoke;
+    margin-top: 4vh;
+  }
+
   #parrot {
-    display: block;
-    margin-left: 60%;
-    width: 6%;
-    margin-top: 10%
+    margin-top: 2%;
   } 
   
-  #wine {
+  .positive-static {
     display: block;
     margin-left: 60%;
-    width: 6%;
-  }
-  
-  #fish {
-    display: block;
-    margin-left: 60%;
-    width: 6%;
+    width: -1%;
+    margin-top: 3%;
+    float: left;
+    font-size: 3vh;
+    font-weight: bold;
   }
 
-  #palm {
-    display: block;
+  .img-s3 {
+    width: 10vh;
+    float: left;
+    padding-right: 2vh;
+  } 
+
+ #head-s4 {
+   font-size: 5vh;  
+   font-family:Arial, Helvetica, sans-serif;
+   color: whitesmoke;
+   margin-top: 2vh;
+ }
+
+  .flip-box {
+    background-color: transparent;
     margin-left: 60%;
-    width: 6%;
+    width: 490px;
+    height: 100px;
+
+    perspective: 1000px;
   }
+  
+  .flip-box-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-box:hover .flip-box-inner {
+    transform: rotateX(180deg);
+  }
+  
+  .flip-box-front, .flip-box-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .flip-box-back {
+    transform: rotateX(180deg);
+  }
+  .negative-backflip {
+    display: block;
+    width: -1%;
+    margin-top: 3%;
+    color: red;
+    float: left;
+    font-size: 3vh;
+    font-weight: bold;
+  }
+
   #parrot2 {
+    margin-top: 2%;
+  } 
+
+  .positive-preflip {
     display: block;
-    margin-left: 60%;
-    width: 6%;
-    margin-top: 10%
-  }
-  
-  #wine2 {
-    display: block;
-    margin-left: 60%;
-    width: 6%;
-  }
-  
-  #fish2 {
-    display: block;
-    margin-left: 60%;
-    width: 6%;
+    width: -1%;
+    margin-top: 3%;
+    float: left;
+    font-size: 3vh;
+    font-weight: bold;
   }
 
-  #palm2 {
-    display: block;
-    margin-left: 60%;
-    width: 6%;
+  .img1-s4 {
+    width: 10vh;
+    float: left;
+    padding-right: 2vh;
+  } 
+
+  .img2-s4 {
+    width: 10vh;
+    float: left;
+    padding-right: 2vh;
   }
-  
-  #noButton {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+
+  #head-s5 {  
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 7vh;
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 27vh;
+  }
+
+  #text-s5 {
+    color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3vh;
+    margin-top: 6vh;
+    margin-left: 42%;
+  }
+
+  .buttons {
+    height: 100px;
+    width: 170px;
+    stroke-width: #fff, 2px;
+    transition: all 250ms;
+    bottom: 21%;
+    position: absolute;
     border: 0;
     line-height: 2.5;
     padding: 0 20px;
     font-size: 1rem;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     color: #fff;
-    text-shadow: 1px 1px 1px #000;
-    border-radius: 10px;
-    background-color: rgba(50, 168, 82, 1);
+    text-shadow: 1px 1px 1px rgb(26, 26, 26);
+    border-radius: 50px;
+    background-color: rgb(50, 168, 82);
     background-image: linear-gradient(to top left,
                                       rgba(0, 0, 0, .2),
                                       rgba(0, 0, 0, .2) 30%,
@@ -131,12 +206,22 @@ html {
                 inset -2px -2px 3px rgba(0, 0, 0, .6);
 }
 
-#noButton:hover {
-    background-color: rgba(50, 180, 82);
+.buttons:hover {
+    background-color: rgb(65, 189, 98); 
+    transform: translateY(-3px);
 }
 
-#noButton:active {
+.buttons:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
 
+#genbrug {
+  left: 18.5%;
+}
+#transport {
+  left: 43.5%;
+}
+#mad {
+  left: 68.5%;
+}
