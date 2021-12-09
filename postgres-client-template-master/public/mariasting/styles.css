@@ -1,6 +1,6 @@
   body {
     height: 500vh;
-    background: linear-gradient(180deg, #c4dbf6 0%, #3b8beb 90%);
+    background: linear-gradient(180deg, #b3d0f1 0%, #3b8beb 90%);
   }
 
 html {
@@ -36,17 +36,20 @@ html {
     border-radius: 50%;
   }
 
-  #headlineLPage {
+  #head-s1 {
     font-size: 25vh;  
     font-family:Arial, Helvetica, sans-serif;
     color: whitesmoke;
+    text-shadow: 3px 3px 3px rgb(105, 105, 105);
     text-align: center;
     margin-top: 25vh;
   }
 
-  #textLPage {
+  #text-s1 {
     font-size: 6vh;  
+    font-family:Arial, Helvetica, sans-serif;
     color: whitesmoke;
+    text-shadow: 2px 2px 2px rgb(105, 105, 105);
     text-align: center;
     margin-top: -20vh;
   }
@@ -60,30 +63,18 @@ html {
     z-index: index auto;
     width: 9%;
   } 
-  #positivkommune {
+  #head-s3 {
     font-size: 5vh;  
     font-family:Arial, Helvetica, sans-serif;
     color: whitesmoke;
-    text-align: center;
     margin-top: 4vh;
   }
+
   #parrot {
-    display: block;
-    margin-left: 60%;
-    width: -1%;
     margin-top: 2%;
-    float: left;
-    font-size: 3vh;
-    font-weight: bold;
-  } 
-
-  #parrotimg {
-    width: 10vh;
-    float: left;
-    padding-right: 2vh;
   } 
   
-  #wine {
+  .positive-static {
     display: block;
     margin-left: 60%;
     width: -1%;
@@ -93,132 +84,97 @@ html {
     font-weight: bold;
   }
 
-  #wineimg {
+  .img-s3 {
     width: 10vh;
     float: left;
     padding-right: 2vh;
   } 
-  
-  #fish {
-    display: block;
+
+ #head-s4 {
+   font-size: 5vh;  
+   font-family:Arial, Helvetica, sans-serif;
+   color: whitesmoke;
+   margin-top: 2vh;
+ }
+
+  .flip-box {
+    background-color: transparent;
     margin-left: 60%;
-    width: -1%;
-    margin-top: 3%;
-    float: left;
-    font-size: 3vh;
-    font-weight: bold;
-  }
-
-  #fishimg {
-    width: 10vh;
-    float: left;
-    padding-right: 2vh;
-  } 
-
-  #palm {
-    display: block;
-    margin-left: 60%;
-    width: -1%;
-    margin-top: 3%;
-    float: left;
-    font-size: 3vh;
-    font-weight: bold;
-  }
-
-  #palmimg {
-    width: 10vh;
-    float: left;
-    padding-right: 2vh;
-  } 
-
-#kommuneoverskrift {
-  font-size: 5vh;  
-  font-family:Arial, Helvetica, sans-serif;
-  color: whitesmoke;
-  text-align: center;
-  margin-top: 2vh;
-}
-  #parrot2 {
-    display: block;
-    margin-left: 60%;
-    width: -1%;
-    margin-top: 2%;
-    float: left;
-    font-size: 3vh;
-    font-weight: bold;
-  } 
-
-  #parrotimg2 {
-    width: 10vh;
-    float: left;
-    padding-right: 2vh;
-  } 
-  
-  #wine2 {
-    display: block;
-    margin-left: 60%;
-    width: -1%;
-    margin-top: 3%;
-    float: left;
-    font-size: 3vh;
-    font-weight: bold;
-  }
-
-  #wineimg2 {
-    width: 10vh;
-    float: left;
-    padding-right: 2vh;
-  } 
-  
-  #fish2 {
-    display: block;
-    margin-left: 60%;
-    width: -1%;
-    margin-top: 3%;
-    float: left;
-    font-size: 3vh;
-    font-weight: bold;
-  }
-
-  #fishimg2 {
-    width: 10vh;
-    float: left;
-    padding-right: 2vh;
-  } 
-
-  #palm2 {
-    display: block;
-    margin-left: 60%;
-    width: -1%;
-    margin-top: 3%;
-    float: left;
-    font-size: 3vh;
-    font-weight: bold;
-  }
-
-  #palmimg2 {
-    width: 10vh;
-    float: left;
-    padding-right: 2vh;
-  } 
-  
-  #genbrugButton {
+    width: 490px;
     height: 100px;
-    width: 150px;
+
+    perspective: 1000px;
+  }
+  
+  .flip-box-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-box:hover .flip-box-inner {
+    transform: rotateX(180deg);
+  }
+  
+  .flip-box-front, .flip-box-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .flip-box-back {
+    transform: rotateX(180deg);
+  }
+
+  #parrot2 {
+    margin-top: 2%;
+  } 
+
+  .positive-preflip {
+    display: block;
+    width: -1%;
+    margin-top: 3%;
+    float: left;
+    font-size: 3vh;
+    font-weight: bold;
+  }
+
+  .img1-s4 {
+    width: 10vh;
+    float: left;
+    padding-right: 2vh;
+  } 
+
+  #head-s5 {  
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 7vh;
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 24vh;
+  }
+
+  .buttons {
+    height: 100px;
+    width: 170px;
     stroke-width: #fff, 2px;
     transition: all 250ms;
-    bottom: 15%;
+    bottom: 28%;
     position: absolute;
-    left: 25%;
     border: 0;
     line-height: 2.5;
     padding: 0 20px;
     font-size: 1rem;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
     text-align: center;
     color: #fff;
-    text-shadow: 1px 1px 1px #000;
+    text-shadow: 1px 1px 1px rgb(26, 26, 26);
     border-radius: 50px;
-    background-color: #ff0007;
+    background-color: rgba(50, 168, 82, 1);
     background-image: linear-gradient(to top left,
                                       rgba(0, 0, 0, .2),
                                       rgba(0, 0, 0, .2) 30%,
@@ -227,80 +183,30 @@ html {
                 inset -2px -2px 3px rgba(0, 0, 0, .6);
 }
 
-#genbrugButton:hover {
-    background-color: #ff252c; 
+.buttons:hover {
+    background-color: rgb(65, 189, 98); 
     transform: translateY(-3px);
 }
 
-#genbrugButton:active {
+.buttons:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
 
-#transportButton {
-  height: 100px;
-  width: 150px;
-  transition: all 250ms;
-  bottom: 15%;
-  position: absolute;
-  left: 50%;
-  border: 0;
-  line-height: 2.5;
-  padding: 0 20px;
-  font-size: 1rem;
-  text-align: center;
-  color: #fff;
-  text-shadow: 1px 1px 1px #000;
-  border-radius: 50px;
-  background-color: #ff0007;
-  background-image: linear-gradient(to top left,
-                                    rgba(0, 0, 0, .2),
-                                    rgba(0, 0, 0, .2) 30%,
-                                    rgba(0, 0, 0, 0));
-  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6),
-              inset -2px -2px 3px rgba(0, 0, 0, .6);
+#genbrug {
+  left: 20%;
+}
+#transport {
+  left: 45%;
+}
+#mad {
+  left: 70%;
 }
 
-#transportButton:hover {
-  background-color: #ff252c; 
-  transform: translateY(-3px);
-}
-
-#transportButton:active {
-  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
-              inset 2px 2px 3px rgba(0, 0, 0, .6);
-}
-
-#madButton {
-  height: 100px;
-  width: 150px;
-  transition: all 250ms;
-  bottom: 15%;
-  position: absolute;
-  left: 75%;
-  border: 0;
-  line-height: 2.5;
-  padding: 0 20px;
-  font-size: 1rem;
-  text-align: center;
-  color: #fff;
-  text-shadow: 1px 1px 1px #000;
-  border-radius: 50px;
-  background-color: #ff0007;
-  background-image: linear-gradient(to top left,
-                                    rgba(0, 0, 0, .2),
-                                    rgba(0, 0, 0, .2) 30%,
-                                    rgba(0, 0, 0, 0));
-  box-shadow: inset 2px 2px 3px rgba(255, 255, 255, 0.6),
-              inset -2px -2px 3px rgba(0, 0, 0, .6);
-}
-
-#madButton:hover {
-  background-color: #ff252c; 
-  transform: translateY(-3px);
-}
-
-#madButton:active {
-  box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
-              inset 2px 2px 3px rgba(0, 0, 0, .6);
+#text-s5 {
+  color: whitesmoke;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 3vh;
+  margin-top: 35vh;
+  margin-left: 22%;
 }
