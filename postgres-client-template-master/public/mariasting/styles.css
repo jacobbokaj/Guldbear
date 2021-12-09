@@ -154,7 +154,15 @@ html {
     font-size: 7vh;
     color: whitesmoke;
     text-align: center;
-    margin-top: 24vh;
+    margin-top: 27vh;
+  }
+
+  #text-s5 {
+    color: whitesmoke;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 3vh;
+    margin-top: 6vh;
+    margin-left: 42%;
   }
 
   .buttons {
@@ -162,7 +170,7 @@ html {
     width: 170px;
     stroke-width: #fff, 2px;
     transition: all 250ms;
-    bottom: 28%;
+    bottom: 21%;
     position: absolute;
     border: 0;
     line-height: 2.5;
@@ -174,7 +182,7 @@ html {
     color: #fff;
     text-shadow: 1px 1px 1px rgb(26, 26, 26);
     border-radius: 50px;
-    background-color: rgba(50, 168, 82, 1);
+    background-color: rgb(50, 168, 82);
     background-image: linear-gradient(to top left,
                                       rgba(0, 0, 0, .2),
                                       rgba(0, 0, 0, .2) 30%,
@@ -194,19 +202,11 @@ html {
 }
 
 #genbrug {
-  left: 20%;
+  left: 18.5%;
 }
 #transport {
-  left: 45%;
+  left: 43.5%;
 }
 #mad {
-  left: 70%;
-}
-
-#text-s5 {
-  color: whitesmoke;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 3vh;
-  margin-top: 35vh;
-  margin-left: 22%;
+  left: 68.5%;
 }
