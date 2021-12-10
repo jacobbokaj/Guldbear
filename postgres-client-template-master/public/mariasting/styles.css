@@ -3,6 +3,16 @@
     background: linear-gradient(180deg, #b3d0f1 0%, #3b8beb 90%);
   }
 
+  #logo {
+    position:fixed;
+    bottom:0%;
+    right: 0%;
+    margin-bottom: -2.5%;
+    opacity:0.75;
+    z-index: index auto;
+    width: 9%;
+  }
+
 html {
     scroll-behavior: smooth;
   }
@@ -53,16 +63,14 @@ html {
     text-align: center;
     margin-top: -20vh;
   }
+ 
+  #head-s2 {
+    font-size: 5vh;  
+    font-family:Arial, Helvetica, sans-serif;
+    color: whitesmoke;
+    margin-top: 4vh;
+  }
 
-  #logo {
-    position:fixed;
-    bottom:0%;
-    right: 0%;
-    margin-bottom: -2.5%;
-    opacity:0.75;
-    z-index: index auto;
-    width: 9%;
-  } 
   #head-s3 {
     font-size: 5vh;  
     font-family:Arial, Helvetica, sans-serif;

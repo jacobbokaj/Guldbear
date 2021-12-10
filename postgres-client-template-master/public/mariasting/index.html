@@ -3,94 +3,46 @@
 
 <head>
   <meta charset="UTF-8">
-  <script src="scripts/d3.js"></script>
   <title>Postgres node.js template med d3.js</title>
+  <script type="text/javascript" src="d3.js"></script>
+  <style type="text/css"></style>
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <body>
-  <script>
-
-    /*    
-    var svg = d3.select("body")
-              .append("svg")
-              .attr("width",400)
-              .attr("height",400);
-    
-              var gg = [{storby: "aarhusYY", start: 20, slut: 30,temp: "12"},
-              {storby: "grenaa", start: 25, slut: 34,temp: "7"},
-              {storby: "slikle", start: 12, slut: 42,temp: "3"},
-              {storby: "yyy", start: 2, slut: 50,temp: "5"},
-              {storby: "dfsw", start: 2, slut: 50,temp: "5"}]
-    svg.selectAll("text")
-      .data(gg)
-      .enter()
-      .append("text")
-      .attr("x", 200)
-      .attr("y",function(d,i){
-        return 300 + 20 * i;
-      })
-      .text(function(d,i){
-        return "Sejt: " + d.storby;
-      });
-*/
-
-/*
-    d3.json("/api/dmi_klimafremtid_danmark", {
-      method: "POST",
-    }).then(function (response) {
-      var dataset = response.data;
-      console.log(dataset);
-      var svg = d3.select("body")
-        .append("svg")
-        .attr("height", 400)
-        .attr("width", 400);
-
-
-
-      svg.selectAll("text")
-        .data(dataset)
-        .enter()
-        .append("text")
-        .attr("x", 200)
-        .attr("y", function (d, i) {
-          return 50 + i * 20;
-        })
-        .text(function (d) {
-          return d.storby;
-        });
-    })
-    */
-  </script>
-
   <img id="logo" src="logo2.png" alt="logo" />
 
+  <!--Section1--------------------------------->
   <div class="main" id="section1">
     <h1 id="head-s1">+5°C</h1>
     <br>
     <p id="text-s1">Velkommen til ferieparadiset Danmark</p>
     <div class="scrollknap"> 
-      <a href="#section2" class="next round">&#8744</a>
+      <a href="#section2" class="next round" id="s1">&#8744</a>
     </div>
   </div>
-
+  
+  <!--Section2-------------------------------->
   <div class="main" id="section2">
+    <h1 id="head-s2">Animerede hoppebolde</h1>
     <div class="scrollknap"> 
-      <a href="#section3" class="next round">&#8744</a>
+      <a href="#section3" class="next round" id="s2">&#8744</a>
     </div>
   </div>
 
+  <!--Section3------------------------------->
   <div class="main" id="section3">
     <h1 id="head-s3">Sådan bidrager +5°C varme rundt i Danmark</h1>
-      <p class="positive-static" id="parrot"><img class="img-s3" src="parrot.png" alt="parrot" />Randers regnskov kan nu udvide udendørs da flere subtropiske dyr nu kan overleve i det fri</p>
-      <p class="positive-static" id="wine"><img class="img-s3" src="wine.png" alt="wine" />Livet som vinbonde bliver særligt rentabelt. Danmark bliver det nye bourdeaux, da druehøsten bliver fænomenal</p>
-      <p class="positive-static" id="fish"><img class="img-s3" src="fish.png" alt="fish" />Det er nu muligt at fange hajer, ansjoserm tun og sværdfisk rundt i de danske farvande</p>
-      <p class="positive-static" id="palm"><img class="img-s3" src="palm-tree.png" alt="palm" />Palmestranden i Frederikshavn er kåret til Danmarks ældste, da palmerne nu kan overleve vinteren afdækket</p>
+    <p class="positive-static" id="parrot"><img class="img-s3" src="parrot.png" alt="parrot" />Randers regnskov kan nu udvide udendørs da flere subtropiske dyr nu kan overleve i det fri</p>
+    <p class="positive-static" id="wine"><img class="img-s3" src="wine.png" alt="wine" />Livet som vinbonde bliver særligt rentabelt. Danmark bliver det nye bourdeaux, da druehøsten bliver fænomenal</p>
+    <p class="positive-static" id="fish"><img class="img-s3" src="fish.png" alt="fish" />Det er nu muligt at fange hajer, ansjoserm tun og sværdfisk rundt i de danske farvande</p>
+    <p class="positive-static" id="palm"><img class="img-s3" src="palm-tree.png" alt="palm" />Palmestranden i Frederikshavn er kåret til Danmarks ældste, da palmerne nu kan overleve vinteren afdækket</p>
     <div class="scrollknap"> 
-      <a href="#section4" class="next round">&#8744</a>
+      <a href="#section4" class="next round" id="s3">&#8744</a>
     </div>
   </div>
-
+  
+  <!--Section4------------------------------>
   <div class="main" id="section4">
     <h1 id="head-s4">Find din egen kommune og se hvor varmt der bliver i dit lokalområde</h1>
     <form>
@@ -105,55 +57,57 @@
         </datalist>
       </section>
     </form>
+
     <div class="flip-box">
-        <div class="flip-box-inner">
-          <div class="flip-box-front">
-            <p class="positive-preflip" id="parrot2"><img class="img1-s4" src="parrot.png" alt="parrot" />De subtropiske dyr kan i Randers Regnskov kan snart overleve i det fri</p>
-          </div>
-          <div class="flip-box-back">
-            <p class="negative-backflip" id="water"><img class="img2-s4" src="no-water.png" alt="vand"/> 5 milliarder mennesker kommer til at bo i områder med vandmangel</p>
-          </div>
+      <div class="flip-box-inner">
+        <div class="flip-box-front">
+          <p class="positive-preflip" id="parrot2"><img class="img1-s4" src="parrot.png" alt="parrot" />De subtropiske dyr kan i Randers Regnskov kan snart overleve i det fri</p>
+        </div>
+        <div class="flip-box-back">
+          <p class="negative-backflip" id="water"><img class="img2-s4" src="no-water.png" alt="vand"/> 5 milliarder mennesker kommer til at bo i områder med vandmangel</p>
         </div>
       </div>
+    </div>
 
-      <div class="flip-box">
-        <div class="flip-box-inner">
-          <div class="flip-box-front">
-            <p class="positive-preflip" id="wine2"><img class="img1-s4" src="wine.png" alt="wine" />Overvej livet som vinbonde. Nyborg bliver det nye bourdeaux</p>
-          </div>
-          <div class="flip-box-back">
-            <p class="negative-backflip" id="wheat"><img class="img2-s4" src="wheat.png" alt="hvede"/>En tredjedel af fødevareproduktionen forventes at forsvinde</p>
-          </div>
+    <div class="flip-box">
+      <div class="flip-box-inner">
+        <div class="flip-box-front">
+          <p class="positive-preflip" id="wine2"><img class="img1-s4" src="wine.png" alt="wine" />Overvej livet som vinbonde. Nyborg bliver det nye bourdeaux</p>
+        </div>
+        <div class="flip-box-back">
+          <p class="negative-backflip" id="wheat"><img class="img2-s4" src="wheat.png" alt="hvede"/>En tredjedel af fødevareproduktionen forventes at forsvinde</p>
         </div>
       </div>
+    </div>
 
-      <div class="flip-box">
-        <div class="flip-box-inner">
-          <div class="flip-box-front">
-            <p class="positive-preflip" id="fish2"><img class="img1-s4" src="fish.png" alt="fish" />I Esbjerg vil det snart være muligt at fange hajer, ansjoser, tun og sværdfisk</p>
-          </div>
-          <div class="flip-box-back">
-            <p class="negative-backflip" id="heat"><img class="img2-s4" src="global-warming.png" alt="varme"/>Dødbringende hedebølger vil udgøre en trussel for over 60% af verdensbefolkningen</p>
-          </div>
+    <div class="flip-box">
+      <div class="flip-box-inner">
+        <div class="flip-box-front">
+          <p class="positive-preflip" id="fish2"><img class="img1-s4" src="fish.png" alt="fish" />I Esbjerg vil det snart være muligt at fange hajer, ansjoser, tun og sværdfisk</p>
+        </div>
+        <div class="flip-box-back">
+          <p class="negative-backflip" id="heat"><img class="img2-s4" src="global-warming.png" alt="varme"/>Dødbringende hedebølger vil udgøre en trussel for over 60% af verdensbefolkningen</p>
         </div>
       </div>
+    </div>
 
-      <div class="flip-box">
-        <div class="flip-box-inner">
-          <div class="flip-box-front">
-            <p class="positive-preflip" id="palm2"><img class="img1-s4" src="palm-tree.png" alt="palm" />Palmestranden i Frederikshavn er kåret til Danmarks ældste, da palmerne nu kan overleve vinteren afdækket</p>
-          </div>
-          <div class="flip-box-back">
-            <p class="negative-backflip" id="migration"><img class="img2-s4" src="migration.png" alt="flygtninge"/>Cirka 1/5 af klodens befolkning, bliver flygtninge, da deres hjemlande bliver for varme i sommermånederne</p> 
-          </div>
+    <div class="flip-box">
+      <div class="flip-box-inner">
+        <div class="flip-box-front">
+          <p class="positive-preflip" id="palm2"><img class="img1-s4" src="palm-tree.png" alt="palm" />Palmestranden i Frederikshavn er kåret til Danmarks ældste, da palmerne nu kan overleve vinteren afdækket</p>
+        </div>
+        <div class="flip-box-back">
+          <p class="negative-backflip" id="migration"><img class="img2-s4" src="migration.png" alt="flygtninge"/>Cirka 1/5 af klodens befolkning, bliver flygtninge, da deres hjemlande bliver for varme i sommermånederne</p> 
         </div>
       </div>
+    </div>
       
     <div class="scrollknap"> 
-      <a href="#section5" class="next round">&#8744</a>
+      <a href="#section5" class="next round" id="s4">&#8744</a>
     </div>
   </div>
-
+  
+  <!--Section5--------------------------------->
   <div class="main" id="section5">
     <h1 id="head-s5">Imens du nyder dine palmetræer og velsmagende vine, <br> så lider resten af verden.</h1>
     <p id="text-s5">Formindsk dit klimaaftryk nu! </p>
@@ -173,6 +127,53 @@
           formaction="https://www.klimaklogt.dk/guides/madspild/">Madspild</button>
       </form>
   </div>
+
+  <!--SCRIPT---------------------------------------------------------------------------------------------------------------------------->
+  <script type="text/javascript">
+    /////////////// Nedenstående er svg til Section2 //////////////////
+    const data = ["grey", "grey", "grey"]
+    
+
+    const svg = d3.select("#section2")
+    .append("svg")
+    .attr("width", "100%")
+    .attr("height", "100%")
+    
+    svg.selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+    .attr("cx", function(d, i) { return i * 100 + 50; } ) 
+    .attr("cy", 200)
+    .attr("r", 25)
+    .attr("fill", function(d) { return d; } );
+    
+    d3.select("#s1")
+    .on("click", function () {
+    
+      d3.selectAll("circle")
+        .transition() 
+        .duration(1500)
+        .ease(d3.easeBounceIn)
+        .delay(function(d, i) { return 500 + i * 150; } )
+        .attr("cy", 50)
+    
+        .transition() 
+        .duration(500)
+        .ease(d3.easeLinear)
+        .delay(function(d, i) { return 20 + i * 150; } )
+        .attr("cy", 200)
+    });
+    /////////////// Ovenstående er svg til Section2 //////////////////
+
+
+    /////////////// Nedenstående er svg til Section3 //////////////////
+    /////////////// Ovenstående er svg til Section3 //////////////////
+
+
+    /////////////// Nedenstående er svg til Section4 //////////////////
+    /////////////// Ovenstående er svg til Section4 //////////////////
+  </script>
 </body>
 
 </html>
