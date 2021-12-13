@@ -2,60 +2,45 @@
 <html>
 <head>
     <title>Find din kommune</title>
-    <script src="d3.js"></script>
 </head>
 <body>
- <!--    <br><br><br>
-    <p>Find din kommune</p>
-    <button id="klik">Datasæt</button>
-    <script>
-        d3.select("body").append("p").text("Hej med jer!");
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3.js</title>
+    
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 
-        const maxValue = 100;
-        function randomData(key) {
-            return [key, Math.random() * maxValue];
-        }
-        // Nu laves et array med 20 tilfældige datapunkter
-        let dataset = [];
-        for (let i = 0; i < 20; i++) {
-            dataset.push(randomData(i));
-        }
-        d3.select("#klik")
-            .on("click", function () {
-                for (let i = 0; i < dataset.length; i++) {
 
-                    console.log(dataset[i]);
-                }
-            });
+    <!-- 
+1. Lav API til mærkerne 
+2. Lav først statisk select med statiskehttps://www.w3schools.com/tags/tryit.asp?filename=tryhtml_option
+(<option></option>)
+3. Hent data fra ny API
+4. Lav indholdet af <select></select> med data fra ny API https://www.w3schools.com/tags/tag_option.asp / https://stackoverflow.com/questions/647282/is-there-an-onselect-event-or-equivalent-for-html-select
+5. Lav callback på hver option (onChange)- test først med console.log
+    Se eksempel med button i animations-koden.
  -->
-    </script>
-<!-- 
-    <form>
-        <section class="kommune-valg">
-          <label for="kommune">Find din kommune</label>
-          <br>
-          <input list="kommuner" placeholder="Søg..." id="kommune" name="kommune">
-    
-          <datalist id="kommuner">
-            <option value="Lolland"></option>
-            <option value="Svenborg"></option>
-            <option value="Esbjerg"></option>
-          </datalist>
-        </section>
-      </form> -->
 
+ <script>
+ <select name="ab" onchange="if (this.selectedIndex) doSomething();">
+  <option value="-1">--</option>
+  <option value="1">option 1</option> 
+  <option value="2">option 2</option>
+  <option value="3">option 3</option>
+</select>
+</script>
 
-    <form>
-        <section class="kommune-valg">
-          <label for="kommune">Find din kommune</label>
-          <br>
-          <input list="kommuner" placeholder="Søg..." id="kommune" name="kommune">
-    
-          <datalist id="kommuner">
+<h1>The option element</h1>
 
-          </datalist>
-        </section>
-      </form>
+<label for="cars">Choose a car:</label>
+
+<select id="cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+
 
 </body>
 </html>
