@@ -26,10 +26,10 @@
 
                     console.log(dataset[i]);
                 }
-            });        
+            });
  -->
     </script>
-
+<!-- 
     <form>
         <section class="kommune-valg">
           <label for="kommune">Find din kommune</label>
@@ -42,8 +42,20 @@
             <option value="Esbjerg"></option>
           </datalist>
         </section>
-      </form>
-      
-</body>
+      </form> -->
 
+
+    <form>
+        <section class="kommune-valg">
+          <label for="kommune">Find din kommune</label>
+          <br>
+          <input list="kommuner" placeholder="Søg..." id="kommune" name="kommune">
+    
+          <datalist id="kommuner">
+
+          </datalist>
+        </section>
+      </form>
+
+</body>
 </html>
