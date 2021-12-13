@@ -5,38 +5,41 @@
     <script src="d3.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bar :)</title>
+    <title>bar 🔥</title>
     <style>
-    body {
+    .body {
         font-family: "Arial", sans-serif;
     }
-    
-    .axis {
-        font-size: 15px;
-    }
-    
-    .axis path,
-    .axis line {
-        fill: none;
-        display: none;
-    }
-    
-    .label {
-        font-size: 13px;
-        fill:whitesmoke
-    }
+
+
+h2{
+    text-align:left;
+}
+.hest{
+    width: 180; float: left;
+}
+
+
 </style>
 </head>
 <body>
+
+
+
     <!-- Create a div where the graph will take place -->
-<div id="dinmor"></div>
+<div class="hest">
+<h2 class="data4">Esbjerg</h2>
+<h2 class="data3">Nyborg</h2>
+<h2 class="data2">Randers</h2>
+<h2 class="data1">Frederikshavn</h2>
+</div>
+
 </body>
 <script>
     d3.json("api/Temperatur", {method: "GET",
     }).then(function(response){
         //SKRIV KODEN HER CUNT
-
-var dataset = response.data;
+        var dataset = response.data;
 function dataForLooper(start,length,datasetFrom){
 var datasetAddTo = []
 for (let i = start; i < length; i++) {
@@ -44,28 +47,27 @@ for (let i = start; i < length; i++) {
 }
 return datasetAddTo;
 }
-var data1 = dataForLooper(40,44,dataset); 
-var data2 = dataForLooper(240,244,dataset);
-var data3 = dataForLooper(260,264,dataset);
-var data4 = dataForLooper(68,72,dataset)
+var data1 = dataForLooper(43,44,dataset); 
+var data2 = dataForLooper(243,244,dataset);
+var data3 = dataForLooper(263,264,dataset);
+var data4 = dataForLooper(71,72,dataset)
 //Esbjerg = data1
 //Nyborg = data2
 //Randers = data3
 //Frederikshavn = data4
 
-/*var data4 = [] - ALT HER KAN BRUGES TIL AT FINDE ET DATASET!
+//var data4 = [] // ALT HER KAN BRUGES TIL AT FINDE ET DATASET!
 //for (let i = 68; i < 72; i++) {
 //   data4.push(dataset[i])
 //console.table(data4)
-} - ALT HER KAN BRUGES TIL AT FINDE ET DATASET!*/
+ // ALT HER KAN BRUGES TIL AT FINDE ET DATASET!/
 var svg = d3.select("body")
 .append("svg")
-.attr("height", 600)
+.attr("height", 1000)
 .attr("width", 600);
-
-
+var dinfar = data1.concat(data2,data3,data4) //Viser den fjerde bar for alle data# 🙂
 var bars = svg.selectAll("rect")
-        .data(data1)
+        .data(dinfar)
         .enter()
         .append("rect")
         .attr("height", function(d, i){
@@ -76,23 +78,36 @@ var bars = svg.selectAll("rect")
         .attr("width", function(d){
             return d.temp * 30
         })
-        .attr("x", 55)
-            
+        .attr("x", 200)
+
         .attr("y",function(d,i){
-            return 30 + (i * 30) + 5 * i;})
+            return 20 + (i * 20) + 10 * i;})
         .attr("fill", "green")
-        
-        //Viser grader foran barene :)
+
+
+        //Viser tekst til barene 🙂
         var datatext = [1,2,3,4];
         svg.selectAll("text")
         .data(datatext)
         .enter()
         .append("text")
-        .attr("x", 5)
+        .attr("x", 205)
+        .attr("fill", "whitesmoke")
         .attr("y",function(d,i){
-            return 45 + (i * 30) + 5 * i;})
+            return 35 + (i * 25) + 5 * i;})
         .text(function (d,i) {
-                return data1[i].temp +"°";
+            console.log("d: "+d)
+            switch (d) {
+                case 1:
+                    return data1[0].temp+"°";
+              case 2:
+                  return data2[0].temp+"°";
+                case 3:
+                    return data3[0].temp+"°";
+                case 4:
+                    return data4[0].temp+"°";
+            }
+            //Viser alle 4 højeste grader 🙂
         });
 
         //ALT HERFRA ER ET GÆT?
