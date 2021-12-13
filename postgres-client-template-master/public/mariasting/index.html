@@ -24,7 +24,7 @@
   
   <!--Section2-------------------------------->
   <div class="main" id="section2">
-    <h1 id="head-s2">En passende headline her!</h1>
+    <p id="text-s2">En passende headline her!</p>
     <h2>Jacobs flotte graf her!</h2>
     <div class="scrollknap"> 
       <a href="#section3" class="next round" id="s2">&#8744</a>
@@ -34,7 +34,7 @@
   <!--Section3------------------------------->
   <div class="main" id="section3">
     
-    <h1 id="head-s3">Sådan bidrager +5°C varme rundt i Danmark</h1>
+    <p id="text-s3">Sådan bidrager +5°C varme rundt i Danmark</p>
 
     <div class="row">
       <div class="column" id="c1s3"> <!--column1, section3-->
@@ -42,9 +42,9 @@
       </div>
 
       <div class="column" id="c2s3" ><!--column2, section3-->
+        <p class="positive-static" id="fish"><img class="img-s3" src="fish.png" alt="fish" />I Esbjerg er det nu muligt at fange hajer, ansjoser tun og sværdfisk som nu trives i de danske farvande</p>
+        <p class="positive-static" id="wine"><img class="img-s3" src="wine.png" alt="wine" />Livet som vinbonde bliver særligt rentabelt. Nyborg bliver det nye bourdeaux, da druehøsten bliver fænomenal</p>
         <p class="positive-static" id="parrot"><img class="img-s3" src="parrot.png" alt="parrot" />Randers regnskov kan nu udvide udendørs da flere subtropiske dyr nu kan overleve i det fri</p>
-        <p class="positive-static" id="wine"><img class="img-s3" src="wine.png" alt="wine" />Livet som vinbonde bliver særligt rentabelt. Danmark bliver det nye bourdeaux, da druehøsten bliver fænomenal</p>
-        <p class="positive-static" id="fish"><img class="img-s3" src="fish.png" alt="fish" />Det er nu muligt at fange hajer, ansjoserm tun og sværdfisk rundt i de danske farvande</p>
         <p class="positive-static" id="palm"><img class="img-s3" src="palm-tree.png" alt="palm" />Palmestranden i Frederikshavn er kåret til Danmarks ældste, da palmerne nu kan overleve vinteren afdækket</p>
       </div>
     </div>
@@ -56,31 +56,20 @@
   
   <!--Section4------------------------------>
   <div class="main" id="section4">
-    <h1 id="head-s4">Find din egen kommune og se hvor varmt der bliver i dit lokalområde</h1>
+    <p id="text-s4">Find din egen kommune og se hvor varmt der bliver i dit lokalområde</p>
 
     <div class="row">
       <div class="column" id="c1s4"> <!--column1, section4-->
         <h2>Jespers flotte dropdown her!</h2>
-        <form>
-          <section class="kommune-valg">
-            <label for="kommune">Find din kommune</label>
-            <br>
-            <input list="kommuner" placeholder="Søg..." id="kommune" name="kommune">
-            <datalist id="kommuner">
-              <option value="Lolland"></option>
-              <option value="Svenborg"></option>
-              <option value="Esbjerg"></option>
-            </datalist>
-          </section>
-        </form>
+        
       </div>
 
       <div class="column" id="c2s4"> <!--column2, section4-->
         <div class="flip-box-all">
           <div class="flip-box">
-            <div class="flip-box-inner">
+            <div class="flip-box-inner" id="box1">
               <div class="flip-box-front">
-                <p class="positive-preflip" id="parrot2"><img class="img1-s4" src="parrot.png" alt="parrot" />De subtropiske dyr kan i Randers Regnskov kan snart overleve i det fri</p>
+                <p class="positive-preflip" id="fish2"><img class="img1-s4" src="fish.png" alt="fish" />I Esbjerg er det nu muligt at fange hajer, ansjoser tun og sværdfisk som nu trives i de danske farvande</p>
               </div>
               <div class="flip-box-back">
                 <p class="negative-backflip" id="water"><img class="img2-s4" src="no-water.png" alt="vand"/> 5 milliarder mennesker kommer til at bo i områder med vandmangel</p>
@@ -89,9 +78,9 @@
           </div>
       
           <div class="flip-box">
-            <div class="flip-box-inner">
+            <div class="flip-box-inner"  id="box2">
               <div class="flip-box-front">
-                <p class="positive-preflip" id="wine2"><img class="img1-s4" src="wine.png" alt="wine" />Overvej livet som vinbonde. Nyborg bliver det nye bourdeaux</p>
+                <p class="positive-preflip" id="wine2"><img class="img1-s4" src="wine.png" alt="wine" />Livet som vinbonde bliver særligt rentabelt. Nyborg bliver det nye bourdeaux, da druehøsten bliver fænomenal</p>
               </div>
               <div class="flip-box-back">
                 <p class="negative-backflip" id="wheat"><img class="img2-s4" src="wheat.png" alt="hvede"/>En tredjedel af fødevareproduktionen forventes at forsvinde</p>
@@ -100,9 +89,9 @@
           </div>
       
           <div class="flip-box">
-            <div class="flip-box-inner">
+            <div class="flip-box-inner" id="box3"> 
               <div class="flip-box-front">
-                <p class="positive-preflip" id="fish2"><img class="img1-s4" src="fish.png" alt="fish" />I Esbjerg vil det snart være muligt at fange hajer, ansjoser, tun og sværdfisk</p>
+                <p class="positive-preflip" id="parrot2"><img class="img1-s4" src="parrot.png" alt="parrot" />Randers regnskov kan nu udvide udendørs da flere subtropiske dyr nu kan overleve i det fri</p>
               </div>
               <div class="flip-box-back">
                 <p class="negative-backflip" id="heat"><img class="img2-s4" src="global-warming.png" alt="varme"/>Dødbringende hedebølger vil udgøre en trussel for over 60% af verdensbefolkningen</p>
@@ -111,7 +100,7 @@
           </div>
       
           <div class="flip-box">
-            <div class="flip-box-inner">
+            <div class="flip-box-inner" id="box4">
               <div class="flip-box-front">
                 <p class="positive-preflip" id="palm2"><img class="img1-s4" src="palm-tree.png" alt="palm" />Palmestranden i Frederikshavn er kåret til Danmarks ældste, da palmerne nu kan overleve vinteren afdækket</p>
               </div>
@@ -136,13 +125,13 @@
     <p id="text-s5">Formindsk dit klimaaftryk nu! </p>
 
       <form>
-        <button class="buttons" id="genbrug" type="submit"
-          formaction="https://www.klimaklogt.dk/guides/genbrug/">Genbrug</button>
-      </form>
-
-      <form>
         <button class="buttons" id="transport" type="submit"
-          formaction="https://www.klimaklogt.dk/guides/transport/">Transport</button>
+        formaction="https://www.klimaklogt.dk/guides/transport/">Transport</button>
+      </form>
+      
+      <form>
+        <button class="buttons" id="politik" type="submit"
+          formaction="https://www.klimaklogt.dk/guides/politik/">Politik</button>
       </form>
 
       <form>
@@ -254,15 +243,16 @@
       });
 
 
-      /////
-      d3.select("#s3")
-      .on("click", function () {
+      /////FLIP BOXES
+      function change() {
+      const elements = document.querySelectorAll(".flip-box");
+        for (let element of elements) {
+      element.classList.toggle("transformed-state");
+       }
+      }
 
-        d3.selectAll(".flip-box")
-          .transition() 
-          .duration(2000)
-          .attr("transform")
-      });
+      const changeButton = document.querySelector("#s3");
+      changeButton.addEventListener("click", change);
       /////
        
     /////////////// Ovenstående er svg til Section4 //////////////////
