@@ -7,13 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>bar 🔥</title>
     <style>
-    .body {
-        font-family: "Arial", sans-serif;
-    }
-
-
+ 
 h2{
-    text-align:left;
+    text-align:right;
 }
 .hest{
     width: 180; float: left;
@@ -81,7 +77,7 @@ var bars = svg.selectAll("rect")
         .attr("x", 200)
 
         .attr("y",function(d,i){
-            return 20 + (i * 20) + 10 * i;})
+            return 25 + (i * 35) + 15 * i;})
         .attr("fill", "green")
 
 
@@ -94,7 +90,7 @@ var bars = svg.selectAll("rect")
         .attr("x", 205)
         .attr("fill", "whitesmoke")
         .attr("y",function(d,i){
-            return 35 + (i * 25) + 5 * i;})
+            return 40 + (i * 42) + 8 * i;})
         .text(function (d,i) {
             console.log("d: "+d)
             switch (d) {
