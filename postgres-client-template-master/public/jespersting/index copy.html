@@ -5,6 +5,7 @@
     <script src="d3.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
     <title>bar 🔥</title>
     <style>
  
@@ -43,7 +44,7 @@ for (let i = start; i < length; i++) {
 }
 return datasetAddTo;
 }
-var data1 = dataForLooper(43,44,dataset); 
+var dataset = dataForLooper(43,44,dataset); 
 var data2 = dataForLooper(243,244,dataset);
 var data3 = dataForLooper(263,264,dataset);
 var data4 = dataForLooper(71,72,dataset)
@@ -61,7 +62,7 @@ var svg = d3.select("body")
 .append("svg")
 .attr("height", 1000)
 .attr("width", 600);
-var dinfar = data1.concat(data2,data3,data4) //Viser den fjerde bar for alle data# 🙂
+var dinfar = dataset.concat(dataset,dataset,dataset) //Viser den fjerde bar for alle data# 🙂
 var bars = svg.selectAll("rect")
         .data(dinfar)
         .enter()
@@ -117,5 +118,48 @@ var bars = svg.selectAll("rect")
 //console.log(response.data[2].temp) //Viser tredje temp
 //console.log(response.data[3].temp) //Viser fjerde temp
     })
+
+
+
+      console.log("fsdf");
+  
+    d3.json("api/By", {method: "GET",
+  }).then(function(response){
+    console.log("aoi");
+      console.log(response);
+
+      const dataset = response .data;
+      console.table([dataset])
+      console.table(dataset[0]);
+      console.table(dataset[0].by)
+
+    
+      var byData =[];
+
+      for (let i = 0; i < dataset.length; i++) {
+          byData.push(dataset[i].by);
+          console.log(byData[i]);
+    }
+    
+    var dropdown = d3.select("body").append("select")
+    .attr("By", "name"); 
+    
+    var options = dropdown.selectAll("option")
+    .data(byData)
+    .enter()
+    .append("option")
+
+    options.text(function(d){
+        return d; 
+    }) 
+    .attr("value", function (d) {
+        return d;
+    })
+    
+    .attr()
+
+  }); 
+
+
 </script>
 </html>
