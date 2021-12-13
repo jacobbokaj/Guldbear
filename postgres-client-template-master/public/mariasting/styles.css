@@ -79,14 +79,13 @@ html {
   }
 
   #parrot {
-    margin-top: 2%;
+    margin-top: 14%;
   } 
-  
+
   .positive-static {
     display: block;
-    margin-left: 60%;
+    margin-top: 8%;
     width: -1%;
-    margin-top: 3%;
     float: left;
     font-size: 3vh;
     font-weight: bold;
@@ -97,6 +96,40 @@ html {
     float: left;
     padding-right: 2vh;
   } 
+/*---------------------------------------------------------------*/
+* {
+  box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  height: 500px; /* Should be removed. Only for demonstration */
+}
+
+#c1s3 {
+  width: 60%;
+}
+
+#c2s3 {
+  width: 40%;
+}
+
+#c1s4 {
+  width: 60%;
+}
+
+#c2s4 {
+  width: 40%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/*---------------------------------------------------------------*/
 
  #head-s4 {
    font-size: 5vh;  
@@ -107,7 +140,6 @@ html {
 
   .flip-box {
     background-color: transparent;
-    margin-left: 60%;
     width: 490px;
     height: 100px;
 
@@ -122,7 +154,7 @@ html {
     transform-style: preserve-3d;
   }
   
-  .flip-box:hover .flip-box-inner {
+ .flip-box-all:hover .flip-box-inner {
     transform: rotateX(180deg);
   }
   
@@ -147,8 +179,8 @@ html {
     font-weight: bold;
   }
 
-  #parrot2 {
-    margin-top: 2%;
+  .flip-box-all{
+    margin-top: 14%;
   } 
 
   .positive-preflip {
