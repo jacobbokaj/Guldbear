@@ -248,7 +248,7 @@ html {
     color: whitesmoke;
     font-family:Georgia, serif;
     font-size: 4vh;
-    margin-top: 6vh;
+    margin-top: 15vh;
     text-align: center;
   }
 
@@ -314,6 +314,14 @@ html {
   color: whitesmoke;
   font-family: Georgia, serif;
   font-size: 2vh;
-  text-align: center;
   margin-top: -3vh;
+  line-height: 160%;
+}
+#linkblok {
+  display: inline-block;
+  margin-left: 2%;
+  color: whitesmoke;
+}
+a {
+  color: rgb(33, 50, 146);
 }
