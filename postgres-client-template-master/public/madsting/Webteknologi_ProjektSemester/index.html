@@ -8,14 +8,14 @@
     <title>bar 🔥</title>
     <style>
  
-h2{
+.section3-h2{
     text-align:right;
 }
 .hest{
     width: 180; float: left;
 }
 
-.vl {
+#section3-vl-div {
   border-left: 2px dashed rgb(245, 245, 245);
   height: 171px;
   left: 600px;
@@ -23,7 +23,7 @@ h2{
   top: 28px;
 }
 
-.vl2 {
+#section3-vl2-div {
   border-left: 2px solid rgb(245, 245, 245);
   height: 171px;
   left: 174px;
@@ -37,30 +37,24 @@ p {
   margin-bottom: -1.5em;
   margin-left: 36em;
 }
-p {
-  display: block;
-  margin-top: 0em;
-  margin-bottom: -1.5em;
-  margin-left: 36em;
-}
 
 </style>
 
-<div class="vl"></div> 
-<div class="vl2"></div> 
+<div id="section3-vl-div"></div> 
+<div id="section3-vl2-div"></div> 
 </style>
 </head>
 <body style="background-color: #b3d0f1"></bodybody>
     <!-- Create a div where the graph will take place -->
 <div class="hest">
-<h2 class="data4">Esbjerg</h2>
-<h2 class="data3">Nyborg</h2>
-<h2 class="data2">Randers</h2>
-<h2 class="data1">Frederikshavn</h2>
+<h2 class="section3-h2">Esbjerg</h2>
+<h2 class="section3-h2">Nyborg</h2>
+<h2 class="section3-h2">Randers</h2>
+<h2 class="section3-h2">Frederikshavn</h2>
 </div>
 
-<p id="vl">13,45°</p>
-<p2 id="vl2">8,45°</p>
+<p>13,45°</p>
+<p2>8,45°</p>
 
 </body>
 <script>
@@ -111,7 +105,7 @@ var bars = svg.selectAll("rect")
 
         .attr("y",function(d,i){
             return 29 + (i * 35) + 15 * i;})
-         .attr("fill", "rgb(58, 158, 78")
+            .attr("fill", "rgb(58, 158, 78")
 
 
         //Viser tekst til barene 🙂
