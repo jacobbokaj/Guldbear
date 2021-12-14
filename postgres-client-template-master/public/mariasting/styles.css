@@ -1,6 +1,6 @@
   body {
     height: 500vh;
-    background: linear-gradient(180deg, #b3d0f1 0%, #3b8beb 90%);
+    background: linear-gradient(180deg, #b3d0f1 0%, #b5d1f3 90%);
   }
 
   #logo {
@@ -71,6 +71,7 @@ html {
     font-family:Georgia, serif;
     color: whitesmoke;
     margin-top: 4vh;
+    margin-left: 4vh;
   }
 
   /*---Section 3----------------------------------------------------------------------------------------------------------------*/
@@ -78,7 +79,8 @@ html {
     font-size: 5vh;  
     font-family:Georgia, serif;
     color: whitesmoke;
-    margin-top: 4vh;
+    margin-top: 5vh;
+    margin-left: 4vh;
   }
 
   /*---Neden sående er kolonnerne-------------------*/
@@ -89,7 +91,7 @@ html {
 /* Create two equal columns that floats next to each other */
 .column {
   float: left;
-  height: 500px; 
+  height: 800px;
 }
 
 #c1s3 {
@@ -97,7 +99,7 @@ html {
 }
 
 #c2s3 {
-  width: 40%;
+  width: 35%;
 }
 
 #c1s4 {
@@ -105,7 +107,7 @@ html {
 }
 
 #c2s4 {
-  width: 40%;
+  width: 35%;
 }
 
 /* Clear floats after the columns */
@@ -142,6 +144,7 @@ html {
    font-family:Georgia, serif;
    color: whitesmoke;
    margin-top: 4vh;
+   margin-left: 4vh;
  }
 
   .flip-box {
@@ -213,7 +216,7 @@ html {
     display: block;
     width: -1%;
     margin-top: 3%;
-    color: red;
+    color: rgba(255, 0, 0, 0.8);
     float: left;
     font-family: Georgia, serif;
     font-size: 3vh;
@@ -235,18 +238,19 @@ html {
   /*---Section 5---------------------------------------------------------------------------------------------------------------*/
   #head-s5 {  
     font-family:Georgia, serif;
-    font-size: 7vh;
+    font-size: 6vh;
     color: whitesmoke;
     text-align: center;
+    text-shadow: 2px 2px 2px rgb(105, 105, 105);
     margin-top: 20vh;
   }
 
   #text-s5 {
     color: whitesmoke;
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 3vh;
+    font-family:Georgia, serif;
+    font-size: 4vh;
     margin-top: 6vh;
-    margin-left: 42%;
+    text-align: center;
   }
 
   .buttons {
