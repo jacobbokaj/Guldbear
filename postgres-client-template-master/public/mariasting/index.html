@@ -12,7 +12,7 @@
 <body>
   <img id="logo" src="logo2.png" alt="logo" />
 
-  <!--Section1--------------------------------->
+  <!--Section1-------------------------------->
   <div class="main" id="section1">
     <h1 id="head-s1">+5°C</h1>
     <br>
@@ -23,8 +23,9 @@
   </div>
   
   <!--Section2-------------------------------->
-  
   <div class="main" id="section2">
+    <p id="text-s2">Danmarks temperaturændring i %</p>
+    <h2>...</h2>
     <div id="section2-tooltip" class="hidden">
       <p><strong>Important fun</strong></p>
       <p><span id="section2-value">100</span>hoho</p>
@@ -35,41 +36,40 @@
     </div>
   </div>
 
-  <!--Section3------------------------------->
+  <!--Section3------------------------------>
   <div class="main" id="section3">
     
     <p id="text-s3">Sådan fordeler temperaturudviklingen sig i Danmark</p>
-    
+
     <p id="sluttemp">13,45°</p>
     <p id="starttemp">8,45°</p>
       
-        <div class="row" id="c1s3"> <!--column1, section3-->
-          
+        <div class="column" id="c1s3"> <!--column1, section3-->
+          <div class="row" id="lokalvis">
               <!-- Create a div where the graph will take place -->
-          <div class="left">
-            <h2 class="section3-h2">Esbjerg</h2>
-            <h2 class="section3-h2">Nyborg</h2>
-            <h2 class="section3-h2">Randers</h2>
-            <h2 class="section3-h2">Frederikshavn</h2>
+            <div class="left">
+              <h2 class="section3-h2">Esbjerg</h2>
+              <h2 class="section3-h2">Nyborg</h2>
+              <h2 class="section3-h2">Randers</h2>
+              <h2 class="section3-h2">Frederikshavn</h2>
+            </div>
+            <div class="right" id="c1bar">
+              <div id="section3-vl-div"></div> 
+              <div id="section3-vl2-div"></div>
+            </div>
           </div>
-          <div class="right" id="c1bar">
-            <div id="section3-vl-div"></div> 
-            <div id="section3-vl2-div"></div>
-
-          </div>
-        <h2>..</h2>
         </div>
+
       <div class="column" id="c2s3" ><!--column2, section3-->
         <p class="positive-static" id="fish"><img class="img-s3" src="fish.png" alt="fish" />I Esbjerg er det nu muligt at fange hajer, ansjoser tun og sværdfisk som nu trives i de danske farvande</p>
         <p class="positive-static" id="wine"><img class="img-s3" src="wine.png" alt="wine" />Livet som vinbonde bliver særligt rentabelt. Nyborg bliver det nye bourdeaux, da druehøsten bliver fænomenal</p>
         <p class="positive-static" id="parrot"><img class="img-s3" src="parrot.png" alt="parrot" />Randers regnskov kan nu udvide udendørs da flere subtropiske dyr nu kan overleve i det fri</p>
         <p class="positive-static" id="palm"><img class="img-s3" src="palm-tree.png" alt="palm" />Palmestranden i Frederikshavn er kåret til Danmarks ældste, da palmerne nu kan overleve vinteren afdækket</p>
       </div>
-    </div>
 
     <div class="scrollknap"> 
-      <a href="#section4" class="next round" id="s3">&#8744</a>
-    </div>
+     <a href="#section4" class="next round" id="s3">&#8744</a>
+   </div>
   </div>
   
   <!--Section4------------------------------>
@@ -131,29 +131,24 @@
       </div>
     </div>
     
-      
-    <div class="scrollknap"> 
-      <a href="#section5" class="next round" id="s4">&#8744</a>
-    </div>
+      <div class="scrollknap"> 
+        <a href="#section5" class="next round" id="s4">&#8744</a>
+      </div>
   </div>
   
   <!--Section5-------------------------------->
   <div class="main" id="section5">
-    <h1 id="head-s5">Imens du nyder din hjemmedyrkede vin <br> pas på den ikke giver dårlig smag i munden <br> når resten af verden lider</h1>
+    <h1 id="head-s5">Imens du nyder din hjemmelavede vin, <br> pas dårlig smag i munden, <br> når du ser resten af verden lide</h1>
     <p id="text-s5">Formindsk DIT klimaaftryk nu!</p>
       <form>
-        <button class="buttons" id="transport" type="submit"
-        formaction="https://www.klimaklogt.dk/guides/transport/">Transport</button>
-      </form>
-      
-      <form>
-        <button class="buttons" id="politik" type="submit"
-          formaction="https://www.klimaklogt.dk/guides/politik/">Politik</button>
-      </form>
-
-      <form>
-        <button class="buttons" id="mad" type="submit"
-          formaction="https://www.klimaklogt.dk/guides/madspild/">Madspild</button>
+        <div class="buttoncontainer">
+          <button class="buttons" id="transport" type="submit"
+            formaction="https://www.klimaklogt.dk/guides/transport/">Transport</button>
+          <button class="buttons" id="politik" type="submit"
+            formaction="https://www.klimaklogt.dk/guides/politik/">Politik</button>
+          <button class="buttons" id="mad" type="submit"
+            formaction="https://www.klimaklogt.dk/guides/madspild/">Madspild</button>
+        </div>
       </form>
       <p id="streg">_______________________________________________________<p>
       <div id="linkblok">
@@ -176,7 +171,6 @@
     /////////////// Nedenstående er svg til Section2 //////////////////
     d3.json("/api/dmi_danmark_temp_interpolation", {method: "GET",
   }).then(function(response){
-
 
       
       const margin = { top: 100, right: -30, bottom: -30, left: -200 };
@@ -207,6 +201,8 @@
           return d;
         });
         
+    d3.select("#s1")
+    .on("click", function () {
 
         var section2_p_dataset = ["co2","hver 10 år"];
         d3.select("#section2").selectAll("section2-p")

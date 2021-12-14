@@ -27,7 +27,7 @@ html {
 .scrollknap {
   bottom: 20px;
   position: absolute;
-  left: 50%;
+  left: 49%;
 }
 
   .next:hover {
@@ -72,7 +72,7 @@ html {
     font-size: 5vh;  
     font-family:Georgia, serif;
     color: whitesmoke;
-    margin-top: 4vh;
+    margin-top: 5vh;
   }
 
   /*---Section 3----------------------------------------------------------------------------------------------------------------*/
@@ -97,6 +97,13 @@ html {
   .row {
     display: flex;
     flex-direction: row;
+  } 
+
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
   }
   #section3-vl-div {
     border-left: 2px dashed rgb(245, 245, 245);
@@ -155,13 +162,14 @@ html {
 
   .positive-static {
     display: block;
-    margin-top: 8%;
+    margin-top: 3%;
     width: -1%;
     float: left;
     font-family: Georgia, serif;
     font-size: 3vh;
     font-weight: normal;
   }
+
 
   .img-s3 {
     width: 10vh;
@@ -234,8 +242,8 @@ html {
   
   .positive-preflip {
     display: block;
-    width: -1%;
     margin-top: 3%;
+    width: -1%;
     float: left;
     font-family: Georgia, serif; 
     font-size: 3vh;
@@ -289,7 +297,6 @@ html {
     stroke-width: #fff, 2px;
     transition: all 250ms;
     bottom: 21%;
-    position: absolute;
     border: 0;
     line-height: 2.5;
     padding: 0 20px;
@@ -319,7 +326,14 @@ html {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
-
+.buttoncontainer {
+  display: flex;
+  justify-content: center;
+}
+.buttoncontainer > *:not(:last-child) {
+  margin-right: 20vh;
+}
+/*
 #transport {
   left: 18.5%;
 }
@@ -329,6 +343,7 @@ html {
 #mad {
   left: 66.5%;
 }
+*/
 #bottomline {
   float: bottom;
   position: relative; 
@@ -338,7 +353,7 @@ html {
   color: whitesmoke;
   font-family: Georgia, serif;
   font-size: 5vh;
-  margin-top: 22vh;
+  margin-top: 1vh;
   text-align: center;
 }
 #links {
@@ -361,16 +376,6 @@ a {
   width: 180; float: left;
   text-align:right;
 }
-
-
-
-p {
-display: block;
-margin-top: 0em;
-margin-bottom: -1.5em;
-margin-left: 36em;
-}
-
 
 #section2{
   display:flex;
