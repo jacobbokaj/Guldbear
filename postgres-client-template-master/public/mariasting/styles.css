@@ -1,6 +1,6 @@
   body {
     height: 500vh;
-    background: linear-gradient(180deg, #b3d0f1 0%, #b5d1f3 90%);
+    background: #b3d0f1;
   }
 
   #logo {
@@ -21,6 +21,8 @@ html {
   height: 100vh;
   overflow: hidden;
   position: relative;
+  margin-left: 8vh;
+  margin-right: 8vh;
  }
 .scrollknap {
   bottom: 20px;
@@ -71,7 +73,6 @@ html {
     font-family:Georgia, serif;
     color: whitesmoke;
     margin-top: 4vh;
-    margin-left: 4vh;
   }
 
   /*---Section 3----------------------------------------------------------------------------------------------------------------*/
@@ -80,7 +81,6 @@ html {
     font-family:Georgia, serif;
     color: whitesmoke;
     margin-top: 5vh;
-    margin-left: 4vh;
   }
 
   /*---Neden sående er kolonnerne-------------------*/
@@ -91,7 +91,7 @@ html {
 /* Create two equal columns that floats next to each other */
 .column {
   float: left;
-  height: 800px;
+  height: 80vh;
 }
 
 #c1s3 {
@@ -99,7 +99,7 @@ html {
 }
 
 #c2s3 {
-  width: 35%;
+  width: 40%;
 }
 
 #c1s4 {
@@ -107,7 +107,7 @@ html {
 }
 
 #c2s4 {
-  width: 35%;
+  width: 40%;
 }
 
 /* Clear floats after the columns */
@@ -144,7 +144,6 @@ html {
    font-family:Georgia, serif;
    color: whitesmoke;
    margin-top: 4vh;
-   margin-left: 4vh;
  }
 
   .flip-box {
@@ -270,7 +269,7 @@ html {
     color: #fff;
     text-shadow: 1px 1px 1px rgb(26, 26, 26);
     border-radius: 50px;
-    background-color: rgb(50, 168, 82);
+    background-color: #3a9e4e;
     background-image: linear-gradient(to top left,
                                       rgba(0, 0, 0, .2),
                                       rgba(0, 0, 0, .2) 30%,
@@ -280,8 +279,9 @@ html {
 }
 
 .buttons:hover {
-    background-color: rgb(30, 95, 48); 
+    background-color: #2e7e3e; 
     transform: translateY(-3px);
+    cursor: pointer;
 }
 
 .buttons:active {
@@ -297,4 +297,23 @@ html {
 }
 #mad {
   left: 68.5%;
+}
+#bottomline {
+  float: bottom;
+  position: relative; 
+  bottom: 10%; 
+}
+#streg {
+  color: whitesmoke;
+  font-family: Georgia, serif;
+  font-size: 5vh;
+  margin-top: 22vh;
+  text-align: center;
+}
+#links {
+  color: whitesmoke;
+  font-family: Georgia, serif;
+  font-size: 2vh;
+  text-align: center;
+  margin-top: -3vh;
 }
