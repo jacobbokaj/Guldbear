@@ -325,3 +325,68 @@ html {
 a {
   color: rgb(33, 50, 146);
 }
+
+
+.section3-h2{
+  text-align:right;
+}
+.hest{
+  width: 180; float: left;
+}
+
+#section3-vl-div {
+border-left: 2px dashed rgb(245, 245, 245);
+height: 171px;
+left: 600px;
+position: absolute;
+top: 28px;
+}
+
+#section3-vl2-div {
+border-left: 2px solid rgb(245, 245, 245);
+height: 171px;
+left: 174px;
+position: absolute;
+top: 28px;
+}
+
+p {
+display: block;
+margin-top: 0em;
+margin-bottom: -1.5em;
+margin-left: 36em;
+}
+
+
+#section2{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+#section2-tooltip {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  padding: 10px;
+  background-color: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+  -moz-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+  
+  pointer-events: none;
+
+}
+#section2-tooltip.hidden {
+  display: none;
+}
+.myCircle:hover {
+  stroke: black;
+}
+#section2-h1{
+  position: absolute;
+  top: 20%;
+}
+
