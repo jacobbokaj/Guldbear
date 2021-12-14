@@ -293,10 +293,10 @@ html {
   left: 18.5%;
 }
 #politik {
-  left: 43.5%;
+  left: 41.5%;
 }
 #mad {
-  left: 68.5%;
+  left: 66.5%;
 }
 #bottomline {
   float: bottom;
@@ -319,8 +319,8 @@ html {
 }
 #linkblok {
   display: inline-block;
-  margin-left: 2%;
   color: whitesmoke;
+  position: absolute;
 }
 a {
   color: rgb(33, 50, 146);
