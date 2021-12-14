@@ -57,7 +57,7 @@ const client = new Client({
 client.connect();
 
 app.use(express.text());
-app.use(express.static("public/madsting/Webteknologi_ProjektSemester"))
+app.use(express.static("public/mariasting"))
 app.use(morgan("combined")); 
 
 /*
@@ -89,6 +89,25 @@ app.post("/api/helloQuery", async (req, res) => {
 app.get("/api/Temperatur",async (req,res) =>{
   try {
     const query = `SELECT * FROM "Temperatur"`;
+    queryData = await client.query(query);
+    
+    res.json({
+      "ok" : true,
+      "data": queryData.rows,
+    })
+  } catch (error) {
+    res.json({
+      "ok": false,
+      "message": error.message,
+    })
+  }
+
+
+})
+
+app.get("/api/dmi_danmark_temp_interpolation",async (req,res) =>{
+  try {
+    const query = `SELECT * FROM dmi_danmark_temp_interpolation`;
     queryData = await client.query(query);
     
     res.json({

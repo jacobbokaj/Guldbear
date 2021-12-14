@@ -82,7 +82,38 @@ html {
     color: whitesmoke;
     margin-top: 5vh;
   }
-
+  #sluttemp {
+    display: block;
+    margin-top: -1em;
+    margin-bottom: -1.5em;
+    margin-left: 24em;
+  }
+  #starttemp {
+    display: block;
+    margin-top: 0em;
+    margin-bottom: -1.5em;
+    margin-left: 10em;
+  }
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+  #section3-vl-div {
+    border-left: 2px dashed rgb(245, 245, 245);
+    height: 169.3px;
+    left: 400px;
+    position: absolute;
+    top: 34.3%;
+    }
+    
+    #section3-vl2-div {
+    border-left: 2px solid rgb(245, 245, 245);
+    height: 169.3px;
+    left: 170px;
+    position: absolute;
+    top: 33.5%;
+    }
+  
   /*---Neden sående er kolonnerne-------------------*/
 * {
   box-sizing: border-box;
@@ -325,3 +356,51 @@ html {
 a {
   color: rgb(33, 50, 146);
 }
+
+.hest{
+  width: 180; float: left;
+  text-align:right;
+}
+
+
+
+p {
+display: block;
+margin-top: 0em;
+margin-bottom: -1.5em;
+margin-left: 36em;
+}
+
+
+#section2{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+#section2-tooltip {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  padding: 10px;
+  background-color: white;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+  -moz-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+  
+  pointer-events: none;
+
+}
+#section2-tooltip.hidden {
+  display: none;
+}
+.myCircle:hover {
+  stroke: black;
+}
+#section2-h1{
+  position: absolute;
+  top: 20%;
+}
+
