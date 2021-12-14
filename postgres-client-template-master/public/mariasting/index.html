@@ -35,7 +35,22 @@
   <div class="main" id="section3">
     
     <p id="text-s3">Sådan fordeler temperaturudviklingen sig i Danmark</p>
-
+    <div id="section3-vl-div"></div> 
+    <div id="section3-vl2-div"></div> 
+    </style>
+    </head>
+    <body style="background-color: #b3d0f1"></bodybody>
+        <!-- Create a div where the graph will take place -->
+    <div class="hest">
+    <h2 class="section3-h2">Esbjerg</h2>
+    <h2 class="section3-h2">Nyborg</h2>
+    <h2 class="section3-h2">Randers</h2>
+    <h2 class="section3-h2">Frederikshavn</h2>
+    </div>
+    
+    <p>13,45°</p>
+    <p2>8,45°</p>
+    
     <div class="row">
       <div class="column" id="c1s3"> <!--column1, section3-->
         <h2>..</h2>
@@ -192,34 +207,93 @@
 
 
     /////////////// Nedenstående er svg til Section3 //////////////////
-    const data3 = ["magenta"]
+    d3.json("api/Temperatur", {method: "GET",
+    }).then(function(response){
 
-    const svg3 = d3.select("#c1s3")
-      .append("svg")
-      .attr("width", "100%")
-      .attr("height", "100%");
-            
-    svg3.selectAll("polygon")
-      .data(data3)
-      .enter()
-      .append("polygon")
-      .attr("points", "125,50 50,200 200,200")
-      .attr("fill", function(d) { return d; } );
-            
-    d3.select("#s2")
-      .on("click", function () {
+      console.log(response);
+        //SKRIV KODEN HER
+        var dataset = response.data;
+function dataForLooper(start,length,datasetFrom){
+var datasetAddTo = []
+for (let i = start; i < length; i++) {
+    datasetAddTo.push(datasetFrom[i]);
+}
+return datasetAddTo;
+}
+var data1 = dataForLooper(43,44,dataset); 
+var data2 = dataForLooper(243,244,dataset);
+var data3 = dataForLooper(263,264,dataset);
+var data4 = dataForLooper(71,72,dataset)
+//Esbjerg = data1
+//Nyborg = data2
+//Randers = data3
+//Frederikshavn = data4
 
-        d3.selectAll("polygon")
-          .transition() 
-          .duration(2000)
-          .attr("points", "50,200 200,200 125,50")
-          .attr("fill", "orange")
+//var data4 = [] // ALT HER KAN BRUGES TIL AT FINDE ET DATASET!
+//for (let i = 68; i < 72; i++) {
+//   data4.push(dataset[i])
+//console.table(data4)
+ // ALT HER KAN BRUGES TIL AT FINDE ET DATASET!/
+var svg = d3.select("body")
+.append("svg")
+.attr("height", 1000)
+.attr("width", 600);
 
-          .transition()
-          .duration(2000)
-          .attr("points", "125,50 50,200 200,200")
-          .attr("fill", "magenta")
-      });
+var dinfar = data1.concat(data2,data3,data4) //Viser den fjerde bar for alle data# 🙂
+var bars = svg.selectAll("rect")
+        .data(dinfar)
+        .enter()
+        .append("rect")
+        .attr("height", function(d, i){
+            console.log(d.temp);
+            return 20;
+           // return 100 + (i * 10) + 10 * i;
+        })
+        .attr("width", function(d){
+            return d.temp * 30
+        })
+        .attr("x", 20)
+
+        .attr("y",function(d,i){
+            return 29 + (i * 35) + 15 * i;})
+            .attr("fill", "rgb(58, 158, 78")
+
+
+        //Viser tekst til barene 🙂
+        var datatext = [1,2,3,4];
+        svg.selectAll("text")
+        .data(datatext)
+        .enter()
+        .append("text")
+        .attr("x", 330)
+        .attr("fill", "whitesmoke")
+        .attr("y",function(d,i){
+            return 44 + (i * 42) + 8 * i;})
+        .text(function (d,i) {
+            console.log("d: "+d)
+            switch (d) {
+                case 1:
+                    return data1[0].temp+"°";
+              case 2:
+                  return data2[0].temp+"°";
+                case 3:
+                    return data3[0].temp+"°";
+                case 4:
+                    return data4[0].temp+"°";
+            }
+            //Viser alle 4 højeste grader 🙂
+        });
+
+
+
+
+//HER SLUTTER KODEN
+//console.log(response.data) //Viser al data (396 Arrays)
+//console.log(response.data[0].temp) //Viser første temp
+//console.log(response.data[1].temp) //Viser anden temp
+//console.log(response.data[2].temp) //Viser tredje temp
+//console.log(response.data[3].temp) //Viser fjerde temp
+    })
     /////////////// Ovenstående er svg til Section3 //////////////////
 
 
