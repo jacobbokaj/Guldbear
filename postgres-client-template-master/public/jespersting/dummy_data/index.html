@@ -22,44 +22,49 @@
  -->
 
  <script>
-      console.log("fsdf");
+     var temperatur=""; 
+     var by="";  
   
-    d3.json("api/By", {method: "GET",
-  }).then(function(response){
-    console.log("aoi");
-      console.log(response);
+d3.json("api/By", {method: "GET",
+}).then(function(by_response){
+    d3.json("api/Temperatur",{method: "GET",
+    }).then(function(temperatur_response){
 
-      const dataset = response .data;
-      console.table([dataset])
-      console.table(dataset[0]);
-      console.table(dataset[0].by)
+    const temperatur_dataset = temperatur_response.data;
+    const by_dataset = by_response.data;
 
-    
-      var byData =[];
-
-      for (let i = 0; i < dataset.length; i++) {
-          byData.push(dataset[i].by);
-          console.log(byData[i]);
-    }
-    
     var dropdown = d3.select("body").append("select")
     .attr("By", "name"); 
     
     var options = dropdown.selectAll("option")
-    .data(byData)
+    .data(by_dataset)
     .enter()
     .append("option")
-
-    options.text(function(d){
-        return d; 
+    
+    options.text(function(d,i){
+    
+        return d.by; 
     }) 
     .attr("value", function (d) {
+        console.log("value: " + d);
         return d;
-    })
-    
-    .attr()
+    /*    
+    }).on("change",function(d){
+        console.log("hej");
 
-  }); 
+    });
+    d3.selectAll('option')
+    .on('change', function() {
+        console.log("hej222")
+
+    function onchange(){
+        console.log("hej")
+    } */ 
+
+    }) 
+
+    }); 
+}); 
 
    </script>
 
@@ -84,13 +89,7 @@
     <option value="2">option 2</option>
     <option value="3">option 3</option>
 </select> -->
-
-
-
-
-
-
-
    
+
 </body>
 </html>
