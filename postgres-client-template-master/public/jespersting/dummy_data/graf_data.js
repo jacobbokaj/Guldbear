@@ -8,16 +8,16 @@ d3.json("api/By", {
     const temperatur_dataset = temperatur_response.data;
     const by_dataset = by_response.data;
 
-    var dropdown = d3
-      .select("body")
+    var dropdown = d3 
+      .select("body") 
       .append("select")
       .attr("By", "name")
       .attr("id", "drop", "by_id")
 
-      .on("change", function (d) {
+      .on("change", function (d) { 
         var selectedOption = d3.select("#drop").property("value")
         var by_id = temperatur_dataset.filter(x => x.by_id == selectedOption)
-        console.log(selectedOption, by_id[0].max)
+        console.log(selectedOption, by_id[0].max) 
 
       });
     var option = dropdown

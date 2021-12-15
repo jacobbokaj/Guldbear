@@ -2,58 +2,61 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="d3.js"></script>
-    <script src="graf_data.js"></script>
-
-
-    <div style="height: 75px;"></div>
-
-
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="d3.js"></script>
+  <title><Bdo>backend_data</Bdo></title>
 </head>
 
 <body>
-    
 
-    <script>
+  <script>
 
-var src = "graf_data.js"
+    d3.json("api/By", {
+      method: "GET",
+    }).then(function (by_response) {
+      d3.json("api/Temperatur", {
+        method: "GET",
+      }).then(function (temperatur_response) {
 
-        //Width and height
-        var w = 1000;
-        var h = 200;
+        const temperatur_dataset = temperatur_response.data;
+        const by_dataset = by_response.data;
 
-        src = "graf_data.js";
-        var dataset = "scr"
-        
+        var dropdown = d3
+          .select("body")
+          .append("select")
+          .attr("By", "name")
+          .attr("id", "drop", "by_id")
 
-        //Create SVG element
-        var svg = d3.select("body")
-            .append("svg")
-            .attr("width", w)
-            .attr("height", h);
+          .on("change", function (d) {
+            var selectedOption = d3.select("#drop").property("value")
+            var by_id = temperatur_dataset.filter(x => x.by_id == selectedOption)
+            console.log(selectedOption, by_id[0].max)
 
-        svg.selectAll("rect")
-            .data(src, function(d) { return d.name; })
-            .enter()
-            .append("rect")
-            .attr("x", 0)
-            .attr("y", 0)
-            .attr("width", 20)
-            .attr("height", 100);
-            body.on("click", function(d) {
-            d3.select(this)
-            d3.event.stopPropagation();
-});
+          });
+        var option = dropdown
+          .selectAll("option")
+          .data(by_dataset)
+          .enter()
+          .append("option")
 
 
+        option.text(function (d, i) {
+
+          return d.by;
+        })
+
+          .attr("value", function (d) {
+            return d.id;
 
 
+          })
+      })
 
-    </script>
+    });
 
+  </script>
 
 </body>
 
