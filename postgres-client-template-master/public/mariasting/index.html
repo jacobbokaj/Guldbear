@@ -42,10 +42,8 @@
     <p id="text-s3">Sådan fordeler temperaturudviklingen sig i Danmark</p>
       
         <div class="column" id="c1s3"> <!--column1, section3-->
-          <p id="sluttemp">13,45°</p>
-          <p id="starttemp">8,45°</p>
           <div class="row" id="lokalvis">
-              <!-- Create a div where the graph will take place -->
+            <!-- Create a div where the graph will take place -->
             <div class="left">
               <h2 class="section3-h2">Esbjerg</h2>
               <h2 class="section3-h2">Nyborg</h2>
@@ -53,6 +51,8 @@
               <h2 class="section3-h2">Frederikshavn</h2>
             </div>
             <div class="right" id="c1bar">
+              <p id="sluttemp">13,45°</p>
+              <p id="starttemp">8,45°</p>
               <div id="section3-vl-div"></div> 
               <div id="section3-vl2-div"></div>
             </div>
@@ -335,8 +335,9 @@
     /////////////// Nedenstående er svg til Section3 //////////////////
     d3.json("api/Temperatur", {method: "GET",
     }).then(function(response){
+
       console.log(response);
-      //SKRIV KODEN HER
+        //SKRIV KODEN HER
         var dataset = response.data;
 function dataForLooper(start,length,datasetFrom){
 var datasetAddTo = []
@@ -349,9 +350,6 @@ var data1 = dataForLooper(43,44,dataset);
 var data2 = dataForLooper(243,244,dataset);
 var data3 = dataForLooper(263,264,dataset);
 var data4 = dataForLooper(71,72,dataset)
-
-
-
 //Esbjerg = data1
 //Nyborg = data2
 //Randers = data3
@@ -364,8 +362,8 @@ var data4 = dataForLooper(71,72,dataset)
  // ALT HER KAN BRUGES TIL AT FINDE ET DATASET!/
 var svg = d3.select("#c1bar")
 .append("svg")
-.attr("height", 1000)
-.attr("width", 600);
+.attr("height", 600)
+.attr("width", 300);
 
 var dinfar = data1.concat(data2,data3,data4) //Viser den fjerde bar for alle data# 🙂
 var bars = svg.selectAll("rect")
@@ -374,16 +372,16 @@ var bars = svg.selectAll("rect")
         .append("rect")
         .attr("height", function(d, i){
             console.log(d.temp);
-            return 20;
+            return 40;
            // return 100 + (i * 10) + 10 * i;
         })
         .attr("width", function(d){
-            return d.temp * 15
+            return d.temp * 20
         })
         .attr("x", 20)
 
         .attr("y",function(d,i){
-            return 20 + (i * 35) + 15 * i;})
+            return 70 + (i * 85) + 15 * i;})
             .attr("fill", "rgb(58, 158, 78")
 
 
@@ -393,10 +391,10 @@ var bars = svg.selectAll("rect")
         .data(datatext)
         .enter()
         .append("text")
-        .attr("x", 155)
+        .attr("x", 218)
         .attr("fill", "whitesmoke")
         .attr("y",function(d,i){
-            return 35 + (i * 42) + 8 * i;})
+            return 95 + (i * 89) + 11 * i;})
         .text(function (d,i) {
             console.log("d: "+d)
             switch (d) {
@@ -414,7 +412,6 @@ var bars = svg.selectAll("rect")
 
     })
 
-  })
 
 
 //HER SLUTTER KODEN
@@ -423,7 +420,7 @@ var bars = svg.selectAll("rect")
 //console.log(response.data[1].temp) //Viser anden temp
 //console.log(response.data[2].temp) //Viser tredje temp
 //console.log(response.data[3].temp) //Viser fjerde temp
-    
+    });
     /////////////// Ovenstående er svg til Section3 //////////////////
 
 

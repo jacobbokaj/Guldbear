@@ -124,18 +124,24 @@ html {
     margin-top: 5vh;
   }
   #sluttemp {
-    display: block;
-    margin-top: -1em;
-    margin-bottom: -1.5em;
-    margin-left: 24em;
+    position: absolute;
+    margin-top: 8vh;
+    margin-left: 53vh;
   }
   #starttemp {
-    display: block;
-    margin-top: 0em;
-    margin-bottom: -1.5em;
-    margin-left: 10em;
+    position: absolute;
+    margin-top: 8vh;
+    margin-left: 2vh;
   }
-  .row1 {
+
+.section3-h2 {
+  color: white;
+  position: relative;
+  top: 9vh;
+  margin-bottom: 13vh;
+}
+
+  .row {
     display: flex;
     flex-direction: row;
   } 
@@ -148,18 +154,18 @@ html {
   }
   #section3-vl-div {
     border-left: 2px dashed rgb(245, 245, 245);
-    height: 169.3px;
-    left: 400px;
+    height: 341.5px;
+    left: 473px;
     position: absolute;
-    top: 34.3%;
+    top: 27.8%;
     }
     
     #section3-vl2-div {
     border-left: 2px solid rgb(245, 245, 245);
-    height: 169.3px;
+    height: 341.5px;
     left: 170px;
     position: absolute;
-    top: 33.5%;
+    top: 27.8%;
     }
   
   /*---Neden sående er kolonnerne-------------------*/
