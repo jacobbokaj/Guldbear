@@ -1,6 +1,6 @@
   body {
     height: 500vh;
-    background: linear-gradient(180deg, #b3d0f1 0%, #3b8beb 90%);
+    background: linear-gradient(180deg, #b3d0f1 0%, #b5d1f3 90%);
   }
 
   #logo {
@@ -27,14 +27,14 @@ html {
   position: absolute;
   left: 50%;
 }
-/*det der før var "a"*/
+
   .next:hover {
-    background-color: rgb(168, 166, 166);
+    background-color: rgba(168, 166, 166, 0.596);
     color: rgb(0, 0, 0);
   }
   
   .next {
-    background-color: whitesmoke;
+    background-color: rgba(245, 245, 245, 0.493);
     color: black;
     text-decoration: none ;
     font-weight: bold;
@@ -46,6 +46,7 @@ html {
     border-radius: 50%;
   }
 
+/*---Section 1----------------------------------------------------------------------------------------------------------------*/
   #head-s1 {
     font-size: 25vh;  
     font-family:Arial, Helvetica, sans-serif;
@@ -57,46 +58,32 @@ html {
 
   #text-s1 {
     font-size: 6vh;  
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Georgia, serif;
     color: whitesmoke;
     text-shadow: 2px 2px 2px rgb(105, 105, 105);
     text-align: center;
     margin-top: -20vh;
   }
  
-  #head-s2 {
+  /*---Section 2--------------------------------------------------------------------------------------------------------------*/
+  #text-s2 {
     font-size: 5vh;  
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Georgia, serif;
     color: whitesmoke;
     margin-top: 4vh;
+    margin-left: 4vh;
   }
 
-  #head-s3 {
+  /*---Section 3----------------------------------------------------------------------------------------------------------------*/
+  #text-s3 {
     font-size: 5vh;  
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:Georgia, serif;
     color: whitesmoke;
-    margin-top: 4vh;
+    margin-top: 5vh;
+    margin-left: 4vh;
   }
 
-  #parrot {
-    margin-top: 14%;
-  } 
-
-  .positive-static {
-    display: block;
-    margin-top: 8%;
-    width: -1%;
-    float: left;
-    font-size: 3vh;
-    font-weight: bold;
-  }
-
-  .img-s3 {
-    width: 10vh;
-    float: left;
-    padding-right: 2vh;
-  } 
-/*---------------------------------------------------------------*/
+  /*---Neden sående er kolonnerne-------------------*/
 * {
   box-sizing: border-box;
 }
@@ -104,7 +91,7 @@ html {
 /* Create two equal columns that floats next to each other */
 .column {
   float: left;
-  height: 500px; /* Should be removed. Only for demonstration */
+  height: 800px;
 }
 
 #c1s3 {
@@ -112,7 +99,7 @@ html {
 }
 
 #c2s3 {
-  width: 40%;
+  width: 35%;
 }
 
 #c1s4 {
@@ -120,7 +107,7 @@ html {
 }
 
 #c2s4 {
-  width: 40%;
+  width: 35%;
 }
 
 /* Clear floats after the columns */
@@ -129,13 +116,35 @@ html {
   display: table;
   clear: both;
 }
-/*---------------------------------------------------------------*/
+/*---Ovenstående er kolonnerne---------------------------*/
 
- #head-s4 {
+  #fish {
+    margin-top: 14%;
+  } 
+
+  .positive-static {
+    display: block;
+    margin-top: 8%;
+    width: -1%;
+    float: left;
+    font-family: Georgia, serif;
+    font-size: 3vh;
+    font-weight: normal;
+  }
+
+  .img-s3 {
+    width: 10vh;
+    float: left;
+    padding-right: 2vh;
+  } 
+
+  /*---Section 4-------------------------------------------------------------------------------------------------------------*/
+ #text-s4 {
    font-size: 5vh;  
-   font-family:Arial, Helvetica, sans-serif;
+   font-family:Georgia, serif;
    color: whitesmoke;
-   margin-top: 2vh;
+   margin-top: 4vh;
+   margin-left: 4vh;
  }
 
   .flip-box {
@@ -150,12 +159,31 @@ html {
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.8s;
     transform-style: preserve-3d;
   }
   
- .flip-box-all:hover .flip-box-inner {
+ .transformed-state .flip-box-inner {
     transform: rotateX(180deg);
+  }
+
+  #box1 {
+    transition-delay: 1s;
+    transition-duration: 1s;
+  }
+  
+  #box2 {
+    transition-delay: 2s;
+    transition-duration: 1s;
+  }
+  
+  #box3 {
+    transition-delay: 3s;
+    transition-duration: 1s;
+  }
+
+  #box4 {
+    transition-delay: 4s;
+    transition-duration: 1s;
   }
   
   .flip-box-front, .flip-box-back {
@@ -169,27 +197,30 @@ html {
   .flip-box-back {
     transform: rotateX(180deg);
   }
-  .negative-backflip {
-    display: block;
-    width: -1%;
-    margin-top: 3%;
-    color: red;
-    float: left;
-    font-size: 3vh;
-    font-weight: bold;
-  }
-
+  
   .flip-box-all{
     margin-top: 14%;
   } 
-
+  
   .positive-preflip {
     display: block;
     width: -1%;
     margin-top: 3%;
     float: left;
+    font-family: Georgia, serif; 
     font-size: 3vh;
-    font-weight: bold;
+    font-weight: normal;
+  }
+  
+  .negative-backflip {
+    display: block;
+    width: -1%;
+    margin-top: 3%;
+    color: rgba(255, 0, 0, 0.8);
+    float: left;
+    font-family: Georgia, serif;
+    font-size: 3vh;
+    font-weight: normal;
   }
 
   .img1-s4 {
@@ -204,20 +235,22 @@ html {
     padding-right: 2vh;
   }
 
+  /*---Section 5---------------------------------------------------------------------------------------------------------------*/
   #head-s5 {  
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 7vh;
+    font-family:Georgia, serif;
+    font-size: 6vh;
     color: whitesmoke;
     text-align: center;
-    margin-top: 27vh;
+    text-shadow: 2px 2px 2px rgb(105, 105, 105);
+    margin-top: 20vh;
   }
 
   #text-s5 {
     color: whitesmoke;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 3vh;
+    font-family:Georgia, serif;
+    font-size: 4vh;
     margin-top: 6vh;
-    margin-left: 42%;
+    text-align: center;
   }
 
   .buttons {
@@ -247,7 +280,7 @@ html {
 }
 
 .buttons:hover {
-    background-color: rgb(65, 189, 98); 
+    background-color: rgb(30, 95, 48); 
     transform: translateY(-3px);
 }
 
@@ -256,10 +289,10 @@ html {
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
 
-#genbrug {
+#transport {
   left: 18.5%;
 }
-#transport {
+#politik {
   left: 43.5%;
 }
 #mad {

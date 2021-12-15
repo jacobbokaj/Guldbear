@@ -1,95 +1,60 @@
-<html>
-    <!DOCTYPE html>
-    <head>
-    <title>Find din kommune</title>
-</head>
-<body>
-  <meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D3.js</title>
+    <script type="text/javascript" src="d3.js"></script>
+    <script src="graf_data.js"></script>
+
+
+    <div style="height: 75px;"></div>
+
+
+</head>
+
+<body>
     
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <script>
+
+var src = "graf_data.js"
+
+        //Width and height
+        var w = 1000;
+        var h = 200;
+
+        src = "graf_data.js";
+        var dataset = "scr"
+        
+
+        //Create SVG element
+        var svg = d3.select("body")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+        svg.selectAll("rect")
+            .data(src, function(d) { return d.name; })
+            .enter()
+            .append("rect")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("width", 20)
+            .attr("height", 100);
+            body.on("click", function(d) {
+            d3.select(this)
+            d3.event.stopPropagation();
+});
 
 
-     <!-- 
-1. Lav API til mærkerne 
-2. Lav først statisk select med statiske https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_option
-(<option></option>)
-3. Hent data fra ny API
-4. Lav indholdet af <select></select> med data fra ny API https://www.w3schools.com/tags/tag_option.asp / https://stackoverflow.com/questions/647282/is-there-an-onselect-event-or-equivalent-for-html-select
-5. Lav callback på hver option (onChange)- test først med console.log
-    Se eksempel med button i animations-koden.
- -->
-
- <script>
-     var temperatur=""; 
-     var by="";  
-  
-d3.json("api/By", {method: "GET",
-}).then(function(by_response){
-    d3.json("api/Temperatur",{method: "GET",
-    }).then(function(temperatur_response){
-
-    const temperatur_dataset = temperatur_response.data;
-    const by_dataset = by_response.data;
-
-    var dropdown = d3.select("body").append("select")
-    .attr("By", "name"); 
-    
-    var options = dropdown.selectAll("option")
-    .data(by_dataset)
-    .enter()
-    .append("option")
-    
-    options.text(function(d,i){
-    
-        return d.by; 
-    }) 
-    .attr("value", function (d) {
-        console.log("value: " + d);
-        return d;
-    /*    
-    }).on("change",function(d){
-        console.log("hej");
-
-    });
-    d3.selectAll('option')
-    .on('change', function() {
-        console.log("hej222")
-
-    function onchange(){
-        console.log("hej")
-    } */ 
-
-    }) 
-
-    }); 
-}); 
-
-   </script>
-
-   
-
-<!--       
-    <h1>Find din kommune</h1>
-   
-   <label for="kommune">Vælg kommune:</label>
-   
-   <select id="kommune">
-     <option value="Aarhus">Aarhus</option>
-     <option value="Randers">Randers</option>
-     <option value="Aalborg">Aalborg</option>
-     <option value="Odense">Odense</option>
-   </select> -->
 
 
-<!-- <select name="ab" onchange="if (this.selectedIndex) doSomething();">
-    <option value="-1">--</option>
-    <option value="1">option 1</option> 
-    <option value="2">option 2</option>
-    <option value="3">option 3</option>
-</select> -->
-   
+
+    </script>
+
 
 </body>
+
 </html>

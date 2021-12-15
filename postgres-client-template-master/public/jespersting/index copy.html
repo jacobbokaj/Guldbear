@@ -20,7 +20,7 @@ h2{
 </head>
 <body>
 
-x
+
 
     <!-- Create a div where the graph will take place -->
 <div class="hest">
@@ -31,9 +31,60 @@ x
 </div>
 
 </body>
+
 <script>
-    d3.json("api/Temperatur", {method: "GET",
-    }).then(function(response){
+
+
+     var temperatur=""; 
+     var by="";  
+  
+d3.json("api/By", {method: "GET",
+}).then(function(by_response){
+    d3.json("api/Temperatur",{method: "GET",
+    }).then(function(temperatur_response){
+
+    const temperatur_dataset = temperatur_response.data;
+    const by_dataset = by_response.data;
+
+    var dropdown = d3
+    .select("body")
+    .append("select")
+    .attr("By", "name"); 
+    
+    var option = dropdown
+    .selectAll("option")
+    .data(by_dataset)
+    .enter()
+    .append("option")
+
+    option.text(function(d,i){
+    
+        return d.by; 
+    }) 
+    
+    .attr("value", function (d) {
+        return d;
+    
+
+
+
+    /*
+    
+    });
+    d3.selectAll('option')
+    .on('change', function() {
+        console.log("hej222")
+
+    function onchange(){
+        console.log("hej")
+    } */ 
+
+    }) 
+
+    }); 
+}); 
+
+   
         //SKRIV KODEN HER CUNT
         var dataset = response.data;
 function dataForLooper(start,length,datasetFrom){
@@ -43,10 +94,7 @@ for (let i = start; i < length; i++) {
 }
 return datasetAddTo;
 }
-var data1 = dataForLooper(43,44,dataset); 
-var data2 = dataForLooper(243,244,dataset);
-var data3 = dataForLooper(263,264,dataset);
-var data4 = dataForLooper(71,72,dataset)
+var temperatur_dataset
 //Esbjerg = data1
 //Nyborg = data2
 //Randers = data3
@@ -61,7 +109,7 @@ var svg = d3.select("body")
 .append("svg")
 .attr("height", 1000)
 .attr("width", 600);
-var dinfar = data1.concat(data2,data3,data4) //Viser den fjerde bar for alle data# 🙂
+var dinfar = temperatur_dataset.concat(temperatur_dataset) //Viser den fjerde bar for alle data# 🙂
 var bars = svg.selectAll("rect")
         .data(dinfar)
         .enter()
@@ -95,7 +143,7 @@ var bars = svg.selectAll("rect")
             console.log("d: "+d)
             switch (d) {
                 case 1:
-                    return data1[0].temp+"°";
+                    return temperatur_dataset[0].temp+"°";
               case 2:
                   return data2[0].temp+"°";
                 case 3:
@@ -116,6 +164,6 @@ var bars = svg.selectAll("rect")
 //console.log(response.data[1].temp) //Viser anden temp
 //console.log(response.data[2].temp) //Viser tredje temp
 //console.log(response.data[3].temp) //Viser fjerde temp
-    })
+
 </script>
 </html>
