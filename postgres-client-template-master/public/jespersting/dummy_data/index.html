@@ -1,96 +1,63 @@
-<html>
-    <!DOCTYPE html>
-    <head>
-    <title>Find din kommune</title>
-</head>
-<body>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D3.js</title>
-    
-    <script src="https://d3js.org/d3.v7.min.js"></script>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="d3.js"></script>
+  <title><Bdo>backend_data</Bdo></title>
+</head>
+
+<body>
+
+  <script>
+
+    d3.json("api/By", {
+      method: "GET",
+    }).then(function (by_response) {
+      d3.json("api/Temperatur", {
+        method: "GET",
+      }).then(function (temperatur_response) {
+
+        const temperatur_dataset = temperatur_response.data;
+        const by_dataset = by_response.data;
+
+        var dropdown = d3
+          .select("body")
+          .append("select")
+          .attr("By", "name")
+          .attr("id", "drop", "by_id")
+
+          .on("change", function (d) {
+            var selectedOption = d3.select("#drop").property("value")
+            var by_id = temperatur_dataset.filter(x => x.by_id == selectedOption)
+            console.log(selectedOption, by_id[0].max)
+
+          });
+        var option = dropdown
+          .selectAll("option")
+          .data(by_dataset)
+          .enter()
+          .append("option")
 
 
-     <!-- 
-1. Lav API til mærkerne 
-2. Lav først statisk select med statiske https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_option
-(<option></option>)
-3. Hent data fra ny API
-4. Lav indholdet af <select></select> med data fra ny API https://www.w3schools.com/tags/tag_option.asp / https://stackoverflow.com/questions/647282/is-there-an-onselect-event-or-equivalent-for-html-select
-5. Lav callback på hver option (onChange)- test først med console.log
-    Se eksempel med button i animations-koden.
- -->
+        option.text(function (d, i) {
 
- <script>
-      console.log("fsdf");
-  
-    d3.json("api/By", {method: "GET",
-  }).then(function(response){
-    console.log("aoi");
-      console.log(response);
+          return d.by;
+        })
 
-      const dataset = response .data;
-      console.table([dataset])
-      console.table(dataset[0]);
-      console.table(dataset[0].by)
-
-    
-      var byData =[];
-
-      for (let i = 0; i < dataset.length; i++) {
-          byData.push(dataset[i].by);
-          console.log(byData[i]);
-    }
-    
-    var dropdown = d3.select("body").append("select")
-    .attr("By", "name"); 
-    
-    var options = dropdown.selectAll("option")
-    .data(byData)
-    .enter()
-    .append("option")
-
-    options.text(function(d){
-        return d; 
-    }) 
-    .attr("value", function (d) {
-        return d;
-    })
-    
-    .attr()
-
-  }); 
-
-   </script>
-
-   
-
-<!--       
-    <h1>Find din kommune</h1>
-   
-   <label for="kommune">Vælg kommune:</label>
-   
-   <select id="kommune">
-     <option value="Aarhus">Aarhus</option>
-     <option value="Randers">Randers</option>
-     <option value="Aalborg">Aalborg</option>
-     <option value="Odense">Odense</option>
-   </select> -->
+          .attr("value", function (d) {
+            return d.id;
 
 
-<!-- <select name="ab" onchange="if (this.selectedIndex) doSomething();">
-    <option value="-1">--</option>
-    <option value="1">option 1</option> 
-    <option value="2">option 2</option>
-    <option value="3">option 3</option>
-</select> -->
+          })
+      })
 
+    });
 
+  </script>
 
-
-
-
-
-   
 </body>
+
 </html>

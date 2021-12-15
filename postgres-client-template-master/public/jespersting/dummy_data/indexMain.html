@@ -1,0 +1,70 @@
+<html>
+<!DOCTYPE html>
+
+<head>
+    <title>Find din kommune</title>
+</head>
+
+<body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D3.js</title>
+
+    <script type="text/javascript" src="d3.js"></script>
+
+
+    <script>
+        d3.json("api/By", {
+            method: "GET",
+        }).then(function (by_response) {
+            d3.json("api/Temperatur", {
+                method: "GET",
+            }).then(function (temperatur_response) {
+
+                const temperatur_dataset = temperatur_response.data;
+                const by_dataset = by_response.data;
+
+                var dropdown = d3
+                    .select("body")
+                    .append("select")
+                    .attr("By", "name");
+
+                var option = dropdown
+                    .selectAll("option")
+                    .data(by_dataset)
+                    .enter()
+                    .append("option")
+
+                option.text(function (d, i) {
+
+                    return d.by;
+                })
+
+                    .attr("value", function (d) {
+                        return d;
+
+
+
+
+                        /*
+                        
+                        });
+                        d3.selectAll('option')
+                        .on('change', function() {
+                            console.log("hej222")
+                    
+                        function onchange(){
+                            console.log("hej")
+                        } */
+
+                    })
+
+            });
+        });
+
+    </script>
+
+
+</body>
+
+</html>
