@@ -24,11 +24,10 @@
   
   <!--Section2-------------------------------->
   <div class="main" id="section2">
-    <p id="text-s2">Danmarks temperaturændring i %</p>
-    <h2>...</h2>
+
     <div id="section2-tooltip" class="hidden">
-      <p><strong>Important fun</strong></p>
-      <p><span id="section2-tooltip-value">100</span></p>
+      <p3><strong>Årstal:<span id="section-tooltip-label"> </span></strong></p3>
+      <p3>+<span id="section2-tooltip-value">100</span>C°</p3>
     </div>
 
     <div class="scrollknap"> 
@@ -171,79 +170,84 @@
     d3.json("/api/dmi_danmark_temp_interpolation", {method: "GET",
   }).then(function(response){
 
-      
-      const margin = { top: 100, right: -30, bottom: -30, left: -200 };
+    console.log("fisk: " + response);
+    const margin = { top: 100, right: -30, bottom: -30, left: -200 };
     const width = 400 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
-
+    
     var screen = window.innerWidth;
     
     
+  
+    
+    const dataset_section2 = response.data;  
+
     const svg2 = d3.select("#section2")
     .append("svg")
     .attr("height", height + 120)
     .attr("width", width + 150)
     .append("g")
     .attr("transform", `translate(${margin.left + 300},${margin.top})`);
+    
+    
+    
 
+        
     
-    
-    
-    var h1Dataset = ["Ændring"];
+    var h1Dataset = ["Danmarks temperaturændring i %"];
     d3.select("#section2")
     .selectAll("section2-h1")
     .data(h1Dataset)
-        .enter()
-        .append("h1")
-        .attr("id","section2-h1")
-        .text(function(d){
-          return d;
-        });
-        
+    .enter()
+    .append("h1")
+    .attr("id","section2-h1")
+    .text(function(d){
+      return d;
+    });  
     d3.select("#s1")
     .on("click", function () {
-
-        var section2_p_dataset = ["co2","hver 10 år"];
-        d3.select("#section2").selectAll("section2-p")
-        .data(section2_p_dataset)
-        .enter()
-        .append("p")
-        .attr("id","section2-p")
-        .style("position","absolute")
-        .style("left",function(d,i){
-          return  i == 0 ? "34%" : "70%";
-        })
-          .style("top",function(d,i){
-            return i == 0 ? "32%" : "70%";
-          })
-          .text(function(d){
-            return d;
-          });
-        
-          
-
-   /* const dataset = [
-    {aar: 2011, temp_procent: '0.00000001'},
-{aar: 2012, temp_procent: '0.04655172413793104'},
-{aar: 2013, temp_procent: '0.09310344827586207'},
-{aar: 2014, temp_procent: '0.1396551724137931'},
-{aar: 2015, temp_procent: '0.18620689655172415'},
-{aar: 2016, temp_procent: '0.2327586206896552'},
-{aar: 2017, temp_procent: '0.2793103448275862'},
-{aar: 2018, temp_procent: '0.3258620689655173'}];*/
-
-
-//const dataset = [[2011,2.5],[2015,2.5],[2020,3.2]];
-    const datase_section2 = response.data;
-        console.log(datase_section2);
-    const x = d3.scaleLinear()
-      .domain([2010, 2100])
-      .range([0, width]);
-
-      svg2.append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
       
+      var section2_p_dataset = ["°C","hver år"];
+      d3.select("#section2").selectAll("section2-p")
+      .data(section2_p_dataset)
+      .enter()
+      .append("p")
+      .attr("id","section2-p")
+      .style("position","absolute")
+      .style("left",function(d,i){
+        return  i == 0 ? "34%" : "71%";
+      })  
+      .style("top",function(d,i){
+        return i == 0 ? "32%" : "70%";
+      })  
+      .text(function(d){
+            return d;
+      });      
+          
+          
+      
+          
+          
+      const parseTime = d3.timeParse("%Y");
+          
+     /* const x = d3.scaleLinear()
+                .domain([2010,
+                        d3.max(dataset_section2, function(d) {return 100})
+                      ])
+                .range([0, width]);
+*/
+
+ 
+
+      const x = d3.scaleTime()
+                .domain([parseTime(2010),parseTime(2100)])
+                .range([0, width]);
+          
+       svg2.append("g")
+              .attr("transform", "translate(0," + height + ")")
+              .call(d3.axisBottom(x));
+      
+
       
       
       const y = d3.scaleLinear()
@@ -257,36 +261,19 @@
       .call(d3.axisLeft(y)
       );
       
-      
-     const  dataput = [[2011,2.5],[2015,3.1],[2020,3.4],[2030,3.7]];
-      svg2.append("path")
-      .datum(dataput)
-      .attr("fill", "none")
-      .attr("stroke", "#FF0000")
-      .attr("stroke-width", 1.5)
-      .attr("id","ostepops")
-      .attr("d", d3.line()
-      .x(function(d){
-     
-        return d[0];
-      })
-      .y(function(d){
-       // console.log("ParseTo: " + parseFloat(d.temp_procent).toFixed(4));
-        return d[1];// (parseFloat(d.temp_procent).toFixed(1));
-      })
-      )
-      
-      
-      
-      
+   
       
       var current_tempprocent = 1;
+      
+      //console.log(dataset_section2);
+      var rZeroFlag = false;
       svg2.append("g")
       .selectAll("dot")
-      .data(datase_section2)
+      .data(dataset_section2)
       .join("circle")
       .attr("cx", function (d, i) {
-        return x(d.aar);
+       
+        return x(parseTime(d.aar));
         
       })
       .attr("cy", function (d, i) {
@@ -295,16 +282,29 @@
       })
       .attr("r", function (d,i) {
 
+        
         var returning = d.temp_procent.toString().length > 4 ? 3.6 : 12;
-      
-      
+        
+        if (rZeroFlag) {
+          returning = 0;
+          rZeroFlag = false;
+        }
+        if (dataset_section2[i].temp_procent.toString().length == 4) {
+          rZeroFlag = true;
+        }
 
         return returning;
       })
       .on("mouseenter", function (event, d) {
         
+
         console.log("FIsk: d: " + d.temp_procent + " length: " + (d.temp_procent.toString().length));
         if(d.temp_procent.toString().length  < 6){
+
+          
+        
+
+
 
           d3.select("#section2-tooltip")
           
@@ -316,9 +316,10 @@
           d3.select(this).attr("fill","orange");
         }
         
+        d3.select("#section-tooltip-label")
+        .text(" " + d.aar)
         d3.select("#section2-tooltip-value")
-        .text("Year: " + d.aar + " temp procent: " + d.temp_procent);
-        
+        .text( d.temp_procent);
         
         
       })
@@ -329,6 +330,9 @@
       
       
     });
+
+
+
     /////////////// Ovenstående er svg til Section2 //////////////////
 
 

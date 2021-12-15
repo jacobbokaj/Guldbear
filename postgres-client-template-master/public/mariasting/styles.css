@@ -85,11 +85,15 @@ html {
     align-items:center;
     justify-content:center;
   }
-
+  #section-tooltip-value {
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 16px;
+  }
   #section2-tooltip {
     position: absolute;
-    width: 200px;
-    height: auto;
+    width: 80px;
+    height: 70px;
     padding: 10px;
     background-color: white;
     -webkit-border-radius: 10px;
