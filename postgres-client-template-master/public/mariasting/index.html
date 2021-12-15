@@ -40,11 +40,10 @@
   <div class="main" id="section3">
     
     <p id="text-s3">Sådan fordeler temperaturudviklingen sig i Danmark</p>
-
-    <p id="sluttemp">13,45°</p>
-    <p id="starttemp">8,45°</p>
       
         <div class="column" id="c1s3"> <!--column1, section3-->
+          <p id="sluttemp">13,45°</p>
+          <p id="starttemp">8,45°</p>
           <div class="row" id="lokalvis">
               <!-- Create a div where the graph will take place -->
             <div class="left">
@@ -325,8 +324,7 @@
       })
       
       
-    })
-
+    });
     /////////////// Ovenstående er svg til Section2 //////////////////
 
 
@@ -408,6 +406,7 @@ var bars = svg.selectAll("rect")
             //Viser alle 4 højeste grader 🙂
         });
 
+    })
 
 
 
@@ -417,7 +416,7 @@ var bars = svg.selectAll("rect")
 //console.log(response.data[1].temp) //Viser anden temp
 //console.log(response.data[2].temp) //Viser tredje temp
 //console.log(response.data[3].temp) //Viser fjerde temp
-    })
+    });
     /////////////// Ovenstående er svg til Section3 //////////////////
 
 

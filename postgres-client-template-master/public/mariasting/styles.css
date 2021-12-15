@@ -75,6 +75,47 @@ html {
     margin-top: 5vh;
   }
 
+  .hest{
+    width: 180; float: left;
+    text-align:right;
+  }
+  
+  #section2{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  #section2-tooltip {
+    position: absolute;
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    background-color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+    -moz-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+    
+    pointer-events: none;
+  
+  }
+
+  #section2-tooltip.hidden {
+    display: none;
+  }
+
+  .myCircle:hover {
+    stroke: black;
+  }
+  
+  #section2-h1{
+    position: absolute;
+    top: 20%;
+  }
+
   /*---Section 3----------------------------------------------------------------------------------------------------------------*/
   #text-s3 {
     font-size: 5vh;  
@@ -94,7 +135,7 @@ html {
     margin-bottom: -1.5em;
     margin-left: 10em;
   }
-  .row {
+  .row1 {
     display: flex;
     flex-direction: row;
   } 
@@ -162,7 +203,7 @@ html {
 
   .positive-static {
     display: block;
-    margin-top: 3%;
+    margin-top: 7%;
     width: -1%;
     float: left;
     font-family: Georgia, serif;
@@ -242,8 +283,8 @@ html {
   
   .positive-preflip {
     display: block;
-    margin-top: 3%;
     width: -1%;
+    margin-top: 3%;
     float: left;
     font-family: Georgia, serif; 
     font-size: 3vh;
@@ -372,40 +413,4 @@ a {
   color: rgb(33, 50, 146);
 }
 
-.hest{
-  width: 180; float: left;
-  text-align:right;
-}
-
-#section2{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-#section2-tooltip {
-  position: absolute;
-  width: 200px;
-  height: auto;
-  padding: 10px;
-  background-color: white;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  -webkit-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
-  -moz-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
-  box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
-  
-  pointer-events: none;
-
-}
-#section2-tooltip.hidden {
-  display: none;
-}
-.myCircle:hover {
-  stroke: black;
-}
-#section2-h1{
-  position: absolute;
-  top: 20%;
-}
 
