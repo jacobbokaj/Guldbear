@@ -124,7 +124,25 @@ app.get("/api/dmi_danmark_temp_interpolation",async (req,res) =>{
 
 })
 
+app.get("/api/By",async (req,res) =>{
+  try {
+    const query = `SELECT * FROM public."By"
+    ORDER BY id ASC`;
+    queryData = await client.query(query);
+    
+    res.json({
+      "ok" : true,
+      "data": queryData.rows,
+    })
+  } catch (error) {
+    res.json({
+      "ok": false,
+      "message": error.message,
+    })
+  }
 
+
+})
 
 // Web-serveren startes.
 app.listen(PORT, () => console.log(`Serveren kører på http://localhost:${PORT}`));
