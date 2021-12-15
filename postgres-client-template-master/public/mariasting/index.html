@@ -28,7 +28,7 @@
     <h2>...</h2>
     <div id="section2-tooltip" class="hidden">
       <p><strong>Important fun</strong></p>
-      <p><span id="section2-value">100</span>hoho</p>
+      <p><span id="section2-tooltip-value">100</span></p>
     </div>
 
     <div class="scrollknap"> 
@@ -180,7 +180,7 @@
     var screen = window.innerWidth;
     
     
-    const svg = d3.select("#section2")
+    const svg2 = d3.select("#section2")
     .append("svg")
     .attr("height", height + 120)
     .attr("width", width + 150)
@@ -241,7 +241,7 @@
       .domain([2010, 2100])
       .range([0, width]);
 
-      svg.append("g")
+      svg2.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x));
       
@@ -254,13 +254,13 @@
       
       var textData = [0, 1];
       
-    svg.append("g")
+    svg2.append("g")
       .call(d3.axisLeft(y)
       );
       
       
      const  dataput = [[2011,2.5],[2015,3.1],[2020,3.4],[2030,3.7]];
-      svg.append("path")
+      svg2.append("path")
       .datum(dataput)
       .attr("fill", "none")
       .attr("stroke", "#FF0000")
@@ -282,7 +282,7 @@
       
       
       var current_tempprocent = 1;
-      svg.append("g")
+      svg2.append("g")
       .selectAll("dot")
       .data(datase_section2)
       .join("circle")
@@ -309,13 +309,17 @@
 
           d3.select("#section2-tooltip")
           
-          .style("left", x(d.aar), +"px")
-          .style("top", y(d.temp_procent) + "px")
+          .style("left", "0", +"px")
+          .style("top", "300" + "px")
           .select("#value")
           .text(d);
           d3.select("#section2-tooltip").classed("hidden", false);
           d3.select(this).attr("fill","orange");
         }
+        
+        d3.select("#section2-tooltip-value")
+        .text("Year: " + d.aar + " temp procent: " + d.temp_procent);
+        
         
         
       })
@@ -333,9 +337,8 @@
     /////////////// Nedenstående er svg til Section3 //////////////////
     d3.json("api/Temperatur", {method: "GET",
     }).then(function(response){
-
       console.log(response);
-        //SKRIV KODEN HER
+      //SKRIV KODEN HER
         var dataset = response.data;
 function dataForLooper(start,length,datasetFrom){
 var datasetAddTo = []
@@ -348,6 +351,9 @@ var data1 = dataForLooper(43,44,dataset);
 var data2 = dataForLooper(243,244,dataset);
 var data3 = dataForLooper(263,264,dataset);
 var data4 = dataForLooper(71,72,dataset)
+
+
+
 //Esbjerg = data1
 //Nyborg = data2
 //Randers = data3
@@ -409,6 +415,7 @@ var bars = svg.selectAll("rect")
         });
 
 
+      })
 
 
 //HER SLUTTER KODEN
@@ -459,12 +466,12 @@ var bars = svg.selectAll("rect")
         for (let element of elements) {
       element.classList.toggle("transformed-state");
        }
-      }
 
+      }
       const changeButton = document.querySelector("#s3");
       changeButton.addEventListener("click", change);
       /////
-       
+  
     /////////////// Ovenstående er svg til Section4 //////////////////
   </script>
 </body>
