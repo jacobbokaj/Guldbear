@@ -12,7 +12,7 @@
 <body>
   <img id="logo" src="logo2.png" alt="logo" />
 
-  <!--Section1--------------------------------->
+  <!--Section1-------------------------------->
   <div class="main" id="section1">
     <h1 id="head-s1">+5°C</h1>
     <br>
@@ -24,22 +24,40 @@
   
   <!--Section2-------------------------------->
   <div class="main" id="section2">
-    <p id="text-s2">En passende headline her!</p>
-    <h2>Jacobs flotte graf her!</h2>
+    <p id="text-s2">Danmarks temperaturændring i %</p>
+    <h2>...</h2>
+    <div id="section2-tooltip" class="hidden">
+      <p><strong>Important fun</strong></p>
+      <p><span id="section2-tooltip-value">100</span></p>
+    </div>
+
     <div class="scrollknap"> 
       <a href="#section3" class="next round" id="s2">&#8744</a>
     </div>
   </div>
 
-  <!--Section3------------------------------->
+  <!--Section3------------------------------>
   <div class="main" id="section3">
     
-    <p id="text-s3">Sådan bidrager +5°C varme rundt i Danmark</p>
-
-    <div class="row">
-      <div class="column" id="c1s3"> <!--column1, section3-->
-        <h2>Mads-Emils flotte graf her!</h2>
-      </div>
+    <p id="text-s3">Sådan fordeler temperaturudviklingen sig i Danmark</p>
+      
+        <div class="column" id="c1s3"> <!--column1, section3-->
+          <p id="sluttemp">13,45°</p>
+          <p id="starttemp">8,45°</p>
+          <div class="row" id="lokalvis">
+              <!-- Create a div where the graph will take place -->
+            <div class="left">
+              <h2 class="section3-h2">Esbjerg</h2>
+              <h2 class="section3-h2">Nyborg</h2>
+              <h2 class="section3-h2">Randers</h2>
+              <h2 class="section3-h2">Frederikshavn</h2>
+            </div>
+            <div class="right" id="c1bar">
+              <div id="section3-vl-div"></div> 
+              <div id="section3-vl2-div"></div>
+            </div>
+          </div>
+        </div>
 
       <div class="column" id="c2s3" ><!--column2, section3-->
         <p class="positive-static" id="fish"><img class="img-s3" src="fish.png" alt="fish" />I Esbjerg er det nu muligt at fange hajer, ansjoser tun og sværdfisk som nu trives i de danske farvande</p>
@@ -47,11 +65,10 @@
         <p class="positive-static" id="parrot"><img class="img-s3" src="parrot.png" alt="parrot" />Randers regnskov kan nu udvide udendørs da flere subtropiske dyr nu kan overleve i det fri</p>
         <p class="positive-static" id="palm"><img class="img-s3" src="palm-tree.png" alt="palm" />Palmestranden i Frederikshavn er kåret til Danmarks ældste, da palmerne nu kan overleve vinteren afdækket</p>
       </div>
-    </div>
 
     <div class="scrollknap"> 
-      <a href="#section4" class="next round" id="s3">&#8744</a>
-    </div>
+     <a href="#section4" class="next round" id="s3">&#8744</a>
+   </div>
   </div>
   
   <!--Section4------------------------------>
@@ -60,7 +77,7 @@
 
     <div class="row">
       <div class="column" id="c1s4"> <!--column1, section4-->
-        <h2>Jespers flotte dropdown her!</h2>
+        <h2>..</h2>
         
       </div>
 
@@ -113,101 +130,300 @@
       </div>
     </div>
     
-      
-    <div class="scrollknap"> 
-      <a href="#section5" class="next round" id="s4">&#8744</a>
-    </div>
+      <div class="scrollknap"> 
+        <a href="#section5" class="next round" id="s4">&#8744</a>
+      </div>
   </div>
   
-  <!--Section5--------------------------------->
+  <!--Section5-------------------------------->
   <div class="main" id="section5">
-    <h1 id="head-s5">Imens du nyder dine palmetræer og din hjemmedyrkede vin, <br> så husk smagen i munden når resten af verden lider</h1>
-    <p id="text-s5">Formindsk dit klimaaftryk nu! <br> <br> Find ud hvordan hos klimaklogt </p>
-
+    <h1 id="head-s5">Imens du nyder din hjemmelavede vin, <br> pas dårlig smag i munden, <br> når du ser resten af verden lide</h1>
+    <p id="text-s5">Formindsk DIT klimaaftryk nu!</p>
       <form>
-        <button class="buttons" id="transport" type="submit"
-        formaction="https://www.klimaklogt.dk/guides/transport/">Transport</button>
+        <div class="buttoncontainer">
+          <button class="buttons" id="transport" type="submit"
+            formaction="https://www.klimaklogt.dk/guides/transport/">Transport</button>
+          <button class="buttons" id="politik" type="submit"
+            formaction="https://www.klimaklogt.dk/guides/politik/">Politik</button>
+          <button class="buttons" id="mad" type="submit"
+            formaction="https://www.klimaklogt.dk/guides/madspild/">Madspild</button>
+        </div>
       </form>
-      
-      <form>
-        <button class="buttons" id="politik" type="submit"
-          formaction="https://www.klimaklogt.dk/guides/politik/">Politik</button>
-      </form>
-
-      <form>
-        <button class="buttons" id="mad" type="submit"
-          formaction="https://www.klimaklogt.dk/guides/madspild/">Madspild</button>
-      </form>
+      <p id="streg">_______________________________________________________<p>
+      <div id="linkblok">
+        <p id="links">
+        <a href="https://www.dmi.dk/klimaatlas/">[1]</a>
+        DMI, <i>Klimaatlas - Vejrændring år 2071-2100</i>
+        <br>
+        <a href="https://www.zetland.dk/historie/sOPVXmlK-aOMNamWw-638d6">[2]</a>
+        Zetland, <i>"Sådan ser dit liv ud i en fem grader varmere fremtid"</i>
+        <br>
+        <a href="https://www.klimaklogt.dk/guides/">[3]</a>
+        Naturfredningsforeningen, <i>Guides til en klimaklog hverdag</i>
+      <p>
+      </div>
   </div>
 
   <!--SCRIPT---------------------------------------------------------------------------------------------------------------------------->
   <script type="text/javascript">
 
     /////////////// Nedenstående er svg til Section2 //////////////////
-    const data = ["grey", "grey", "grey"]
+    d3.json("/api/dmi_danmark_temp_interpolation", {method: "GET",
+  }).then(function(response){
 
-    const svg = d3.select("#section2")
+      
+      const margin = { top: 100, right: -30, bottom: -30, left: -200 };
+    const width = 400 - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
+
+    var screen = window.innerWidth;
+    
+    
+    const svg2 = d3.select("#section2")
     .append("svg")
-    .attr("width", "100%")
-    .attr("height", "100%");
+    .attr("height", height + 120)
+    .attr("width", width + 150)
+    .append("g")
+    .attr("transform", `translate(${margin.left + 300},${margin.top})`);
+
     
-    svg.selectAll("circle")
-    .data(data)
-    .enter()
-    .append("circle")
-    .attr("cx", function(d, i) { return i * 100 + 50; } ) 
-    .attr("cy", 200)
-    .attr("r", 25)
-    .attr("fill", function(d) { return d; } );
     
+    
+    var h1Dataset = ["Ændring"];
+    d3.select("#section2")
+    .selectAll("section2-h1")
+    .data(h1Dataset)
+        .enter()
+        .append("h1")
+        .attr("id","section2-h1")
+        .text(function(d){
+          return d;
+        });
+        
     d3.select("#s1")
     .on("click", function () {
-    
-      d3.selectAll("circle")
-        .transition() 
-        .duration(1500)
-        .ease(d3.easeBounceIn)
-        .delay(function(d, i) { return 500 + i * 150; } )
-        .attr("cy", 50)
-    
-        .transition() 
-        .duration(500)
-        .ease(d3.easeLinear)
-        .delay(function(d, i) { return 20 + i * 150; } )
-        .attr("cy", 200)
+
+        var section2_p_dataset = ["co2","hver 10 år"];
+        d3.select("#section2").selectAll("section2-p")
+        .data(section2_p_dataset)
+        .enter()
+        .append("p")
+        .attr("id","section2-p")
+        .style("position","absolute")
+        .style("left",function(d,i){
+          return  i == 0 ? "34%" : "70%";
+        })
+          .style("top",function(d,i){
+            return i == 0 ? "32%" : "70%";
+          })
+          .text(function(d){
+            return d;
+          });
+        
+          
+
+   /* const dataset = [
+    {aar: 2011, temp_procent: '0.00000001'},
+{aar: 2012, temp_procent: '0.04655172413793104'},
+{aar: 2013, temp_procent: '0.09310344827586207'},
+{aar: 2014, temp_procent: '0.1396551724137931'},
+{aar: 2015, temp_procent: '0.18620689655172415'},
+{aar: 2016, temp_procent: '0.2327586206896552'},
+{aar: 2017, temp_procent: '0.2793103448275862'},
+{aar: 2018, temp_procent: '0.3258620689655173'}];*/
+
+
+//const dataset = [[2011,2.5],[2015,2.5],[2020,3.2]];
+    const datase_section2 = response.data;
+        console.log(datase_section2);
+    const x = d3.scaleLinear()
+      .domain([2010, 2100])
+      .range([0, width]);
+
+      svg2.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+      
+      
+      
+      const y = d3.scaleLinear()
+      .domain([0.0, 5.0])
+      .range([height, 0]);
+      var ffwt = [0];
+      
+      var textData = [0, 1];
+      
+    svg2.append("g")
+      .call(d3.axisLeft(y)
+      );
+      
+      
+     const  dataput = [[2011,2.5],[2015,3.1],[2020,3.4],[2030,3.7]];
+      svg2.append("path")
+      .datum(dataput)
+      .attr("fill", "none")
+      .attr("stroke", "#FF0000")
+      .attr("stroke-width", 1.5)
+      .attr("id","ostepops")
+      .attr("d", d3.line()
+      .x(function(d){
+     
+        return d[0];
+      })
+      .y(function(d){
+       // console.log("ParseTo: " + parseFloat(d.temp_procent).toFixed(4));
+        return d[1];// (parseFloat(d.temp_procent).toFixed(1));
+      })
+      )
+      
+      
+      
+      
+      
+      var current_tempprocent = 1;
+      svg2.append("g")
+      .selectAll("dot")
+      .data(datase_section2)
+      .join("circle")
+      .attr("cx", function (d, i) {
+        return x(d.aar);
+        
+      })
+      .attr("cy", function (d, i) {
+        
+        return y(parseFloat(d.temp_procent).toFixed(5));
+      })
+      .attr("r", function (d,i) {
+
+        var returning = d.temp_procent.toString().length > 4 ? 3.6 : 12;
+      
+      
+
+        return returning;
+      })
+      .on("mouseenter", function (event, d) {
+        
+        console.log("FIsk: d: " + d.temp_procent + " length: " + (d.temp_procent.toString().length));
+        if(d.temp_procent.toString().length  < 6){
+
+          d3.select("#section2-tooltip")
+          
+          .style("left", "0", +"px")
+          .style("top", "300" + "px")
+          .select("#value")
+          .text(d);
+          d3.select("#section2-tooltip").classed("hidden", false);
+          d3.select(this).attr("fill","orange");
+        }
+        
+        d3.select("#section2-tooltip-value")
+        .text("Year: " + d.aar + " temp procent: " + d.temp_procent);
+        
+        
+        
+      })
+      .on("mouseout", function (d) {
+        d3.select("#section2-tooltip").classed("hidden", true);
+        d3.select(this).attr("fill","black");
+      })
+      
+      
     });
     /////////////// Ovenstående er svg til Section2 //////////////////
 
 
     /////////////// Nedenstående er svg til Section3 //////////////////
-    const data3 = ["magenta"]
+    d3.json("api/Temperatur", {method: "GET",
+    }).then(function(response){
+      console.log(response);
+      //SKRIV KODEN HER
+        var dataset = response.data;
+function dataForLooper(start,length,datasetFrom){
+var datasetAddTo = []
+for (let i = start; i < length; i++) {
+    datasetAddTo.push(datasetFrom[i]);
+}
+return datasetAddTo;
+}
+var data1 = dataForLooper(43,44,dataset); 
+var data2 = dataForLooper(243,244,dataset);
+var data3 = dataForLooper(263,264,dataset);
+var data4 = dataForLooper(71,72,dataset)
 
-    const svg3 = d3.select("#c1s3")
-      .append("svg")
-      .attr("width", "100%")
-      .attr("height", "100%");
-            
-    svg3.selectAll("polygon")
-      .data(data3)
-      .enter()
-      .append("polygon")
-      .attr("points", "125,50 50,200 200,200")
-      .attr("fill", function(d) { return d; } );
-            
-    d3.select("#s2")
-      .on("click", function () {
 
-        d3.selectAll("polygon")
-          .transition() 
-          .duration(2000)
-          .attr("points", "50,200 200,200 125,50")
-          .attr("fill", "orange")
 
-          .transition()
-          .duration(2000)
-          .attr("points", "125,50 50,200 200,200")
-          .attr("fill", "magenta")
-      });
+//Esbjerg = data1
+//Nyborg = data2
+//Randers = data3
+//Frederikshavn = data4
+
+//var data4 = [] // ALT HER KAN BRUGES TIL AT FINDE ET DATASET!
+//for (let i = 68; i < 72; i++) {
+//   data4.push(dataset[i])
+//console.table(data4)
+ // ALT HER KAN BRUGES TIL AT FINDE ET DATASET!/
+var svg = d3.select("#c1bar")
+.append("svg")
+.attr("height", 1000)
+.attr("width", 600);
+
+var dinfar = data1.concat(data2,data3,data4) //Viser den fjerde bar for alle data# 🙂
+var bars = svg.selectAll("rect")
+        .data(dinfar)
+        .enter()
+        .append("rect")
+        .attr("height", function(d, i){
+            console.log(d.temp);
+            return 20;
+           // return 100 + (i * 10) + 10 * i;
+        })
+        .attr("width", function(d){
+            return d.temp * 15
+        })
+        .attr("x", 20)
+
+        .attr("y",function(d,i){
+            return 20 + (i * 35) + 15 * i;})
+            .attr("fill", "rgb(58, 158, 78")
+
+
+        //Viser tekst til barene 🙂
+        var datatext = [1,2,3,4];
+        svg.selectAll("text")
+        .data(datatext)
+        .enter()
+        .append("text")
+        .attr("x", 155)
+        .attr("fill", "whitesmoke")
+        .attr("y",function(d,i){
+            return 35 + (i * 42) + 8 * i;})
+        .text(function (d,i) {
+            console.log("d: "+d)
+            switch (d) {
+                case 1:
+                    return data1[0].temp+"°";
+              case 2:
+                  return data2[0].temp+"°";
+                case 3:
+                    return data3[0].temp+"°";
+                case 4:
+                    return data4[0].temp+"°";
+            }
+            //Viser alle 4 højeste grader 🙂
+        });
+
+    })
+
+  })
+
+
+//HER SLUTTER KODEN
+//console.log(response.data) //Viser al data (396 Arrays)
+//console.log(response.data[0].temp) //Viser første temp
+//console.log(response.data[1].temp) //Viser anden temp
+//console.log(response.data[2].temp) //Viser tredje temp
+//console.log(response.data[3].temp) //Viser fjerde temp
+    
     /////////////// Ovenstående er svg til Section3 //////////////////
 
 
@@ -249,12 +465,12 @@
         for (let element of elements) {
       element.classList.toggle("transformed-state");
        }
-      }
 
+      }
       const changeButton = document.querySelector("#s3");
       changeButton.addEventListener("click", change);
       /////
-       
+  
     /////////////// Ovenstående er svg til Section4 //////////////////
   </script>
 </body>

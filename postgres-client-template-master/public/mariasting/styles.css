@@ -1,6 +1,6 @@
   body {
     height: 500vh;
-    background: linear-gradient(180deg, #b3d0f1 0%, #b5d1f3 90%);
+    background: #b3d0f1;
   }
 
   #logo {
@@ -21,11 +21,13 @@ html {
   height: 100vh;
   overflow: hidden;
   position: relative;
+  margin-left: 8vh;
+  margin-right: 8vh;
  }
 .scrollknap {
   bottom: 20px;
   position: absolute;
-  left: 50%;
+  left: 49%;
 }
 
   .next:hover {
@@ -70,8 +72,48 @@ html {
     font-size: 5vh;  
     font-family:Georgia, serif;
     color: whitesmoke;
-    margin-top: 4vh;
-    margin-left: 4vh;
+    margin-top: 5vh;
+  }
+
+  .hest{
+    width: 180; float: left;
+    text-align:right;
+  }
+  
+  #section2{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  #section2-tooltip {
+    position: absolute;
+    width: 200px;
+    height: auto;
+    padding: 10px;
+    background-color: white;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+    -moz-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
+    
+    pointer-events: none;
+  
+  }
+
+  #section2-tooltip.hidden {
+    display: none;
+  }
+
+  .myCircle:hover {
+    stroke: black;
+  }
+  
+  #section2-h1{
+    position: absolute;
+    top: 20%;
   }
 
   /*---Section 3----------------------------------------------------------------------------------------------------------------*/
@@ -80,9 +122,46 @@ html {
     font-family:Georgia, serif;
     color: whitesmoke;
     margin-top: 5vh;
-    margin-left: 4vh;
   }
+  #sluttemp {
+    display: block;
+    margin-top: -1em;
+    margin-bottom: -1.5em;
+    margin-left: 24em;
+  }
+  #starttemp {
+    display: block;
+    margin-top: 0em;
+    margin-bottom: -1.5em;
+    margin-left: 10em;
+  }
+  .row1 {
+    display: flex;
+    flex-direction: row;
+  } 
 
+  .left {
+    float: left;
+  }
+  .right {
+    float: right;
+  }
+  #section3-vl-div {
+    border-left: 2px dashed rgb(245, 245, 245);
+    height: 169.3px;
+    left: 400px;
+    position: absolute;
+    top: 34.3%;
+    }
+    
+    #section3-vl2-div {
+    border-left: 2px solid rgb(245, 245, 245);
+    height: 169.3px;
+    left: 170px;
+    position: absolute;
+    top: 33.5%;
+    }
+  
   /*---Neden sående er kolonnerne-------------------*/
 * {
   box-sizing: border-box;
@@ -91,7 +170,7 @@ html {
 /* Create two equal columns that floats next to each other */
 .column {
   float: left;
-  height: 800px;
+  height: 80vh;
 }
 
 #c1s3 {
@@ -99,7 +178,7 @@ html {
 }
 
 #c2s3 {
-  width: 35%;
+  width: 40%;
 }
 
 #c1s4 {
@@ -107,7 +186,7 @@ html {
 }
 
 #c2s4 {
-  width: 35%;
+  width: 40%;
 }
 
 /* Clear floats after the columns */
@@ -124,13 +203,14 @@ html {
 
   .positive-static {
     display: block;
-    margin-top: 8%;
+    margin-top: 7%;
     width: -1%;
     float: left;
     font-family: Georgia, serif;
     font-size: 3vh;
     font-weight: normal;
   }
+
 
   .img-s3 {
     width: 10vh;
@@ -144,7 +224,6 @@ html {
    font-family:Georgia, serif;
    color: whitesmoke;
    margin-top: 4vh;
-   margin-left: 4vh;
  }
 
   .flip-box {
@@ -249,7 +328,7 @@ html {
     color: whitesmoke;
     font-family:Georgia, serif;
     font-size: 4vh;
-    margin-top: 6vh;
+    margin-top: 15vh;
     text-align: center;
   }
 
@@ -259,7 +338,6 @@ html {
     stroke-width: #fff, 2px;
     transition: all 250ms;
     bottom: 21%;
-    position: absolute;
     border: 0;
     line-height: 2.5;
     padding: 0 20px;
@@ -270,7 +348,7 @@ html {
     color: #fff;
     text-shadow: 1px 1px 1px rgb(26, 26, 26);
     border-radius: 50px;
-    background-color: rgb(50, 168, 82);
+    background-color: #3a9e4e;
     background-image: linear-gradient(to top left,
                                       rgba(0, 0, 0, .2),
                                       rgba(0, 0, 0, .2) 30%,
@@ -280,21 +358,59 @@ html {
 }
 
 .buttons:hover {
-    background-color: rgb(30, 95, 48); 
+    background-color: #2e7e3e; 
     transform: translateY(-3px);
+    cursor: pointer;
 }
 
 .buttons:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
-
+.buttoncontainer {
+  display: flex;
+  justify-content: center;
+}
+.buttoncontainer > *:not(:last-child) {
+  margin-right: 20vh;
+}
+/*
 #transport {
   left: 18.5%;
 }
 #politik {
-  left: 43.5%;
+  left: 41.5%;
 }
 #mad {
-  left: 68.5%;
+  left: 66.5%;
 }
+*/
+#bottomline {
+  float: bottom;
+  position: relative; 
+  bottom: 10%; 
+}
+#streg {
+  color: whitesmoke;
+  font-family: Georgia, serif;
+  font-size: 5vh;
+  margin-top: 1vh;
+  text-align: center;
+}
+#links {
+  color: whitesmoke;
+  font-family: Georgia, serif;
+  font-size: 2vh;
+  margin-top: -3vh;
+  line-height: 160%;
+}
+#linkblok {
+  display: inline-block;
+  color: whitesmoke;
+  position: absolute;
+}
+a {
+  color: rgb(33, 50, 146);
+}
+
+

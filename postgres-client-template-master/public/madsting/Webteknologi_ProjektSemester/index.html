@@ -8,33 +8,59 @@
     <title>bar 🔥</title>
     <style>
  
-h2{
+.section3-h2{
     text-align:right;
 }
 .hest{
     width: 180; float: left;
 }
 
+#section3-vl-div {
+  border-left: 2px dashed rgb(245, 245, 245);
+  height: 171px;
+  left: 600px;
+  position: absolute;
+  top: 28px;
+}
+
+#section3-vl2-div {
+  border-left: 2px solid rgb(245, 245, 245);
+  height: 171px;
+  left: 174px;
+  position: absolute;
+  top: 28px;
+}
+
+p {
+  display: block;
+  margin-top: 0em;
+  margin-bottom: -1.5em;
+  margin-left: 36em;
+}
 
 </style>
+
+<div id="section3-vl-div"></div> 
+<div id="section3-vl2-div"></div> 
+</style>
 </head>
-<body>
-
-
-
+<body style="background-color: #b3d0f1"></bodybody>
     <!-- Create a div where the graph will take place -->
 <div class="hest">
-<h2 class="data4">Esbjerg</h2>
-<h2 class="data3">Nyborg</h2>
-<h2 class="data2">Randers</h2>
-<h2 class="data1">Frederikshavn</h2>
+<h2 class="section3-h2">Esbjerg</h2>
+<h2 class="section3-h2">Nyborg</h2>
+<h2 class="section3-h2">Randers</h2>
+<h2 class="section3-h2">Frederikshavn</h2>
 </div>
+
+<p>13,45°</p>
+<p2>8,45°</p>
 
 </body>
 <script>
     d3.json("api/Temperatur", {method: "GET",
     }).then(function(response){
-        //SKRIV KODEN HER CUNT
+        //SKRIV KODEN HER
         var dataset = response.data;
 function dataForLooper(start,length,datasetFrom){
 var datasetAddTo = []
@@ -61,6 +87,7 @@ var svg = d3.select("body")
 .append("svg")
 .attr("height", 1000)
 .attr("width", 600);
+
 var dinfar = data1.concat(data2,data3,data4) //Viser den fjerde bar for alle data# 🙂
 var bars = svg.selectAll("rect")
         .data(dinfar)
@@ -74,11 +101,11 @@ var bars = svg.selectAll("rect")
         .attr("width", function(d){
             return d.temp * 30
         })
-        .attr("x", 200)
+        .attr("x", 20)
 
         .attr("y",function(d,i){
-            return 25 + (i * 35) + 15 * i;})
-        .attr("fill", "green")
+            return 29 + (i * 35) + 15 * i;})
+            .attr("fill", "rgb(58, 158, 78")
 
 
         //Viser tekst til barene 🙂
@@ -87,10 +114,10 @@ var bars = svg.selectAll("rect")
         .data(datatext)
         .enter()
         .append("text")
-        .attr("x", 205)
+        .attr("x", 330)
         .attr("fill", "whitesmoke")
         .attr("y",function(d,i){
-            return 40 + (i * 42) + 8 * i;})
+            return 44 + (i * 42) + 8 * i;})
         .text(function (d,i) {
             console.log("d: "+d)
             switch (d) {
@@ -106,11 +133,10 @@ var bars = svg.selectAll("rect")
             //Viser alle 4 højeste grader 🙂
         });
 
-        //ALT HERFRA ER ET GÆT?
 
 
 
-//HER SLUTTER KODEN CUNT
+//HER SLUTTER KODEN
 //console.log(response.data) //Viser al data (396 Arrays)
 //console.log(response.data[0].temp) //Viser første temp
 //console.log(response.data[1].temp) //Viser anden temp
