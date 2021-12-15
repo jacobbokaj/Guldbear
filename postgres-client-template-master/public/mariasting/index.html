@@ -112,7 +112,7 @@
           <div class="flip-box">
             <div class="flip-box-inner"  id="box2">
               <div class="flip-box-front">
-                <p class="positive-preflip" id="wine2"><img class="img1-s4" src="wine.png" alt="wine" />Livet som vinbonde bliver særligt rentabelt. Nyborg bliver det nye bourdeaux, da druehøsten bliver fænomenal</p>
+                <p class="positive-preflip" id="wine2"><img class="img1-s4" src="wine.png" alt="wine" />Livet som vinbonde bliver særligt rentabelt. Nyborg er det nye bourdeaux, da druehøsten bliver fænomenal</p>
               </div>
               <div class="flip-box-back">
                 <p class="negative-backflip" id="wheat"><img class="img2-s4" src="wheat.png" alt="hvede"/>En tredjedel af fødevareproduktionen forventes at forsvinde</p>
@@ -387,16 +387,16 @@ var bars = svg.selectAll("rect")
         .append("rect")
         .attr("height", function(d, i){
             console.log(d.temp);
-            return 40;
+            return 48;
            // return 100 + (i * 10) + 10 * i;
         })
         .attr("width", function(d){
-            return d.temp * 20
+            return d.temp * 22
         })
         .attr("x", 20)
 
         .attr("y",function(d,i){
-            return 70 + (i * 85) + 15 * i;})
+            return 90 + (i * 120) + 15 * i;})
             .attr("fill", "rgb(58, 158, 78")
 
 
@@ -409,7 +409,7 @@ var bars = svg.selectAll("rect")
         .attr("x", 218)
         .attr("fill", "whitesmoke")
         .attr("y",function(d,i){
-            return 95 + (i * 89) + 11 * i;})
+            return 120 + (i * 120) + 15 * i;})
         .text(function (d,i) {
             console.log("d: "+d)
             switch (d) {
@@ -479,16 +479,16 @@ var bars = svg.selectAll("rect")
         .append("rect")
         .attr("height", function(d, i){
             console.log(d.temp);
-            return 40;
+            return 48;
            // return 100 + (i * 10) + 10 * i;
         })
         .attr("width", function(d){
-            return d.temp * 20
+            return d.temp * 22
         })
         .attr("x", 20)
 
         .attr("y",function(d,i){
-            return 70 + (i * 85) + 15 * i;})
+            return 90 + (i * 120) + 15 * i;})
             .attr("fill", "rgb(58, 158, 78")
 
 
@@ -501,7 +501,7 @@ var bars = svg.selectAll("rect")
         .attr("x", 218)
         .attr("fill", "whitesmoke")
         .attr("y",function(d,i){
-            return 95 + (i * 89) + 11 * i;})
+            return 120 + (i * 120) + 15 * i;})
         .text(function (d,i) {
             console.log("d: "+d)
             switch (d) {
@@ -518,7 +518,6 @@ var bars = svg.selectAll("rect")
         });
 
     })
-
 
 
 //HER SLUTTER KODEN

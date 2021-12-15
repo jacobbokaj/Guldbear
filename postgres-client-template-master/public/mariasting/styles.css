@@ -126,7 +126,7 @@ html {
   #sluttemp {
     position: absolute;
     margin-top: 8vh;
-    margin-left: 53vh;
+    margin-left: 45vh;
   }
   #starttemp {
     position: absolute;
@@ -138,7 +138,7 @@ html {
   color: white;
   position: relative;
   top: 9vh;
-  margin-bottom: 13vh;
+  margin-bottom: 15vh;
 }
 
   .row {
@@ -154,18 +154,18 @@ html {
   }
   #section3-vl-div {
     border-left: 2px dashed rgb(245, 245, 245);
-    height: 341.5px;
-    left: 473px;
+    height: 60vh;
+    left: 67vh;
     position: absolute;
-    top: 27.8%;
+    top: 27.65%;
     }
     
     #section3-vl2-div {
     border-left: 2px solid rgb(245, 245, 245);
-    height: 341.5px;
+    height: 60vh;
     left: 170px;
     position: absolute;
-    top: 27.8%;
+    top: 27.65%;
     }
   
   /*---Neden sående er kolonnerne-------------------*/
@@ -238,11 +238,10 @@ html {
   color: whitesmoke;
   margin-bottom: -10vh;
  }
-
  #sluttemp {
   position: absolute;
   margin-top: 8vh;
-  margin-left: 53vh;
+  margin-left: 45vh;
 }
 #starttemp {
   position: absolute;
@@ -254,7 +253,7 @@ html {
 color: white;
 position: relative;
 top: 9vh;
-margin-bottom: 13vh;
+margin-bottom: 15vh;
 }
 
 .row {
@@ -270,24 +269,26 @@ margin-bottom: 13vh;
 }
 #section4-vl-div2 {
   border-left: 2px dashed rgb(245, 245, 245);
-  height: 341.5px;
-  left: 473px;
+  height: 60vh;
+  left: 67vh;
   position: absolute;
-  top: 26.8%;
+  top: 32.25%;
   }
   
   #section4-vl2-div2 {
   border-left: 2px solid rgb(245, 245, 245);
-  height: 341.5px;
+  height: 60vh;
   left: 170px;
   position: absolute;
-  top: 26.8%;
+  top: 32.25%;
   }
+
+ 
 
   .flip-box {
     background-color: transparent;
-    width: 490px;
-    height: 100px;
+    width: 75vh;
+    height: 17vh;
 
     perspective: 1000px;
   }
