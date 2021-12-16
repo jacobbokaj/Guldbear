@@ -1,0 +1,6305 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 11.12 (Ubuntu 11.12-1.pgdg20.04+1)
+-- Dumped by pg_dump version 13.4
+
+-- Started on 2021-12-16 16:21:50
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 9 (class 3079 OID 17135)
+-- Name: btree_gin; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS btree_gin WITH SCHEMA public;
+
+
+--
+-- TOC entry 4104 (class 0 OID 0)
+-- Dependencies: 9
+-- Name: EXTENSION btree_gin; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION btree_gin IS 'support for indexing common datatypes in GIN';
+
+
+--
+-- TOC entry 5 (class 3079 OID 17680)
+-- Name: btree_gist; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS btree_gist WITH SCHEMA public;
+
+
+--
+-- TOC entry 4105 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: EXTENSION btree_gist; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION btree_gist IS 'support for indexing common datatypes in GiST';
+
+
+--
+-- TOC entry 16 (class 3079 OID 16661)
+-- Name: citext; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;
+
+
+--
+-- TOC entry 4106 (class 0 OID 0)
+-- Dependencies: 16
+-- Name: EXTENSION citext; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION citext IS 'data type for case-insensitive character strings';
+
+
+--
+-- TOC entry 7 (class 3079 OID 17577)
+-- Name: cube; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS cube WITH SCHEMA public;
+
+
+--
+-- TOC entry 4107 (class 0 OID 0)
+-- Dependencies: 7
+-- Name: EXTENSION cube; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION cube IS 'data type for multidimensional cubes';
+
+
+--
+-- TOC entry 22 (class 3079 OID 16384)
+-- Name: dblink; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS dblink WITH SCHEMA public;
+
+
+--
+-- TOC entry 4108 (class 0 OID 0)
+-- Dependencies: 22
+-- Name: EXTENSION dblink; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION dblink IS 'connect to other PostgreSQL databases from within a database';
+
+
+--
+-- TOC entry 10 (class 3079 OID 17130)
+-- Name: dict_int; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS dict_int WITH SCHEMA public;
+
+
+--
+-- TOC entry 4109 (class 0 OID 0)
+-- Dependencies: 10
+-- Name: EXTENSION dict_int; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION dict_int IS 'text search dictionary template for integers';
+
+
+--
+-- TOC entry 4 (class 3079 OID 18303)
+-- Name: dict_xsyn; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS dict_xsyn WITH SCHEMA public;
+
+
+--
+-- TOC entry 4110 (class 0 OID 0)
+-- Dependencies: 4
+-- Name: EXTENSION dict_xsyn; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION dict_xsyn IS 'text search dictionary template for extended synonym processing';
+
+
+--
+-- TOC entry 6 (class 3079 OID 17664)
+-- Name: earthdistance; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS earthdistance WITH SCHEMA public;
+
+
+--
+-- TOC entry 4111 (class 0 OID 0)
+-- Dependencies: 6
+-- Name: EXTENSION earthdistance; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION earthdistance IS 'calculate great-circle distances on the surface of the Earth';
+
+
+--
+-- TOC entry 17 (class 3079 OID 16650)
+-- Name: fuzzystrmatch; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS fuzzystrmatch WITH SCHEMA public;
+
+
+--
+-- TOC entry 4112 (class 0 OID 0)
+-- Dependencies: 17
+-- Name: EXTENSION fuzzystrmatch; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION fuzzystrmatch IS 'determine similarities and distance between strings';
+
+
+--
+-- TOC entry 11 (class 3079 OID 17007)
+-- Name: hstore; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS hstore WITH SCHEMA public;
+
+
+--
+-- TOC entry 4113 (class 0 OID 0)
+-- Dependencies: 11
+-- Name: EXTENSION hstore; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION hstore IS 'data type for storing sets of (key, value) pairs';
+
+
+--
+-- TOC entry 12 (class 3079 OID 16889)
+-- Name: intarray; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS intarray WITH SCHEMA public;
+
+
+--
+-- TOC entry 4114 (class 0 OID 0)
+-- Dependencies: 12
+-- Name: EXTENSION intarray; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION intarray IS 'functions, operators, and index support for 1-D arrays of integers';
+
+
+--
+-- TOC entry 20 (class 3079 OID 16444)
+-- Name: ltree; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS ltree WITH SCHEMA public;
+
+
+--
+-- TOC entry 4115 (class 0 OID 0)
+-- Dependencies: 20
+-- Name: EXTENSION ltree; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION ltree IS 'data type for hierarchical tree-like structures';
+
+
+--
+-- TOC entry 2 (class 3079 OID 18315)
+-- Name: pg_stat_statements; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS pg_stat_statements WITH SCHEMA public;
+
+
+--
+-- TOC entry 4116 (class 0 OID 0)
+-- Dependencies: 2
+-- Name: EXTENSION pg_stat_statements; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION pg_stat_statements IS 'track execution statistics of all SQL statements executed';
+
+
+--
+-- TOC entry 13 (class 3079 OID 16812)
+-- Name: pg_trgm; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS pg_trgm WITH SCHEMA public;
+
+
+--
+-- TOC entry 4117 (class 0 OID 0)
+-- Dependencies: 13
+-- Name: EXTENSION pg_trgm; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION pg_trgm IS 'text similarity measurement and index searching based on trigrams';
+
+
+--
+-- TOC entry 14 (class 3079 OID 16775)
+-- Name: pgcrypto; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
+
+
+--
+-- TOC entry 4118 (class 0 OID 0)
+-- Dependencies: 14
+-- Name: EXTENSION pgcrypto; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION pgcrypto IS 'cryptographic functions';
+
+
+--
+-- TOC entry 8 (class 3079 OID 17571)
+-- Name: pgrowlocks; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS pgrowlocks WITH SCHEMA public;
+
+
+--
+-- TOC entry 4119 (class 0 OID 0)
+-- Dependencies: 8
+-- Name: EXTENSION pgrowlocks; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION pgrowlocks IS 'show row-level locking information';
+
+
+--
+-- TOC entry 19 (class 3079 OID 16619)
+-- Name: pgstattuple; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS pgstattuple WITH SCHEMA public;
+
+
+--
+-- TOC entry 4120 (class 0 OID 0)
+-- Dependencies: 19
+-- Name: EXTENSION pgstattuple; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION pgstattuple IS 'show tuple-level statistics';
+
+
+--
+-- TOC entry 18 (class 3079 OID 16629)
+-- Name: tablefunc; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS tablefunc WITH SCHEMA public;
+
+
+--
+-- TOC entry 4121 (class 0 OID 0)
+-- Dependencies: 18
+-- Name: EXTENSION tablefunc; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION tablefunc IS 'functions that manipulate whole tables, including crosstab';
+
+
+--
+-- TOC entry 3 (class 3079 OID 18308)
+-- Name: unaccent; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS unaccent WITH SCHEMA public;
+
+
+--
+-- TOC entry 4122 (class 0 OID 0)
+-- Dependencies: 3
+-- Name: EXTENSION unaccent; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION unaccent IS 'text search dictionary that removes accents';
+
+
+--
+-- TOC entry 15 (class 3079 OID 16764)
+-- Name: uuid-ossp; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA public;
+
+
+--
+-- TOC entry 4123 (class 0 OID 0)
+-- Dependencies: 15
+-- Name: EXTENSION "uuid-ossp"; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION "uuid-ossp" IS 'generate universally unique identifiers (UUIDs)';
+
+
+--
+-- TOC entry 21 (class 3079 OID 16430)
+-- Name: xml2; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS xml2 WITH SCHEMA public;
+
+
+--
+-- TOC entry 4124 (class 0 OID 0)
+-- Dependencies: 21
+-- Name: EXTENSION xml2; Type: COMMENT; Schema: -; Owner: -
+--
+
+COMMENT ON EXTENSION xml2 IS 'XPath querying and XSLT';
+
+
+SET default_tablespace = '';
+
+--
+-- TOC entry 225 (class 1259 OID 335876)
+-- Name: Aarhundrede; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public."Aarhundrede" (
+    id integer NOT NULL,
+    aarhundrede character varying(50) NOT NULL
+);
+
+
+--
+-- TOC entry 226 (class 1259 OID 335879)
+-- Name: Aarstid; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public."Aarstid" (
+    id integer NOT NULL,
+    aarstid character varying(50) NOT NULL
+);
+
+
+--
+-- TOC entry 227 (class 1259 OID 335882)
+-- Name: By; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public."By" (
+    id integer NOT NULL,
+    by character varying(50) NOT NULL
+);
+
+
+--
+-- TOC entry 228 (class 1259 OID 335885)
+-- Name: CO2; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public."CO2" (
+    id integer NOT NULL,
+    "CO2" character varying(50) NOT NULL
+);
+
+
+--
+-- TOC entry 229 (class 1259 OID 335888)
+-- Name: Temp_procent; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public."Temp_procent" (
+    temp_procent numeric,
+    aarstid_id integer,
+    aarhundrede_id integer,
+    co2_id integer,
+    by_id integer
+);
+
+
+--
+-- TOC entry 232 (class 1259 OID 674421)
+-- Name: Temperatur; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public."Temperatur" (
+    id integer NOT NULL,
+    temp numeric(4,2) NOT NULL,
+    aarhundrede_id integer NOT NULL,
+    by_id integer NOT NULL
+);
+
+
+--
+-- TOC entry 233 (class 1259 OID 674424)
+-- Name: Temperatur_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public."Temperatur_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 4125 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: Temperatur_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public."Temperatur_id_seq" OWNED BY public."Temperatur".id;
+
+
+--
+-- TOC entry 230 (class 1259 OID 433437)
+-- Name: dmi_co2fremtid_danmark; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.dmi_co2fremtid_danmark (
+    start_arr integer,
+    slut_aar integer,
+    co2 numeric
+);
+
+
+--
+-- TOC entry 231 (class 1259 OID 444664)
+-- Name: dmi_danmark_temp_interpolation; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.dmi_danmark_temp_interpolation (
+    aar integer,
+    temp_procent numeric
+);
+
+
+--
+-- TOC entry 224 (class 1259 OID 243845)
+-- Name: test; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.test (
+    foodname text,
+    hobby text
+);
+
+
+--
+-- TOC entry 222 (class 1259 OID 243764)
+-- Name: units; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.units (
+    unit_id bigint NOT NULL,
+    unit text
+);
+
+
+--
+-- TOC entry 223 (class 1259 OID 243770)
+-- Name: units_unit_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.units_unit_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- TOC entry 4126 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: units_unit_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.units_unit_id_seq OWNED BY public.units.unit_id;
+
+
+--
+-- TOC entry 3951 (class 2604 OID 674426)
+-- Name: Temperatur id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public."Temperatur" ALTER COLUMN id SET DEFAULT nextval('public."Temperatur_id_seq"'::regclass);
+
+
+--
+-- TOC entry 3950 (class 2604 OID 243774)
+-- Name: units unit_id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.units ALTER COLUMN unit_id SET DEFAULT nextval('public.units_unit_id_seq'::regclass);
+
+
+--
+-- TOC entry 4090 (class 0 OID 335876)
+-- Dependencies: 225
+-- Data for Name: Aarhundrede; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public."Aarhundrede" (id, aarhundrede) FROM stdin;
+1	Start århundrede (2011-2040)
+2	Midt århundrede (2041-2070)
+3	Slut århundrede (2071-2100)
+\.
+
+
+--
+-- TOC entry 4091 (class 0 OID 335879)
+-- Dependencies: 226
+-- Data for Name: Aarstid; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public."Aarstid" (id, aarstid) FROM stdin;
+1	År
+2	Vinter
+3	Forår
+4	Sommer
+5	Efterår
+\.
+
+
+--
+-- TOC entry 4092 (class 0 OID 335882)
+-- Dependencies: 227
+-- Data for Name: By; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public."By" (id, by) FROM stdin;
+1	Albertslund
+2	Allerød
+3	Assens
+4	Ballerup
+5	Billund
+6	Bornholm
+7	Brøndby
+8	Brønderslev
+9	Dragør
+10	Egedal
+11	Esbjerg
+12	Fanø
+13	Favrskov
+14	Faxe
+15	Fredensborg
+16	Fredericia
+17	Frederiksberg
+18	Frederikshavn
+19	Frederikssund
+20	Furesø
+21	Faaborg-Midtfyn
+22	Gentofte
+23	Gladsaxe
+24	Glostrup
+25	Greve
+26	Gribskov
+27	Guldborgsund
+28	Haderslev
+29	Halsnæs
+30	Hedensted
+31	Helsingør
+32	Herlev
+33	Herning
+34	Hillerød
+35	Hjørring
+36	Holbæk
+37	Holstebro
+38	Horsens
+39	Hvidovre
+40	Høje-Taastrup
+41	Hørsholm
+42	Ikast-Brande
+43	Ishøj
+44	Jammerbugt
+45	Kalundborg
+46	Kerteminde
+47	Kolding
+48	København
+49	Køge
+50	Langeland
+51	Lejre
+52	Lemvig
+53	Lolland
+54	Lyngby-Taarbæk
+55	Læsø
+56	Mariagerfjord
+57	Middelfart
+58	Morsø
+59	Norddjurs
+60	Nordfyns
+61	Nyborg
+62	Næstved
+63	Odder
+64	Odense
+65	Odsherred
+66	Randers
+67	Rebild
+68	Ringkøbing-Skjern
+69	Ringsted
+70	Roskilde
+71	Rudersdal
+72	Rødovre
+73	Samsø
+74	Silkeborg
+75	Skanderborg
+76	Skive
+77	Slagelse
+78	Solrød
+79	Sorø
+80	Stevns
+81	Struer
+82	Svendborg
+83	Syddjurs
+84	Sønderborg
+85	Thisted
+86	Tønder
+87	Tårnby
+88	Vallensbæk
+89	Varde
+90	Vejen
+91	Vejle
+92	Vesthimmerland
+93	Viborg
+94	Vordingborg
+95	Ærø
+96	Aabenraa
+97	Aalborg
+98	Aarhus
+99	Danmark
+\.
+
+
+--
+-- TOC entry 4093 (class 0 OID 335885)
+-- Dependencies: 228
+-- Data for Name: CO2; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public."CO2" (id, "CO2") FROM stdin;
+1	RCP4.5
+2	RCP8.5
+\.
+
+
+--
+-- TOC entry 4094 (class 0 OID 335888)
+-- Dependencies: 229
+-- Data for Name: Temp_procent; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public."Temp_procent" (temp_procent, aarstid_id, aarhundrede_id, co2_id, by_id) FROM stdin;
+0.75	1	1	1	1
+1.50	1	2	1	1
+1.91	1	3	1	1
+0.96	1	1	2	1
+2.03	1	2	2	1
+3.52	1	3	2	1
+0.71	2	1	1	1
+1.40	2	2	1	1
+2.02	2	3	1	1
+0.96	2	1	2	1
+2.02	2	2	2	1
+3.71	2	3	2	1
+0.76	3	1	1	1
+1.42	3	2	1	1
+2.02	3	3	1	1
+0.95	3	1	2	1
+1.86	3	2	2	1
+3.16	3	3	2	1
+0.76	4	1	1	1
+1.37	4	2	1	1
+1.82	4	3	1	1
+0.93	4	1	2	1
+2.02	4	2	2	1
+3.56	4	3	2	1
+0.92	5	1	1	1
+1.53	5	2	1	1
+1.97	5	3	1	1
+1.12	5	1	2	1
+2.06	5	2	2	1
+3.54	5	3	2	1
+0.75	1	1	1	2
+1.51	1	2	1	2
+1.92	1	3	1	2
+0.97	1	1	2	2
+2.03	1	2	2	2
+3.53	1	3	2	2
+0.70	2	1	1	2
+1.42	2	2	1	2
+2.03	2	3	1	2
+0.96	2	1	2	2
+2.04	2	2	2	2
+3.73	2	3	2	2
+0.75	3	1	1	2
+1.42	3	2	1	2
+2.02	3	3	1	2
+0.95	3	1	2	2
+1.87	3	2	2	2
+3.19	3	3	2	2
+0.77	4	1	1	2
+1.38	4	2	1	2
+1.83	4	3	1	2
+0.94	4	1	2	2
+2.02	4	2	2	2
+3.58	4	3	2	2
+0.93	5	1	1	2
+1.55	5	2	1	2
+2.00	5	3	1	2
+1.12	5	1	2	2
+2.07	5	2	2	2
+3.56	5	3	2	2
+0.72	1	1	1	3
+1.46	1	2	1	3
+1.86	1	3	1	3
+0.91	1	1	2	3
+1.93	1	2	2	3
+3.40	1	3	2	3
+0.69	2	1	1	3
+1.33	2	2	1	3
+1.95	2	3	1	3
+0.94	2	1	2	3
+1.95	2	2	2	3
+3.53	2	3	2	3
+0.72	3	1	1	3
+1.36	3	2	1	3
+1.91	3	3	1	3
+0.86	3	1	2	3
+1.76	3	2	2	3
+2.99	3	3	2	3
+0.71	4	1	1	3
+1.30	4	2	1	3
+1.81	4	3	1	3
+0.88	4	1	2	3
+2.02	4	2	2	3
+3.47	4	3	2	3
+0.89	5	1	1	3
+1.45	5	2	1	3
+1.95	5	3	1	3
+1.08	5	1	2	3
+2.03	5	2	2	3
+3.50	5	3	2	3
+0.75	1	1	1	4
+1.51	1	2	1	4
+1.92	1	3	1	4
+0.96	1	1	2	4
+2.03	1	2	2	4
+3.52	1	3	2	4
+0.70	2	1	1	4
+1.41	2	2	1	4
+2.02	2	3	1	4
+0.96	2	1	2	4
+2.03	2	2	2	4
+3.72	2	3	2	4
+0.76	3	1	1	4
+1.42	3	2	1	4
+2.02	3	3	1	4
+0.95	3	1	2	4
+1.86	3	2	2	4
+3.17	3	3	2	4
+0.77	4	1	1	4
+1.37	4	2	1	4
+1.82	4	3	1	4
+0.94	4	1	2	4
+2.02	4	2	2	4
+3.57	4	3	2	4
+0.93	5	1	1	4
+1.54	5	2	1	4
+1.98	5	3	1	4
+1.12	5	1	2	4
+2.07	5	2	2	4
+3.55	5	3	2	4
+0.71	1	1	1	5
+1.43	1	2	1	5
+1.87	1	3	1	5
+0.91	1	1	2	5
+1.92	1	2	2	5
+3.31	1	3	2	5
+0.70	2	1	1	5
+1.34	2	2	1	5
+1.88	2	3	1	5
+0.89	2	1	2	5
+1.87	2	2	2	5
+3.49	2	3	2	5
+0.69	3	1	1	5
+1.31	3	2	1	5
+1.87	3	3	1	5
+0.83	3	1	2	5
+1.75	3	2	2	5
+3.06	3	3	2	5
+0.73	4	1	1	5
+1.29	4	2	1	5
+1.85	4	3	1	5
+0.86	4	1	2	5
+1.98	4	2	2	5
+3.46	4	3	2	5
+0.85	5	1	1	5
+1.47	5	2	1	5
+1.93	5	3	1	5
+1.09	5	1	2	5
+2.04	5	2	2	5
+3.51	5	3	2	5
+0.83	1	1	1	6
+1.54	1	2	1	6
+2.05	1	3	1	6
+1.01	1	1	2	6
+2.09	1	2	2	6
+3.64	1	3	2	6
+0.67	2	1	1	6
+1.37	2	2	1	6
+2.02	2	3	1	6
+0.94	2	1	2	6
+1.90	2	2	2	6
+3.51	2	3	2	6
+0.75	3	1	1	6
+1.59	3	2	1	6
+2.28	3	3	1	6
+1.04	3	1	2	6
+2.00	3	2	2	6
+3.44	3	3	2	6
+0.81	4	1	1	6
+1.47	4	2	1	6
+2.00	4	3	1	6
+1.10	4	1	2	6
+2.24	4	2	2	6
+3.96	4	3	2	6
+0.97	5	1	1	6
+1.61	5	2	1	6
+2.03	5	3	1	6
+1.14	5	1	2	6
+2.15	5	2	2	6
+3.70	5	3	2	6
+0.75	1	1	1	7
+1.50	1	2	1	7
+1.92	1	3	1	7
+0.96	1	1	2	7
+2.03	1	2	2	7
+3.52	1	3	2	7
+0.71	2	1	1	7
+1.40	2	2	1	7
+2.02	2	3	1	7
+0.95	2	1	2	7
+2.01	2	2	2	7
+3.71	2	3	2	7
+0.76	3	1	1	7
+1.42	3	2	1	7
+2.03	3	3	1	7
+0.95	3	1	2	7
+1.85	3	2	2	7
+3.17	3	3	2	7
+0.76	4	1	1	7
+1.37	4	2	1	7
+1.81	4	3	1	7
+0.93	4	1	2	7
+2.03	4	2	2	7
+3.56	4	3	2	7
+0.92	5	1	1	7
+1.52	5	2	1	7
+1.97	5	3	1	7
+1.12	5	1	2	7
+2.06	5	2	2	7
+3.54	5	3	2	7
+0.76	1	1	1	8
+1.46	1	2	1	8
+1.93	1	3	1	8
+0.95	1	1	2	8
+2.02	1	2	2	8
+3.40	1	3	2	8
+0.72	2	1	1	8
+1.42	2	2	1	8
+2.02	2	3	1	8
+0.96	2	1	2	8
+1.96	2	2	2	8
+3.57	2	3	2	8
+0.71	3	1	1	8
+1.39	3	2	1	8
+1.98	3	3	1	8
+0.91	3	1	2	8
+1.85	3	2	2	8
+3.22	3	3	2	8
+0.72	4	1	1	8
+1.33	4	2	1	8
+1.89	4	3	1	8
+0.90	4	1	2	8
+2.12	4	2	2	8
+3.53	4	3	2	8
+0.91	5	1	1	8
+1.46	5	2	1	8
+1.96	5	3	1	8
+1.14	5	1	2	8
+2.11	5	2	2	8
+3.51	5	3	2	8
+0.75	1	1	1	9
+1.48	1	2	1	9
+1.93	1	3	1	9
+0.96	1	1	2	9
+2.03	1	2	2	9
+3.52	1	3	2	9
+0.71	2	1	1	9
+1.39	2	2	1	9
+2.02	2	3	1	9
+0.95	2	1	2	9
+2.01	2	2	2	9
+3.71	2	3	2	9
+0.77	3	1	1	9
+1.43	3	2	1	9
+2.04	3	3	1	9
+0.95	3	1	2	9
+1.85	3	2	2	9
+3.18	3	3	2	9
+0.76	4	1	1	9
+1.37	4	2	1	9
+1.81	4	3	1	9
+0.92	4	1	2	9
+2.05	4	2	2	9
+3.58	4	3	2	9
+0.91	5	1	1	9
+1.50	5	2	1	9
+1.95	5	3	1	9
+1.12	5	1	2	9
+2.06	5	2	2	9
+3.55	5	3	2	9
+0.75	1	1	1	10
+1.51	1	2	1	10
+1.91	1	3	1	10
+0.96	1	1	2	10
+2.03	1	2	2	10
+3.52	1	3	2	10
+0.70	2	1	1	10
+1.41	2	2	1	10
+2.02	2	3	1	10
+0.95	2	1	2	10
+2.03	2	2	2	10
+3.71	2	3	2	10
+0.75	3	1	1	10
+1.41	3	2	1	10
+2.02	3	3	1	10
+0.95	3	1	2	10
+1.86	3	2	2	10
+3.16	3	3	2	10
+0.77	4	1	1	10
+1.37	4	2	1	10
+1.82	4	3	1	10
+0.93	4	1	2	10
+2.02	4	2	2	10
+3.57	4	3	2	10
+0.93	5	1	1	10
+1.54	5	2	1	10
+1.99	5	3	1	10
+1.12	5	1	2	10
+2.07	5	2	2	10
+3.55	5	3	2	10
+0.71	1	1	1	11
+1.42	1	2	1	11
+1.85	1	3	1	11
+0.91	1	1	2	11
+1.92	1	2	2	11
+3.29	1	3	2	11
+0.67	2	1	1	11
+1.32	2	2	1	11
+1.81	2	3	1	11
+0.86	2	1	2	11
+1.82	2	2	2	11
+3.43	2	3	2	11
+0.68	3	1	1	11
+1.30	3	2	1	11
+1.87	3	3	1	11
+0.83	3	1	2	11
+1.76	3	2	2	11
+3.04	3	3	2	11
+0.74	4	1	1	11
+1.29	4	2	1	11
+1.84	4	3	1	11
+0.87	4	1	2	11
+2.00	4	2	2	11
+3.49	4	3	2	11
+0.85	5	1	1	11
+1.48	5	2	1	11
+1.96	5	3	1	11
+1.08	5	1	2	11
+2.03	5	2	2	11
+3.54	5	3	2	11
+0.70	1	1	1	12
+1.41	1	2	1	12
+1.83	1	3	1	12
+0.91	1	1	2	12
+1.91	1	2	2	12
+3.28	1	3	2	12
+0.65	2	1	1	12
+1.30	2	2	1	12
+1.78	2	3	1	12
+0.86	2	1	2	12
+1.81	2	2	2	12
+3.39	2	3	2	12
+0.67	3	1	1	12
+1.28	3	2	1	12
+1.86	3	3	1	12
+0.82	3	1	2	12
+1.76	3	2	2	12
+3.05	3	3	2	12
+0.75	4	1	1	12
+1.27	4	2	1	12
+1.83	4	3	1	12
+0.87	4	1	2	12
+2.02	4	2	2	12
+3.47	4	3	2	12
+0.85	5	1	1	12
+1.49	5	2	1	12
+1.99	5	3	1	12
+1.08	5	1	2	12
+2.02	5	2	2	12
+3.54	5	3	2	12
+0.74	1	1	1	13
+1.45	1	2	1	13
+1.90	1	3	1	13
+0.94	1	1	2	13
+1.96	1	2	2	13
+3.35	1	3	2	13
+0.72	2	1	1	13
+1.41	2	2	1	13
+2.04	2	3	1	13
+0.94	2	1	2	13
+1.95	2	2	2	13
+3.65	2	3	2	13
+0.73	3	1	1	13
+1.36	3	2	1	13
+1.93	3	3	1	13
+0.86	3	1	2	13
+1.80	3	2	2	13
+3.08	3	3	2	13
+0.73	4	1	1	13
+1.27	4	2	1	13
+1.83	4	3	1	13
+0.87	4	1	2	13
+2.03	4	2	2	13
+3.49	4	3	2	13
+0.88	5	1	1	13
+1.44	5	2	1	13
+1.90	5	3	1	13
+1.10	5	1	2	13
+2.06	5	2	2	13
+3.46	5	3	2	13
+0.74	1	1	1	14
+1.47	1	2	1	14
+1.89	1	3	1	14
+0.95	1	1	2	14
+2.01	1	2	2	14
+3.44	1	3	2	14
+0.71	2	1	1	14
+1.37	2	2	1	14
+1.97	2	3	1	14
+0.93	2	1	2	14
+1.97	2	2	2	14
+3.63	2	3	2	14
+0.75	3	1	1	14
+1.42	3	2	1	14
+2.01	3	3	1	14
+0.93	3	1	2	14
+1.83	3	2	2	14
+3.15	3	3	2	14
+0.73	4	1	1	14
+1.33	4	2	1	14
+1.79	4	3	1	14
+0.89	4	1	2	14
+2.02	4	2	2	14
+3.46	4	3	2	14
+0.91	5	1	1	14
+1.51	5	2	1	14
+1.95	5	3	1	14
+1.08	5	1	2	14
+2.05	5	2	2	14
+3.51	5	3	2	14
+0.76	1	1	1	15
+1.52	1	2	1	15
+1.93	1	3	1	15
+0.98	1	1	2	15
+2.03	1	2	2	15
+3.53	1	3	2	15
+0.70	2	1	1	15
+1.43	2	2	1	15
+2.03	2	3	1	15
+0.97	2	1	2	15
+2.05	2	2	2	15
+3.74	2	3	2	15
+0.75	3	1	1	15
+1.42	3	2	1	15
+2.02	3	3	1	15
+0.96	3	1	2	15
+1.88	3	2	2	15
+3.24	3	3	2	15
+0.78	4	1	1	15
+1.38	4	2	1	15
+1.85	4	3	1	15
+0.94	4	1	2	15
+2.02	4	2	2	15
+3.59	4	3	2	15
+0.94	5	1	1	15
+1.56	5	2	1	15
+2.01	5	3	1	15
+1.13	5	1	2	15
+2.08	5	2	2	15
+3.56	5	3	2	15
+0.72	1	1	1	16
+1.45	1	2	1	16
+1.88	1	3	1	16
+0.91	1	1	2	16
+1.93	1	2	2	16
+3.31	1	3	2	16
+0.70	2	1	1	16
+1.34	2	2	1	16
+1.94	2	3	1	16
+0.92	2	1	2	16
+1.90	2	2	2	16
+3.57	2	3	2	16
+0.71	3	1	1	16
+1.34	3	2	1	16
+1.88	3	3	1	16
+0.86	3	1	2	16
+1.75	3	2	2	16
+3.02	3	3	2	16
+0.72	4	1	1	16
+1.29	4	2	1	16
+1.84	4	3	1	16
+0.86	4	1	2	16
+1.99	4	2	2	16
+3.50	4	3	2	16
+0.87	5	1	1	16
+1.44	5	2	1	16
+1.93	5	3	1	16
+1.09	5	1	2	16
+2.04	5	2	2	16
+3.50	5	3	2	16
+0.75	1	1	1	17
+1.50	1	2	1	17
+1.92	1	3	1	17
+0.96	1	1	2	17
+2.04	1	2	2	17
+3.52	1	3	2	17
+0.71	2	1	1	17
+1.40	2	2	1	17
+2.02	2	3	1	17
+0.96	2	1	2	17
+2.02	2	2	2	17
+3.72	2	3	2	17
+0.76	3	1	1	17
+1.42	3	2	1	17
+2.03	3	3	1	17
+0.95	3	1	2	17
+1.86	3	2	2	17
+3.18	3	3	2	17
+0.77	4	1	1	17
+1.38	4	2	1	17
+1.81	4	3	1	17
+0.94	4	1	2	17
+2.03	4	2	2	17
+3.58	4	3	2	17
+0.92	5	1	1	17
+1.53	5	2	1	17
+1.97	5	3	1	17
+1.12	5	1	2	17
+2.07	5	2	2	17
+3.54	5	3	2	17
+0.76	1	1	1	18
+1.47	1	2	1	18
+1.96	1	3	1	18
+0.96	1	1	2	18
+2.03	1	2	2	18
+3.44	1	3	2	18
+0.72	2	1	1	18
+1.42	2	2	1	18
+2.03	2	3	1	18
+0.97	2	1	2	18
+1.98	2	2	2	18
+3.61	2	3	2	18
+0.71	3	1	1	18
+1.40	3	2	1	18
+2.01	3	3	1	18
+0.94	3	1	2	18
+1.87	3	2	2	18
+3.27	3	3	2	18
+0.72	4	1	1	18
+1.33	4	2	1	18
+1.89	4	3	1	18
+0.92	4	1	2	18
+2.15	4	2	2	18
+3.59	4	3	2	18
+0.91	5	1	1	18
+1.46	5	2	1	18
+1.98	5	3	1	18
+1.14	5	1	2	18
+2.12	5	2	2	18
+3.52	5	3	2	18
+0.75	1	1	1	19
+1.51	1	2	1	19
+1.91	1	3	1	19
+0.95	1	1	2	19
+2.02	1	2	2	19
+3.50	1	3	2	19
+0.70	2	1	1	19
+1.41	2	2	1	19
+2.01	2	3	1	19
+0.96	2	1	2	19
+2.03	2	2	2	19
+3.70	2	3	2	19
+0.74	3	1	1	19
+1.41	3	2	1	19
+2.00	3	3	1	19
+0.94	3	1	2	19
+1.85	3	2	2	19
+3.14	3	3	2	19
+0.77	4	1	1	19
+1.36	4	2	1	19
+1.83	4	3	1	19
+0.92	4	1	2	19
+2.03	4	2	2	19
+3.55	4	3	2	19
+0.93	5	1	1	19
+1.55	5	2	1	19
+2.00	5	3	1	19
+1.12	5	1	2	19
+2.07	5	2	2	19
+3.56	5	3	2	19
+0.75	1	1	1	20
+1.51	1	2	1	20
+1.92	1	3	1	20
+0.96	1	1	2	20
+2.03	1	2	2	20
+3.53	1	3	2	20
+0.70	2	1	1	20
+1.41	2	2	1	20
+2.02	2	3	1	20
+0.96	2	1	2	20
+2.04	2	2	2	20
+3.73	2	3	2	20
+0.75	3	1	1	20
+1.42	3	2	1	20
+2.02	3	3	1	20
+0.95	3	1	2	20
+1.87	3	2	2	20
+3.18	3	3	2	20
+0.77	4	1	1	20
+1.38	4	2	1	20
+1.82	4	3	1	20
+0.94	4	1	2	20
+2.02	4	2	2	20
+3.58	4	3	2	20
+0.93	5	1	1	20
+1.54	5	2	1	20
+1.99	5	3	1	20
+1.12	5	1	2	20
+2.07	5	2	2	20
+3.55	5	3	2	20
+0.72	1	1	1	21
+1.46	1	2	1	21
+1.86	1	3	1	21
+0.93	1	1	2	21
+1.93	1	2	2	21
+3.43	1	3	2	21
+0.69	2	1	1	21
+1.33	2	2	1	21
+1.96	2	3	1	21
+0.94	2	1	2	21
+1.94	2	2	2	21
+3.52	2	3	2	21
+0.73	3	1	1	21
+1.37	3	2	1	21
+1.93	3	3	1	21
+0.85	3	1	2	21
+1.76	3	2	2	21
+3.01	3	3	2	21
+0.71	4	1	1	21
+1.31	4	2	1	21
+1.79	4	3	1	21
+0.88	4	1	2	21
+2.03	4	2	2	21
+3.46	4	3	2	21
+0.90	5	1	1	21
+1.47	5	2	1	21
+1.97	5	3	1	21
+1.08	5	1	2	21
+2.04	5	2	2	21
+3.51	5	3	2	21
+0.75	1	1	1	22
+1.51	1	2	1	22
+1.92	1	3	1	22
+0.96	1	1	2	22
+2.04	1	2	2	22
+3.53	1	3	2	22
+0.70	2	1	1	22
+1.41	2	2	1	22
+2.02	2	3	1	22
+0.96	2	1	2	22
+2.04	2	2	2	22
+3.73	2	3	2	22
+0.76	3	1	1	22
+1.42	3	2	1	22
+2.03	3	3	1	22
+0.95	3	1	2	22
+1.87	3	2	2	22
+3.19	3	3	2	22
+0.77	4	1	1	22
+1.38	4	2	1	22
+1.82	4	3	1	22
+0.94	4	1	2	22
+2.03	4	2	2	22
+3.59	4	3	2	22
+0.93	5	1	1	22
+1.54	5	2	1	22
+1.98	5	3	1	22
+1.12	5	1	2	22
+2.07	5	2	2	22
+3.55	5	3	2	22
+0.75	1	1	1	23
+1.51	1	2	1	23
+1.92	1	3	1	23
+0.96	1	1	2	23
+2.04	1	2	2	23
+3.52	1	3	2	23
+0.70	2	1	1	23
+1.41	2	2	1	23
+2.02	2	3	1	23
+0.96	2	1	2	23
+2.03	2	2	2	23
+3.73	2	3	2	23
+0.76	3	1	1	23
+1.42	3	2	1	23
+2.02	3	3	1	23
+0.95	3	1	2	23
+1.86	3	2	2	23
+3.18	3	3	2	23
+0.77	4	1	1	23
+1.38	4	2	1	23
+1.82	4	3	1	23
+0.94	4	1	2	23
+2.02	4	2	2	23
+3.58	4	3	2	23
+0.93	5	1	1	23
+1.54	5	2	1	23
+1.99	5	3	1	23
+1.12	5	1	2	23
+2.07	5	2	2	23
+3.55	5	3	2	23
+0.75	1	1	1	24
+1.50	1	2	1	24
+1.92	1	3	1	24
+0.96	1	1	2	24
+2.03	1	2	2	24
+3.52	1	3	2	24
+0.71	2	1	1	24
+1.40	2	2	1	24
+2.02	2	3	1	24
+0.96	2	1	2	24
+2.02	2	2	2	24
+3.71	2	3	2	24
+0.76	3	1	1	24
+1.42	3	2	1	24
+2.02	3	3	1	24
+0.95	3	1	2	24
+1.86	3	2	2	24
+3.17	3	3	2	24
+0.76	4	1	1	24
+1.37	4	2	1	24
+1.82	4	3	1	24
+0.93	4	1	2	24
+2.02	4	2	2	24
+3.57	4	3	2	24
+0.92	5	1	1	24
+1.53	5	2	1	24
+1.97	5	3	1	24
+1.12	5	1	2	24
+2.06	5	2	2	24
+3.54	5	3	2	24
+0.74	1	1	1	25
+1.49	1	2	1	25
+1.91	1	3	1	25
+0.96	1	1	2	25
+2.03	1	2	2	25
+3.49	1	3	2	25
+0.71	2	1	1	25
+1.39	2	2	1	25
+2.01	2	3	1	25
+0.95	2	1	2	25
+2.00	2	2	2	25
+3.69	2	3	2	25
+0.76	3	1	1	25
+1.42	3	2	1	25
+2.02	3	3	1	25
+0.94	3	1	2	25
+1.85	3	2	2	25
+3.15	3	3	2	25
+0.75	4	1	1	25
+1.36	4	2	1	25
+1.81	4	3	1	25
+0.93	4	1	2	25
+2.03	4	2	2	25
+3.54	4	3	2	25
+0.92	5	1	1	25
+1.52	5	2	1	25
+1.96	5	3	1	25
+1.10	5	1	2	25
+2.06	5	2	2	25
+3.54	5	3	2	25
+0.76	1	1	1	26
+1.51	1	2	1	26
+1.92	1	3	1	26
+0.99	1	1	2	26
+2.03	1	2	2	26
+3.54	1	3	2	26
+0.69	2	1	1	26
+1.44	2	2	1	26
+2.03	2	3	1	26
+0.97	2	1	2	26
+2.06	2	2	2	26
+3.73	2	3	2	26
+0.74	3	1	1	26
+1.41	3	2	1	26
+2.02	3	3	1	26
+0.96	3	1	2	26
+1.88	3	2	2	26
+3.25	3	3	2	26
+0.79	4	1	1	26
+1.39	4	2	1	26
+1.88	4	3	1	26
+0.93	4	1	2	26
+2.03	4	2	2	26
+3.64	4	3	2	26
+0.94	5	1	1	26
+1.57	5	2	1	26
+2.03	5	3	1	26
+1.13	5	1	2	26
+2.09	5	2	2	26
+3.57	5	3	2	26
+0.73	1	1	1	27
+1.49	1	2	1	27
+1.88	1	3	1	27
+0.95	1	1	2	27
+1.98	1	2	2	27
+3.39	1	3	2	27
+0.68	2	1	1	27
+1.35	2	2	1	27
+1.95	2	3	1	27
+0.91	2	1	2	27
+1.98	2	2	2	27
+3.50	2	3	2	27
+0.76	3	1	1	27
+1.43	3	2	1	27
+2.01	3	3	1	27
+0.91	3	1	2	27
+1.82	3	2	2	27
+3.10	3	3	2	27
+0.72	4	1	1	27
+1.32	4	2	1	27
+1.78	4	3	1	27
+0.89	4	1	2	27
+2.00	4	2	2	27
+3.47	4	3	2	27
+0.90	5	1	1	27
+1.55	5	2	1	27
+1.99	5	3	1	27
+1.07	5	1	2	27
+2.05	5	2	2	27
+3.60	5	3	2	27
+0.71	1	1	1	28
+1.44	1	2	1	28
+1.86	1	3	1	28
+0.91	1	1	2	28
+1.93	1	2	2	28
+3.32	1	3	2	28
+0.70	2	1	1	28
+1.32	2	2	1	28
+1.88	2	3	1	28
+0.90	2	1	2	28
+1.87	2	2	2	28
+3.49	2	3	2	28
+0.69	3	1	1	28
+1.33	3	2	1	28
+1.86	3	3	1	28
+0.84	3	1	2	28
+1.75	3	2	2	28
+3.00	3	3	2	28
+0.74	4	1	1	28
+1.30	4	2	1	28
+1.84	4	3	1	28
+0.87	4	1	2	28
+1.99	4	2	2	28
+3.50	4	3	2	28
+0.85	5	1	1	28
+1.46	5	2	1	28
+1.94	5	3	1	28
+1.08	5	1	2	28
+2.03	5	2	2	28
+3.50	5	3	2	28
+0.76	1	1	1	29
+1.51	1	2	1	29
+1.91	1	3	1	29
+0.97	1	1	2	29
+2.02	1	2	2	29
+3.53	1	3	2	29
+0.69	2	1	1	29
+1.43	2	2	1	29
+2.02	2	3	1	29
+0.97	2	1	2	29
+2.05	2	2	2	29
+3.71	2	3	2	29
+0.74	3	1	1	29
+1.41	3	2	1	29
+2.01	3	3	1	29
+0.95	3	1	2	29
+1.86	3	2	2	29
+3.17	3	3	2	29
+0.79	4	1	1	29
+1.38	4	2	1	29
+1.87	4	3	1	29
+0.93	4	1	2	29
+2.03	4	2	2	29
+3.60	4	3	2	29
+0.94	5	1	1	29
+1.56	5	2	1	29
+2.02	5	3	1	29
+1.12	5	1	2	29
+2.07	5	2	2	29
+3.57	5	3	2	29
+0.73	1	1	1	30
+1.45	1	2	1	30
+1.88	1	3	1	30
+0.92	1	1	2	30
+1.94	1	2	2	30
+3.32	1	3	2	30
+0.71	2	1	1	30
+1.37	2	2	1	30
+1.98	2	3	1	30
+0.95	2	1	2	30
+1.93	2	2	2	30
+3.62	2	3	2	30
+0.72	3	1	1	30
+1.35	3	2	1	30
+1.91	3	3	1	30
+0.87	3	1	2	30
+1.77	3	2	2	30
+3.04	3	3	2	30
+0.72	4	1	1	30
+1.28	4	2	1	30
+1.82	4	3	1	30
+0.85	4	1	2	30
+1.98	4	2	2	30
+3.46	4	3	2	30
+0.87	5	1	1	30
+1.44	5	2	1	30
+1.92	5	3	1	30
+1.09	5	1	2	30
+2.04	5	2	2	30
+3.49	5	3	2	30
+0.76	1	1	1	31
+1.52	1	2	1	31
+1.93	1	3	1	31
+0.99	1	1	2	31
+2.03	1	2	2	31
+3.53	1	3	2	31
+0.70	2	1	1	31
+1.43	2	2	1	31
+2.03	2	3	1	31
+0.97	2	1	2	31
+2.06	2	2	2	31
+3.73	2	3	2	31
+0.74	3	1	1	31
+1.41	3	2	1	31
+2.02	3	3	1	31
+0.96	3	1	2	31
+1.88	3	2	2	31
+3.26	3	3	2	31
+0.79	4	1	1	31
+1.39	4	2	1	31
+1.87	4	3	1	31
+0.94	4	1	2	31
+2.01	4	2	2	31
+3.62	4	3	2	31
+0.94	5	1	1	31
+1.57	5	2	1	31
+2.02	5	3	1	31
+1.13	5	1	2	31
+2.09	5	2	2	31
+3.56	5	3	2	31
+0.75	1	1	1	32
+1.51	1	2	1	32
+1.92	1	3	1	32
+0.96	1	1	2	32
+2.03	1	2	2	32
+3.52	1	3	2	32
+0.70	2	1	1	32
+1.41	2	2	1	32
+2.02	2	3	1	32
+0.96	2	1	2	32
+2.03	2	2	2	32
+3.72	2	3	2	32
+0.76	3	1	1	32
+1.42	3	2	1	32
+2.02	3	3	1	32
+0.95	3	1	2	32
+1.86	3	2	2	32
+3.17	3	3	2	32
+0.77	4	1	1	32
+1.38	4	2	1	32
+1.82	4	3	1	32
+0.94	4	1	2	32
+2.02	4	2	2	32
+3.57	4	3	2	32
+0.93	5	1	1	32
+1.54	5	2	1	32
+1.99	5	3	1	32
+1.12	5	1	2	32
+2.07	5	2	2	32
+3.55	5	3	2	32
+0.71	1	1	1	33
+1.42	1	2	1	33
+1.88	1	3	1	33
+0.92	1	1	2	33
+1.93	1	2	2	33
+3.31	1	3	2	33
+0.69	2	1	1	33
+1.37	2	2	1	33
+1.89	2	3	1	33
+0.90	2	1	2	33
+1.89	2	2	2	33
+3.51	2	3	2	33
+0.68	3	1	1	33
+1.29	3	2	1	33
+1.86	3	3	1	33
+0.81	3	1	2	33
+1.75	3	2	2	33
+3.06	3	3	2	33
+0.73	4	1	1	33
+1.27	4	2	1	33
+1.85	4	3	1	33
+0.87	4	1	2	33
+2.00	4	2	2	33
+3.42	4	3	2	33
+0.85	5	1	1	33
+1.47	5	2	1	33
+1.94	5	3	1	33
+1.11	5	1	2	33
+2.05	5	2	2	33
+3.51	5	3	2	33
+0.76	1	1	1	34
+1.51	1	2	1	34
+1.92	1	3	1	34
+0.98	1	1	2	34
+2.03	1	2	2	34
+3.53	1	3	2	34
+0.70	2	1	1	34
+1.42	2	2	1	34
+2.03	2	3	1	34
+0.97	2	1	2	34
+2.05	2	2	2	34
+3.73	2	3	2	34
+0.75	3	1	1	34
+1.41	3	2	1	34
+2.02	3	3	1	34
+0.95	3	1	2	34
+1.87	3	2	2	34
+3.21	3	3	2	34
+0.78	4	1	1	34
+1.38	4	2	1	34
+1.85	4	3	1	34
+0.94	4	1	2	34
+2.02	4	2	2	34
+3.58	4	3	2	34
+0.94	5	1	1	34
+1.56	5	2	1	34
+2.01	5	3	1	34
+1.12	5	1	2	34
+2.07	5	2	2	34
+3.56	5	3	2	34
+0.75	1	1	1	35
+1.47	1	2	1	35
+1.96	1	3	1	35
+0.96	1	1	2	35
+2.03	1	2	2	35
+3.44	1	3	2	35
+0.72	2	1	1	35
+1.43	2	2	1	35
+2.01	2	3	1	35
+0.97	2	1	2	35
+1.98	2	2	2	35
+3.59	2	3	2	35
+0.71	3	1	1	35
+1.39	3	2	1	35
+2.01	3	3	1	35
+0.93	3	1	2	35
+1.86	3	2	2	35
+3.25	3	3	2	35
+0.72	4	1	1	35
+1.34	4	2	1	35
+1.91	4	3	1	35
+0.91	4	1	2	35
+2.14	4	2	2	35
+3.55	4	3	2	35
+0.92	5	1	1	35
+1.47	5	2	1	35
+1.98	5	3	1	35
+1.14	5	1	2	35
+2.13	5	2	2	35
+3.52	5	3	2	35
+0.73	1	1	1	36
+1.48	1	2	1	36
+1.87	1	3	1	36
+0.94	1	1	2	36
+1.99	1	2	2	36
+3.41	1	3	2	36
+0.69	2	1	1	36
+1.38	2	2	1	36
+1.97	2	3	1	36
+0.94	2	1	2	36
+1.97	2	2	2	36
+3.63	2	3	2	36
+0.73	3	1	1	36
+1.39	3	2	1	36
+1.97	3	3	1	36
+0.92	3	1	2	36
+1.82	3	2	2	36
+3.09	3	3	2	36
+0.75	4	1	1	36
+1.32	4	2	1	36
+1.82	4	3	1	36
+0.89	4	1	2	36
+2.03	4	2	2	36
+3.48	4	3	2	36
+0.92	5	1	1	36
+1.53	5	2	1	36
+1.99	5	3	1	36
+1.10	5	1	2	36
+2.05	5	2	2	36
+3.51	5	3	2	36
+0.70	1	1	1	37
+1.40	1	2	1	37
+1.86	1	3	1	37
+0.92	1	1	2	37
+1.93	1	2	2	37
+3.30	1	3	2	37
+0.65	2	1	1	37
+1.35	2	2	1	37
+1.85	2	3	1	37
+0.89	2	1	2	37
+1.87	2	2	2	37
+3.46	2	3	2	37
+0.67	3	1	1	37
+1.29	3	2	1	37
+1.85	3	3	1	37
+0.82	3	1	2	37
+1.76	3	2	2	37
+3.03	3	3	2	37
+0.74	4	1	1	37
+1.29	4	2	1	37
+1.86	4	3	1	37
+0.89	4	1	2	37
+2.03	4	2	2	37
+3.44	4	3	2	37
+0.86	5	1	1	37
+1.48	5	2	1	37
+1.97	5	3	1	37
+1.11	5	1	2	37
+2.04	5	2	2	37
+3.52	5	3	2	37
+0.74	1	1	1	38
+1.45	1	2	1	38
+1.89	1	3	1	38
+0.93	1	1	2	38
+1.94	1	2	2	38
+3.33	1	3	2	38
+0.71	2	1	1	38
+1.39	2	2	1	38
+2.00	2	3	1	38
+0.95	2	1	2	38
+1.94	2	2	2	38
+3.65	2	3	2	38
+0.72	3	1	1	38
+1.36	3	2	1	38
+1.92	3	3	1	38
+0.87	3	1	2	38
+1.78	3	2	2	38
+3.05	3	3	2	38
+0.72	4	1	1	38
+1.27	4	2	1	38
+1.82	4	3	1	38
+0.85	4	1	2	38
+1.98	4	2	2	38
+3.45	4	3	2	38
+0.87	5	1	1	38
+1.44	5	2	1	38
+1.91	5	3	1	38
+1.10	5	1	2	38
+2.04	5	2	2	38
+3.49	5	3	2	38
+0.75	1	1	1	39
+1.50	1	2	1	39
+1.92	1	3	1	39
+0.96	1	1	2	39
+2.04	1	2	2	39
+3.52	1	3	2	39
+0.71	2	1	1	39
+1.39	2	2	1	39
+2.02	2	3	1	39
+0.95	2	1	2	39
+2.01	2	2	2	39
+3.71	2	3	2	39
+0.76	3	1	1	39
+1.42	3	2	1	39
+2.03	3	3	1	39
+0.95	3	1	2	39
+1.85	3	2	2	39
+3.17	3	3	2	39
+0.76	4	1	1	39
+1.37	4	2	1	39
+1.81	4	3	1	39
+0.93	4	1	2	39
+2.03	4	2	2	39
+3.57	4	3	2	39
+0.92	5	1	1	39
+1.52	5	2	1	39
+1.96	5	3	1	39
+1.12	5	1	2	39
+2.06	5	2	2	39
+3.54	5	3	2	39
+0.75	1	1	1	40
+1.50	1	2	1	40
+1.91	1	3	1	40
+0.96	1	1	2	40
+2.03	1	2	2	40
+3.51	1	3	2	40
+0.71	2	1	1	40
+1.39	2	2	1	40
+2.01	2	3	1	40
+0.95	2	1	2	40
+2.01	2	2	2	40
+3.70	2	3	2	40
+0.75	3	1	1	40
+1.42	3	2	1	40
+2.02	3	3	1	40
+0.94	3	1	2	40
+1.85	3	2	2	40
+3.15	3	3	2	40
+0.76	4	1	1	40
+1.36	4	2	1	40
+1.81	4	3	1	40
+0.93	4	1	2	40
+2.02	4	2	2	40
+3.55	4	3	2	40
+0.92	5	1	1	40
+1.53	5	2	1	40
+1.97	5	3	1	40
+1.11	5	1	2	40
+2.06	5	2	2	40
+3.54	5	3	2	40
+0.75	1	1	1	41
+1.52	1	2	1	41
+1.93	1	3	1	41
+0.97	1	1	2	41
+2.04	1	2	2	41
+3.53	1	3	2	41
+0.70	2	1	1	41
+1.42	2	2	1	41
+2.03	2	3	1	41
+0.96	2	1	2	41
+2.04	2	2	2	41
+3.73	2	3	2	41
+0.75	3	1	1	41
+1.42	3	2	1	41
+2.03	3	3	1	41
+0.96	3	1	2	41
+1.87	3	2	2	41
+3.21	3	3	2	41
+0.78	4	1	1	41
+1.38	4	2	1	41
+1.83	4	3	1	41
+0.94	4	1	2	41
+2.03	4	2	2	41
+3.59	4	3	2	41
+0.93	5	1	1	41
+1.55	5	2	1	41
+2.00	5	3	1	41
+1.12	5	1	2	41
+2.07	5	2	2	41
+3.56	5	3	2	41
+0.72	1	1	1	42
+1.43	1	2	1	42
+1.89	1	3	1	42
+0.92	1	1	2	42
+1.94	1	2	2	42
+3.33	1	3	2	42
+0.72	2	1	1	42
+1.38	2	2	1	42
+1.95	2	3	1	42
+0.92	2	1	2	42
+1.92	2	2	2	42
+3.59	2	3	2	42
+0.70	3	1	1	42
+1.32	3	2	1	42
+1.88	3	3	1	42
+0.83	3	1	2	42
+1.77	3	2	2	42
+3.07	3	3	2	42
+0.72	4	1	1	42
+1.27	4	2	1	42
+1.83	4	3	1	42
+0.85	4	1	2	42
+1.98	4	2	2	42
+3.41	4	3	2	42
+0.86	5	1	1	42
+1.45	5	2	1	42
+1.91	5	3	1	42
+1.11	5	1	2	42
+2.05	5	2	2	42
+3.51	5	3	2	42
+0.75	1	1	1	43
+1.49	1	2	1	43
+1.91	1	3	1	43
+0.96	1	1	2	43
+2.03	1	2	2	43
+3.51	1	3	2	43
+0.71	2	1	1	43
+1.39	2	2	1	43
+2.01	2	3	1	43
+0.95	2	1	2	43
+2.01	2	2	2	43
+3.70	2	3	2	43
+0.76	3	1	1	43
+1.42	3	2	1	43
+2.02	3	3	1	43
+0.94	3	1	2	43
+1.85	3	2	2	43
+3.16	3	3	2	43
+0.76	4	1	1	43
+1.36	4	2	1	43
+1.81	4	3	1	43
+0.93	4	1	2	43
+2.03	4	2	2	43
+3.55	4	3	2	43
+0.92	5	1	1	43
+1.52	5	2	1	43
+1.96	5	3	1	43
+1.11	5	1	2	43
+2.06	5	2	2	43
+3.54	5	3	2	43
+0.75	1	1	1	44
+1.45	1	2	1	44
+1.92	1	3	1	44
+0.95	1	1	2	44
+2.03	1	2	2	44
+3.35	1	3	2	44
+0.70	2	1	1	44
+1.42	2	2	1	44
+1.97	2	3	1	44
+0.94	2	1	2	44
+1.95	2	2	2	44
+3.53	2	3	2	44
+0.70	3	1	1	44
+1.36	3	2	1	44
+1.95	3	3	1	44
+0.86	3	1	2	44
+1.83	3	2	2	44
+3.15	3	3	2	44
+0.73	4	1	1	44
+1.35	4	2	1	44
+1.92	4	3	1	44
+0.89	4	1	2	44
+2.08	4	2	2	44
+3.55	4	3	2	44
+0.91	5	1	1	44
+1.49	5	2	1	44
+2.00	5	3	1	44
+1.13	5	1	2	44
+2.10	5	2	2	44
+3.55	5	3	2	44
+0.72	1	1	1	45
+1.47	1	2	1	45
+1.86	1	3	1	45
+0.93	1	1	2	45
+1.96	1	2	2	45
+3.40	1	3	2	45
+0.68	2	1	1	45
+1.36	2	2	1	45
+1.94	2	3	1	45
+0.93	2	1	2	45
+1.96	2	2	2	45
+3.57	2	3	2	45
+0.72	3	1	1	45
+1.38	3	2	1	45
+1.95	3	3	1	45
+0.90	3	1	2	45
+1.79	3	2	2	45
+3.05	3	3	2	45
+0.73	4	1	1	45
+1.31	4	2	1	45
+1.82	4	3	1	45
+0.88	4	1	2	45
+2.02	4	2	2	45
+3.45	4	3	2	45
+0.92	5	1	1	45
+1.51	5	2	1	45
+1.99	5	3	1	45
+1.10	5	1	2	45
+2.05	5	2	2	45
+3.50	5	3	2	45
+0.71	1	1	1	46
+1.46	1	2	1	46
+1.86	1	3	1	46
+0.92	1	1	2	46
+1.93	1	2	2	46
+3.36	1	3	2	46
+0.69	2	1	1	46
+1.34	2	2	1	46
+1.96	2	3	1	46
+0.94	2	1	2	46
+1.95	2	2	2	46
+3.53	2	3	2	46
+0.72	3	1	1	46
+1.37	3	2	1	46
+1.92	3	3	1	46
+0.86	3	1	2	46
+1.77	3	2	2	46
+3.00	3	3	2	46
+0.70	4	1	1	46
+1.30	4	2	1	46
+1.79	4	3	1	46
+0.87	4	1	2	46
+2.02	4	2	2	46
+3.46	4	3	2	46
+0.90	5	1	1	46
+1.47	5	2	1	46
+1.96	5	3	1	46
+1.08	5	1	2	46
+2.04	5	2	2	46
+3.49	5	3	2	46
+0.71	1	1	1	47
+1.44	1	2	1	47
+1.87	1	3	1	47
+0.91	1	1	2	47
+1.93	1	2	2	47
+3.30	1	3	2	47
+0.70	2	1	1	47
+1.33	2	2	1	47
+1.90	2	3	1	47
+0.91	2	1	2	47
+1.88	2	2	2	47
+3.52	2	3	2	47
+0.70	3	1	1	47
+1.33	3	2	1	47
+1.87	3	3	1	47
+0.85	3	1	2	47
+1.75	3	2	2	47
+3.02	3	3	2	47
+0.73	4	1	1	47
+1.30	4	2	1	47
+1.85	4	3	1	47
+0.86	4	1	2	47
+1.97	4	2	2	47
+3.49	4	3	2	47
+0.86	5	1	1	47
+1.45	5	2	1	47
+1.93	5	3	1	47
+1.09	5	1	2	47
+2.03	5	2	2	47
+3.50	5	3	2	47
+0.75	1	1	1	48
+1.50	1	2	1	48
+1.92	1	3	1	48
+0.96	1	1	2	48
+2.04	1	2	2	48
+3.52	1	3	2	48
+0.71	2	1	1	48
+1.40	2	2	1	48
+2.02	2	3	1	48
+0.96	2	1	2	48
+2.02	2	2	2	48
+3.72	2	3	2	48
+0.76	3	1	1	48
+1.42	3	2	1	48
+2.03	3	3	1	48
+0.95	3	1	2	48
+1.86	3	2	2	48
+3.18	3	3	2	48
+0.76	4	1	1	48
+1.38	4	2	1	48
+1.81	4	3	1	48
+0.94	4	1	2	48
+2.03	4	2	2	48
+3.58	4	3	2	48
+0.92	5	1	1	48
+1.52	5	2	1	48
+1.97	5	3	1	48
+1.12	5	1	2	48
+2.07	5	2	2	48
+3.54	5	3	2	48
+0.74	1	1	1	49
+1.48	1	2	1	49
+1.89	1	3	1	49
+0.95	1	1	2	49
+2.01	1	2	2	49
+3.44	1	3	2	49
+0.71	2	1	1	49
+1.38	2	2	1	49
+1.99	2	3	1	49
+0.94	2	1	2	49
+1.98	2	2	2	49
+3.66	2	3	2	49
+0.75	3	1	1	49
+1.42	3	2	1	49
+2.01	3	3	1	49
+0.93	3	1	2	49
+1.83	3	2	2	49
+3.15	3	3	2	49
+0.74	4	1	1	49
+1.34	4	2	1	49
+1.80	4	3	1	49
+0.90	4	1	2	49
+2.02	4	2	2	49
+3.50	4	3	2	49
+0.91	5	1	1	49
+1.51	5	2	1	49
+1.95	5	3	1	49
+1.09	5	1	2	49
+2.05	5	2	2	49
+3.51	5	3	2	49
+0.72	1	1	1	50
+1.49	1	2	1	50
+1.88	1	3	1	50
+0.94	1	1	2	50
+1.95	1	2	2	50
+3.47	1	3	2	50
+0.68	2	1	1	50
+1.35	2	2	1	50
+1.96	2	3	1	50
+0.91	2	1	2	50
+1.94	2	2	2	50
+3.52	2	3	2	50
+0.75	3	1	1	50
+1.42	3	2	1	50
+1.98	3	3	1	50
+0.88	3	1	2	50
+1.80	3	2	2	50
+3.10	3	3	2	50
+0.72	4	1	1	50
+1.35	4	2	1	50
+1.82	4	3	1	50
+0.89	4	1	2	50
+2.04	4	2	2	50
+3.52	4	3	2	50
+0.91	5	1	1	50
+1.51	5	2	1	50
+2.02	5	3	1	50
+1.08	5	1	2	50
+2.07	5	2	2	50
+3.62	5	3	2	50
+0.74	1	1	1	51
+1.49	1	2	1	51
+1.89	1	3	1	51
+0.95	1	1	2	51
+2.01	1	2	2	51
+3.44	1	3	2	51
+0.70	2	1	1	51
+1.39	2	2	1	51
+1.99	2	3	1	51
+0.94	2	1	2	51
+2.00	2	2	2	51
+3.66	2	3	2	51
+0.74	3	1	1	51
+1.41	3	2	1	51
+1.99	3	3	1	51
+0.93	3	1	2	51
+1.84	3	2	2	51
+3.12	3	3	2	51
+0.75	4	1	1	51
+1.34	4	2	1	51
+1.81	4	3	1	51
+0.91	4	1	2	51
+2.03	4	2	2	51
+3.51	4	3	2	51
+0.92	5	1	1	51
+1.53	5	2	1	51
+1.97	5	3	1	51
+1.10	5	1	2	51
+2.06	5	2	2	51
+3.52	5	3	2	51
+0.70	1	1	1	52
+1.39	1	2	1	52
+1.85	1	3	1	52
+0.92	1	1	2	52
+1.94	1	2	2	52
+3.28	1	3	2	52
+0.63	2	1	1	52
+1.31	2	2	1	52
+1.81	2	3	1	52
+0.89	2	1	2	52
+1.84	2	2	2	52
+3.38	2	3	2	52
+0.66	3	1	1	52
+1.30	3	2	1	52
+1.84	3	3	1	52
+0.82	3	1	2	52
+1.77	3	2	2	52
+3.02	3	3	2	52
+0.75	4	1	1	52
+1.32	4	2	1	52
+1.87	4	3	1	52
+0.90	4	1	2	52
+2.04	4	2	2	52
+3.46	4	3	2	52
+0.87	5	1	1	52
+1.49	5	2	1	52
+2.00	5	3	1	52
+1.12	5	1	2	52
+2.06	5	2	2	52
+3.53	5	3	2	52
+0.72	1	1	1	53
+1.49	1	2	1	53
+1.88	1	3	1	53
+0.94	1	1	2	53
+1.96	1	2	2	53
+3.42	1	3	2	53
+0.67	2	1	1	53
+1.35	2	2	1	53
+1.96	2	3	1	53
+0.92	2	1	2	53
+1.96	2	2	2	53
+3.50	2	3	2	53
+0.75	3	1	1	53
+1.43	3	2	1	53
+2.00	3	3	1	53
+0.90	3	1	2	53
+1.81	3	2	2	53
+3.07	3	3	2	53
+0.72	4	1	1	53
+1.34	4	2	1	53
+1.82	4	3	1	53
+0.89	4	1	2	53
+2.02	4	2	2	53
+3.47	4	3	2	53
+0.90	5	1	1	53
+1.54	5	2	1	53
+2.02	5	3	1	53
+1.07	5	1	2	53
+2.06	5	2	2	53
+3.61	5	3	2	53
+0.75	1	1	1	54
+1.51	1	2	1	54
+1.92	1	3	1	54
+0.97	1	1	2	54
+2.04	1	2	2	54
+3.53	1	3	2	54
+0.70	2	1	1	54
+1.41	2	2	1	54
+2.03	2	3	1	54
+0.96	2	1	2	54
+2.04	2	2	2	54
+3.73	2	3	2	54
+0.76	3	1	1	54
+1.42	3	2	1	54
+2.03	3	3	1	54
+0.95	3	1	2	54
+1.87	3	2	2	54
+3.19	3	3	2	54
+0.77	4	1	1	54
+1.38	4	2	1	54
+1.82	4	3	1	54
+0.94	4	1	2	54
+2.03	4	2	2	54
+3.59	4	3	2	54
+0.93	5	1	1	54
+1.54	5	2	1	54
+1.99	5	3	1	54
+1.12	5	1	2	54
+2.07	5	2	2	54
+3.55	5	3	2	54
+0.76	1	1	1	55
+1.42	1	2	1	55
+1.95	1	3	1	55
+0.97	1	1	2	55
+2.04	1	2	2	55
+3.45	1	3	2	55
+0.71	2	1	1	55
+1.43	2	2	1	55
+2.06	2	3	1	55
+0.95	2	1	2	55
+1.95	2	2	2	55
+3.56	2	3	2	55
+0.72	3	1	1	55
+1.45	3	2	1	55
+2.07	3	3	1	55
+0.95	3	1	2	55
+1.90	3	2	2	55
+3.31	3	3	2	55
+0.71	4	1	1	55
+1.29	4	2	1	55
+1.85	4	3	1	55
+0.94	4	1	2	55
+2.12	4	2	2	55
+3.72	4	3	2	55
+0.90	5	1	1	55
+1.44	5	2	1	55
+1.96	5	3	1	55
+1.14	5	1	2	55
+2.07	5	2	2	55
+3.55	5	3	2	55
+0.75	1	1	1	56
+1.46	1	2	1	56
+1.91	1	3	1	56
+0.94	1	1	2	56
+1.97	1	2	2	56
+3.36	1	3	2	56
+0.73	2	1	1	56
+1.41	2	2	1	56
+2.03	2	3	1	56
+0.94	2	1	2	56
+1.95	2	2	2	56
+3.59	2	3	2	56
+0.72	3	1	1	56
+1.37	3	2	1	56
+1.93	3	3	1	56
+0.87	3	1	2	56
+1.82	3	2	2	56
+3.11	3	3	2	56
+0.74	4	1	1	56
+1.29	4	2	1	56
+1.85	4	3	1	56
+0.87	4	1	2	56
+2.09	4	2	2	56
+3.51	4	3	2	56
+0.88	5	1	1	56
+1.44	5	2	1	56
+1.92	5	3	1	56
+1.11	5	1	2	56
+2.06	5	2	2	56
+3.45	5	3	2	56
+0.72	1	1	1	57
+1.45	1	2	1	57
+1.87	1	3	1	57
+0.91	1	1	2	57
+1.94	1	2	2	57
+3.34	1	3	2	57
+0.70	2	1	1	57
+1.34	2	2	1	57
+1.95	2	3	1	57
+0.94	2	1	2	57
+1.93	2	2	2	57
+3.55	2	3	2	57
+0.71	3	1	1	57
+1.35	3	2	1	57
+1.89	3	3	1	57
+0.87	3	1	2	57
+1.75	3	2	2	57
+2.99	3	3	2	57
+0.71	4	1	1	57
+1.29	4	2	1	57
+1.83	4	3	1	57
+0.87	4	1	2	57
+2.00	4	2	2	57
+3.49	4	3	2	57
+0.88	5	1	1	57
+1.44	5	2	1	57
+1.94	5	3	1	57
+1.08	5	1	2	57
+2.03	5	2	2	57
+3.49	5	3	2	57
+0.71	1	1	1	58
+1.41	1	2	1	58
+1.87	1	3	1	58
+0.94	1	1	2	58
+2.00	1	2	2	58
+3.30	1	3	2	58
+0.63	2	1	1	58
+1.36	2	2	1	58
+1.85	2	3	1	58
+0.91	2	1	2	58
+1.90	2	2	2	58
+3.44	2	3	2	58
+0.67	3	1	1	58
+1.33	3	2	1	58
+1.87	3	3	1	58
+0.82	3	1	2	58
+1.79	3	2	2	58
+3.10	3	3	2	58
+0.73	4	1	1	58
+1.37	4	2	1	58
+1.93	4	3	1	58
+0.90	4	1	2	58
+2.04	4	2	2	58
+3.61	4	3	2	58
+0.89	5	1	1	58
+1.50	5	2	1	58
+2.03	5	3	1	58
+1.12	5	1	2	58
+2.07	5	2	2	58
+3.58	5	3	2	58
+0.76	1	1	1	59
+1.46	1	2	1	59
+1.92	1	3	1	59
+0.95	1	1	2	59
+2.01	1	2	2	59
+3.42	1	3	2	59
+0.73	2	1	1	59
+1.43	2	2	1	59
+2.09	2	3	1	59
+0.97	2	1	2	59
+1.99	2	2	2	59
+3.67	2	3	2	59
+0.74	3	1	1	59
+1.40	3	2	1	59
+1.97	3	3	1	59
+0.91	3	1	2	59
+1.85	3	2	2	59
+3.17	3	3	2	59
+0.74	4	1	1	59
+1.28	4	2	1	59
+1.85	4	3	1	59
+0.90	4	1	2	59
+2.10	4	2	2	59
+3.61	4	3	2	59
+0.90	5	1	1	59
+1.45	5	2	1	59
+1.91	5	3	1	59
+1.10	5	1	2	59
+2.06	5	2	2	59
+3.48	5	3	2	59
+0.72	1	1	1	60
+1.46	1	2	1	60
+1.87	1	3	1	60
+0.91	1	1	2	60
+1.94	1	2	2	60
+3.36	1	3	2	60
+0.70	2	1	1	60
+1.34	2	2	1	60
+1.97	2	3	1	60
+0.96	2	1	2	60
+1.95	2	2	2	60
+3.55	2	3	2	60
+0.72	3	1	1	60
+1.36	3	2	1	60
+1.91	3	3	1	60
+0.87	3	1	2	60
+1.76	3	2	2	60
+2.99	3	3	2	60
+0.70	4	1	1	60
+1.29	4	2	1	60
+1.81	4	3	1	60
+0.87	4	1	2	60
+2.01	4	2	2	60
+3.47	4	3	2	60
+0.89	5	1	1	60
+1.45	5	2	1	60
+1.95	5	3	1	60
+1.08	5	1	2	60
+2.03	5	2	2	60
+3.49	5	3	2	60
+0.72	1	1	1	61
+1.47	1	2	1	61
+1.87	1	3	1	61
+0.93	1	1	2	61
+1.94	1	2	2	61
+3.42	1	3	2	61
+0.69	2	1	1	61
+1.34	2	2	1	61
+1.96	2	3	1	61
+0.94	2	1	2	61
+1.96	2	2	2	61
+3.54	2	3	2	61
+0.73	3	1	1	61
+1.38	3	2	1	61
+1.94	3	3	1	61
+0.86	3	1	2	61
+1.77	3	2	2	61
+3.02	3	3	2	61
+0.70	4	1	1	61
+1.31	4	2	1	61
+1.79	4	3	1	61
+0.88	4	1	2	61
+2.03	4	2	2	61
+3.47	4	3	2	61
+0.91	5	1	1	61
+1.48	5	2	1	61
+1.97	5	3	1	61
+1.08	5	1	2	61
+2.05	5	2	2	61
+3.52	5	3	2	61
+0.73	1	1	1	62
+1.48	1	2	1	62
+1.87	1	3	1	62
+0.95	1	1	2	62
+2.00	1	2	2	62
+3.42	1	3	2	62
+0.70	2	1	1	62
+1.36	2	2	1	62
+1.95	2	3	1	62
+0.92	2	1	2	62
+1.95	2	2	2	62
+3.60	2	3	2	62
+0.74	3	1	1	62
+1.41	3	2	1	62
+2.00	3	3	1	62
+0.92	3	1	2	62
+1.82	3	2	2	62
+3.12	3	3	2	62
+0.73	4	1	1	62
+1.32	4	2	1	62
+1.77	4	3	1	62
+0.89	4	1	2	62
+2.02	4	2	2	62
+3.43	4	3	2	62
+0.91	5	1	1	62
+1.52	5	2	1	62
+1.96	5	3	1	62
+1.08	5	1	2	62
+2.06	5	2	2	62
+3.52	5	3	2	62
+0.74	1	1	1	63
+1.45	1	2	1	63
+1.89	1	3	1	63
+0.93	1	1	2	63
+1.98	1	2	2	63
+3.35	1	3	2	63
+0.72	2	1	1	63
+1.40	2	2	1	63
+2.03	2	3	1	63
+0.95	2	1	2	63
+1.95	2	2	2	63
+3.66	2	3	2	63
+0.74	3	1	1	63
+1.37	3	2	1	63
+1.93	3	3	1	63
+0.89	3	1	2	63
+1.78	3	2	2	63
+3.07	3	3	2	63
+0.72	4	1	1	63
+1.26	4	2	1	63
+1.82	4	3	1	63
+0.87	4	1	2	63
+1.99	4	2	2	63
+3.52	4	3	2	63
+0.88	5	1	1	63
+1.43	5	2	1	63
+1.91	5	3	1	63
+1.10	5	1	2	63
+2.03	5	2	2	63
+3.46	5	3	2	63
+0.72	1	1	1	64
+1.46	1	2	1	64
+1.86	1	3	1	64
+0.92	1	1	2	64
+1.93	1	2	2	64
+3.39	1	3	2	64
+0.69	2	1	1	64
+1.33	2	2	1	64
+1.96	2	3	1	64
+0.95	2	1	2	64
+1.95	2	2	2	64
+3.53	2	3	2	64
+0.73	3	1	1	64
+1.36	3	2	1	64
+1.92	3	3	1	64
+0.86	3	1	2	64
+1.76	3	2	2	64
+2.99	3	3	2	64
+0.70	4	1	1	64
+1.30	4	2	1	64
+1.80	4	3	1	64
+0.87	4	1	2	64
+2.02	4	2	2	64
+3.47	4	3	2	64
+0.90	5	1	1	64
+1.46	5	2	1	64
+1.96	5	3	1	64
+1.08	5	1	2	64
+2.03	5	2	2	64
+3.50	5	3	2	64
+0.74	1	1	1	65
+1.48	1	2	1	65
+1.87	1	3	1	65
+0.95	1	1	2	65
+1.98	1	2	2	65
+3.43	1	3	2	65
+0.68	2	1	1	65
+1.39	2	2	1	65
+1.97	2	3	1	65
+0.95	2	1	2	65
+1.99	2	2	2	65
+3.62	2	3	2	65
+0.72	3	1	1	65
+1.39	3	2	1	65
+1.97	3	3	1	65
+0.92	3	1	2	65
+1.83	3	2	2	65
+3.07	3	3	2	65
+0.76	4	1	1	65
+1.36	4	2	1	65
+1.86	4	3	1	65
+0.90	4	1	2	65
+2.04	4	2	2	65
+3.50	4	3	2	65
+0.93	5	1	1	65
+1.54	5	2	1	65
+2.02	5	3	1	65
+1.11	5	1	2	65
+2.05	5	2	2	65
+3.54	5	3	2	65
+0.75	1	1	1	66
+1.46	1	2	1	66
+1.91	1	3	1	66
+0.94	1	1	2	66
+1.97	1	2	2	66
+3.36	1	3	2	66
+0.72	2	1	1	66
+1.41	2	2	1	66
+2.05	2	3	1	66
+0.95	2	1	2	66
+1.96	2	2	2	66
+3.63	2	3	2	66
+0.73	3	1	1	66
+1.37	3	2	1	66
+1.93	3	3	1	66
+0.87	3	1	2	66
+1.81	3	2	2	66
+3.11	3	3	2	66
+0.74	4	1	1	66
+1.28	4	2	1	66
+1.84	4	3	1	66
+0.88	4	1	2	66
+2.07	4	2	2	66
+3.52	4	3	2	66
+0.88	5	1	1	66
+1.44	5	2	1	66
+1.90	5	3	1	66
+1.10	5	1	2	66
+2.06	5	2	2	66
+3.45	5	3	2	66
+0.75	1	1	1	67
+1.45	1	2	1	67
+1.91	1	3	1	67
+0.94	1	1	2	67
+1.99	1	2	2	67
+3.36	1	3	2	67
+0.73	2	1	1	67
+1.41	2	2	1	67
+2.01	2	3	1	67
+0.94	2	1	2	67
+1.95	2	2	2	67
+3.57	2	3	2	67
+0.72	3	1	1	67
+1.37	3	2	1	67
+1.93	3	3	1	67
+0.87	3	1	2	67
+1.83	3	2	2	67
+3.12	3	3	2	67
+0.74	4	1	1	67
+1.31	4	2	1	67
+1.86	4	3	1	67
+0.88	4	1	2	67
+2.10	4	2	2	67
+3.52	4	3	2	67
+0.89	5	1	1	67
+1.45	5	2	1	67
+1.94	5	3	1	67
+1.12	5	1	2	67
+2.07	5	2	2	67
+3.48	5	3	2	67
+0.71	1	1	1	68
+1.40	1	2	1	68
+1.85	1	3	1	68
+0.91	1	1	2	68
+1.92	1	2	2	68
+3.28	1	3	2	68
+0.66	2	1	1	68
+1.32	2	2	1	68
+1.83	2	3	1	68
+0.87	2	1	2	68
+1.84	2	2	2	68
+3.43	2	3	2	68
+0.67	3	1	1	68
+1.28	3	2	1	68
+1.85	3	3	1	68
+0.82	3	1	2	68
+1.75	3	2	2	68
+3.06	3	3	2	68
+0.74	4	1	1	68
+1.28	4	2	1	68
+1.86	4	3	1	68
+0.89	4	1	2	68
+2.02	4	2	2	68
+3.46	4	3	2	68
+0.85	5	1	1	68
+1.49	5	2	1	68
+1.96	5	3	1	68
+1.10	5	1	2	68
+2.04	5	2	2	68
+3.51	5	3	2	68
+0.73	1	1	1	69
+1.48	1	2	1	69
+1.87	1	3	1	69
+0.95	1	1	2	69
+2.00	1	2	2	69
+3.41	1	3	2	69
+0.70	2	1	1	69
+1.37	2	2	1	69
+1.97	2	3	1	69
+0.94	2	1	2	69
+1.96	2	2	2	69
+3.64	2	3	2	69
+0.74	3	1	1	69
+1.41	3	2	1	69
+1.99	3	3	1	69
+0.92	3	1	2	69
+1.83	3	2	2	69
+3.13	3	3	2	69
+0.74	4	1	1	69
+1.33	4	2	1	69
+1.79	4	3	1	69
+0.89	4	1	2	69
+2.03	4	2	2	69
+3.47	4	3	2	69
+0.92	5	1	1	69
+1.52	5	2	1	69
+1.96	5	3	1	69
+1.09	5	1	2	69
+2.06	5	2	2	69
+3.51	5	3	2	69
+0.74	1	1	1	70
+1.50	1	2	1	70
+1.90	1	3	1	70
+0.95	1	1	2	70
+2.03	1	2	2	70
+3.48	1	3	2	70
+0.71	2	1	1	70
+1.39	2	2	1	70
+2.01	2	3	1	70
+0.95	2	1	2	70
+2.01	2	2	2	70
+3.68	2	3	2	70
+0.75	3	1	1	70
+1.41	3	2	1	70
+2.01	3	3	1	70
+0.94	3	1	2	70
+1.84	3	2	2	70
+3.14	3	3	2	70
+0.76	4	1	1	70
+1.35	4	2	1	70
+1.81	4	3	1	70
+0.92	4	1	2	70
+2.02	4	2	2	70
+3.54	4	3	2	70
+0.92	5	1	1	70
+1.53	5	2	1	70
+1.97	5	3	1	70
+1.11	5	1	2	70
+2.06	5	2	2	70
+3.54	5	3	2	70
+0.75	1	1	1	71
+1.51	1	2	1	71
+1.92	1	3	1	71
+0.97	1	1	2	71
+2.04	1	2	2	71
+3.53	1	3	2	71
+0.70	2	1	1	71
+1.42	2	2	1	71
+2.03	2	3	1	71
+0.96	2	1	2	71
+2.04	2	2	2	71
+3.73	2	3	2	71
+0.75	3	1	1	71
+1.42	3	2	1	71
+2.03	3	3	1	71
+0.96	3	1	2	71
+1.87	3	2	2	71
+3.20	3	3	2	71
+0.77	4	1	1	71
+1.38	4	2	1	71
+1.82	4	3	1	71
+0.94	4	1	2	71
+2.03	4	2	2	71
+3.59	4	3	2	71
+0.93	5	1	1	71
+1.55	5	2	1	71
+2.00	5	3	1	71
+1.12	5	1	2	71
+2.07	5	2	2	71
+3.56	5	3	2	71
+0.75	1	1	1	72
+1.51	1	2	1	72
+1.92	1	3	1	72
+0.96	1	1	2	72
+2.03	1	2	2	72
+3.52	1	3	2	72
+0.71	2	1	1	72
+1.40	2	2	1	72
+2.02	2	3	1	72
+0.96	2	1	2	72
+2.02	2	2	2	72
+3.72	2	3	2	72
+0.76	3	1	1	72
+1.42	3	2	1	72
+2.02	3	3	1	72
+0.95	3	1	2	72
+1.86	3	2	2	72
+3.17	3	3	2	72
+0.77	4	1	1	72
+1.37	4	2	1	72
+1.82	4	3	1	72
+0.94	4	1	2	72
+2.03	4	2	2	72
+3.57	4	3	2	72
+0.92	5	1	1	72
+1.53	5	2	1	72
+1.98	5	3	1	72
+1.12	5	1	2	72
+2.06	5	2	2	72
+3.54	5	3	2	72
+0.73	1	1	1	73
+1.46	1	2	1	73
+1.88	1	3	1	73
+0.93	1	1	2	73
+1.97	1	2	2	73
+3.37	1	3	2	73
+0.71	2	1	1	73
+1.38	2	2	1	73
+2.02	2	3	1	73
+0.93	2	1	2	73
+1.97	2	2	2	73
+3.61	2	3	2	73
+0.73	3	1	1	73
+1.39	3	2	1	73
+1.96	3	3	1	73
+0.90	3	1	2	73
+1.79	3	2	2	73
+3.07	3	3	2	73
+0.73	4	1	1	73
+1.29	4	2	1	73
+1.81	4	3	1	73
+0.88	4	1	2	73
+2.01	4	2	2	73
+3.51	4	3	2	73
+0.90	5	1	1	73
+1.44	5	2	1	73
+1.94	5	3	1	73
+1.08	5	1	2	73
+2.03	5	2	2	73
+3.46	5	3	2	73
+0.73	1	1	1	74
+1.44	1	2	1	74
+1.89	1	3	1	74
+0.93	1	1	2	74
+1.94	1	2	2	74
+3.33	1	3	2	74
+0.72	2	1	1	74
+1.40	2	2	1	74
+1.99	2	3	1	74
+0.94	2	1	2	74
+1.94	2	2	2	74
+3.64	2	3	2	74
+0.72	3	1	1	74
+1.33	3	2	1	74
+1.91	3	3	1	74
+0.84	3	1	2	74
+1.79	3	2	2	74
+3.07	3	3	2	74
+0.72	4	1	1	74
+1.27	4	2	1	74
+1.82	4	3	1	74
+0.85	4	1	2	74
+1.98	4	2	2	74
+3.43	4	3	2	74
+0.87	5	1	1	74
+1.44	5	2	1	74
+1.91	5	3	1	74
+1.11	5	1	2	74
+2.05	5	2	2	74
+3.49	5	3	2	74
+0.74	1	1	1	75
+1.44	1	2	1	75
+1.90	1	3	1	75
+0.94	1	1	2	75
+1.95	1	2	2	75
+3.34	1	3	2	75
+0.72	2	1	1	75
+1.41	2	2	1	75
+2.02	2	3	1	75
+0.95	2	1	2	75
+1.95	2	2	2	75
+3.66	2	3	2	75
+0.73	3	1	1	75
+1.36	3	2	1	75
+1.92	3	3	1	75
+0.87	3	1	2	75
+1.79	3	2	2	75
+3.06	3	3	2	75
+0.72	4	1	1	75
+1.27	4	2	1	75
+1.82	4	3	1	75
+0.86	4	1	2	75
+1.98	4	2	2	75
+3.46	4	3	2	75
+0.87	5	1	1	75
+1.44	5	2	1	75
+1.90	5	3	1	75
+1.11	5	1	2	75
+2.05	5	2	2	75
+3.48	5	3	2	75
+0.71	1	1	1	76
+1.42	1	2	1	76
+1.87	1	3	1	76
+0.93	1	1	2	76
+1.99	1	2	2	76
+3.31	1	3	2	76
+0.65	2	1	1	76
+1.39	2	2	1	76
+1.89	2	3	1	76
+0.92	2	1	2	76
+1.92	2	2	2	76
+3.53	2	3	2	76
+0.68	3	1	1	76
+1.30	3	2	1	76
+1.87	3	3	1	76
+0.83	3	1	2	76
+1.79	3	2	2	76
+3.04	3	3	2	76
+0.73	4	1	1	76
+1.32	4	2	1	76
+1.88	4	3	1	76
+0.88	4	1	2	76
+2.05	4	2	2	76
+3.53	4	3	2	76
+0.88	5	1	1	76
+1.49	5	2	1	76
+1.98	5	3	1	76
+1.12	5	1	2	76
+2.07	5	2	2	76
+3.55	5	3	2	76
+0.72	1	1	1	77
+1.48	1	2	1	77
+1.86	1	3	1	77
+0.94	1	1	2	77
+1.97	1	2	2	77
+3.39	1	3	2	77
+0.69	2	1	1	77
+1.36	2	2	1	77
+1.93	2	3	1	77
+0.92	2	1	2	77
+1.93	2	2	2	77
+3.58	2	3	2	77
+0.73	3	1	1	77
+1.40	3	2	1	77
+1.97	3	3	1	77
+0.90	3	1	2	77
+1.81	3	2	2	77
+3.08	3	3	2	77
+0.73	4	1	1	77
+1.30	4	2	1	77
+1.77	4	3	1	77
+0.88	4	1	2	77
+2.02	4	2	2	77
+3.43	4	3	2	77
+0.91	5	1	1	77
+1.51	5	2	1	77
+1.98	5	3	1	77
+1.09	5	1	2	77
+2.05	5	2	2	77
+3.52	5	3	2	77
+0.74	1	1	1	78
+1.48	1	2	1	78
+1.90	1	3	1	78
+0.96	1	1	2	78
+2.03	1	2	2	78
+3.47	1	3	2	78
+0.71	2	1	1	78
+1.38	2	2	1	78
+2.00	2	3	1	78
+0.95	2	1	2	78
+2.00	2	2	2	78
+3.68	2	3	2	78
+0.75	3	1	1	78
+1.42	3	2	1	78
+2.02	3	3	1	78
+0.94	3	1	2	78
+1.84	3	2	2	78
+3.14	3	3	2	78
+0.75	4	1	1	78
+1.35	4	2	1	78
+1.81	4	3	1	78
+0.92	4	1	2	78
+2.03	4	2	2	78
+3.53	4	3	2	78
+0.92	5	1	1	78
+1.52	5	2	1	78
+1.95	5	3	1	78
+1.10	5	1	2	78
+2.06	5	2	2	78
+3.53	5	3	2	78
+0.73	1	1	1	79
+1.48	1	2	1	79
+1.87	1	3	1	79
+0.94	1	1	2	79
+1.98	1	2	2	79
+3.39	1	3	2	79
+0.69	2	1	1	79
+1.37	2	2	1	79
+1.95	2	3	1	79
+0.94	2	1	2	79
+1.95	2	2	2	79
+3.61	2	3	2	79
+0.73	3	1	1	79
+1.40	3	2	1	79
+1.97	3	3	1	79
+0.91	3	1	2	79
+1.82	3	2	2	79
+3.10	3	3	2	79
+0.74	4	1	1	79
+1.31	4	2	1	79
+1.78	4	3	1	79
+0.89	4	1	2	79
+2.03	4	2	2	79
+3.45	4	3	2	79
+0.92	5	1	1	79
+1.52	5	2	1	79
+1.97	5	3	1	79
+1.09	5	1	2	79
+2.05	5	2	2	79
+3.51	5	3	2	79
+0.74	1	1	1	80
+1.47	1	2	1	80
+1.90	1	3	1	80
+0.96	1	1	2	80
+2.01	1	2	2	80
+3.47	1	3	2	80
+0.71	2	1	1	80
+1.37	2	2	1	80
+1.99	2	3	1	80
+0.94	2	1	2	80
+1.98	2	2	2	80
+3.65	2	3	2	80
+0.76	3	1	1	80
+1.43	3	2	1	80
+2.03	3	3	1	80
+0.94	3	1	2	80
+1.84	3	2	2	80
+3.17	3	3	2	80
+0.74	4	1	1	80
+1.34	4	2	1	80
+1.81	4	3	1	80
+0.90	4	1	2	80
+2.03	4	2	2	80
+3.49	4	3	2	80
+0.91	5	1	1	80
+1.50	5	2	1	80
+1.94	5	3	1	80
+1.09	5	1	2	80
+2.05	5	2	2	80
+3.52	5	3	2	80
+0.70	1	1	1	81
+1.40	1	2	1	81
+1.85	1	3	1	81
+0.92	1	1	2	81
+1.95	1	2	2	81
+3.29	1	3	2	81
+0.64	2	1	1	81
+1.34	2	2	1	81
+1.83	2	3	1	81
+0.89	2	1	2	81
+1.87	2	2	2	81
+3.44	2	3	2	81
+0.67	3	1	1	81
+1.30	3	2	1	81
+1.85	3	3	1	81
+0.82	3	1	2	81
+1.77	3	2	2	81
+3.02	3	3	2	81
+0.74	4	1	1	81
+1.32	4	2	1	81
+1.87	4	3	1	81
+0.89	4	1	2	81
+2.03	4	2	2	81
+3.49	4	3	2	81
+0.87	5	1	1	81
+1.49	5	2	1	81
+1.99	5	3	1	81
+1.11	5	1	2	81
+2.06	5	2	2	81
+3.53	5	3	2	81
+0.72	1	1	1	82
+1.48	1	2	1	82
+1.87	1	3	1	82
+0.94	1	1	2	82
+1.94	1	2	2	82
+3.46	1	3	2	82
+0.68	2	1	1	82
+1.33	2	2	1	82
+1.96	2	3	1	82
+0.93	2	1	2	82
+1.94	2	2	2	82
+3.53	2	3	2	82
+0.74	3	1	1	82
+1.39	3	2	1	82
+1.95	3	3	1	82
+0.86	3	1	2	82
+1.77	3	2	2	82
+3.04	3	3	2	82
+0.71	4	1	1	82
+1.31	4	2	1	82
+1.79	4	3	1	82
+0.89	4	1	2	82
+2.04	4	2	2	82
+3.47	4	3	2	82
+0.91	5	1	1	82
+1.49	5	2	1	82
+1.98	5	3	1	82
+1.08	5	1	2	82
+2.05	5	2	2	82
+3.55	5	3	2	82
+0.76	1	1	1	83
+1.46	1	2	1	83
+1.92	1	3	1	83
+0.95	1	1	2	83
+2.00	1	2	2	83
+3.41	1	3	2	83
+0.73	2	1	1	83
+1.42	2	2	1	83
+2.09	2	3	1	83
+0.96	2	1	2	83
+1.99	2	2	2	83
+3.68	2	3	2	83
+0.74	3	1	1	83
+1.39	3	2	1	83
+1.96	3	3	1	83
+0.91	3	1	2	83
+1.83	3	2	2	83
+3.15	3	3	2	83
+0.74	4	1	1	83
+1.27	4	2	1	83
+1.84	4	3	1	83
+0.89	4	1	2	83
+2.08	4	2	2	83
+3.57	4	3	2	83
+0.89	5	1	1	83
+1.44	5	2	1	83
+1.91	5	3	1	83
+1.10	5	1	2	83
+2.05	5	2	2	83
+3.47	5	3	2	83
+0.72	1	1	1	84
+1.46	1	2	1	84
+1.86	1	3	1	84
+0.92	1	1	2	84
+1.93	1	2	2	84
+3.42	1	3	2	84
+0.70	2	1	1	84
+1.32	2	2	1	84
+1.93	2	3	1	84
+0.91	2	1	2	84
+1.92	2	2	2	84
+3.50	2	3	2	84
+0.72	3	1	1	84
+1.36	3	2	1	84
+1.90	3	3	1	84
+0.85	3	1	2	84
+1.75	3	2	2	84
+3.00	3	3	2	84
+0.72	4	1	1	84
+1.31	4	2	1	84
+1.82	4	3	1	84
+0.88	4	1	2	84
+2.03	4	2	2	84
+3.48	4	3	2	84
+0.86	5	1	1	84
+1.45	5	2	1	84
+1.94	5	3	1	84
+1.07	5	1	2	84
+2.04	5	2	2	84
+3.52	5	3	2	84
+0.72	1	1	1	85
+1.42	1	2	1	85
+1.87	1	3	1	85
+0.94	1	1	2	85
+2.01	1	2	2	85
+3.31	1	3	2	85
+0.62	2	1	1	85
+1.36	2	2	1	85
+1.85	2	3	1	85
+0.91	2	1	2	85
+1.90	2	2	2	85
+3.42	2	3	2	85
+0.67	3	1	1	85
+1.35	3	2	1	85
+1.88	3	3	1	85
+0.83	3	1	2	85
+1.80	3	2	2	85
+3.11	3	3	2	85
+0.73	4	1	1	85
+1.39	4	2	1	85
+1.94	4	3	1	85
+0.90	4	1	2	85
+2.05	4	2	2	85
+3.60	4	3	2	85
+0.90	5	1	1	85
+1.50	5	2	1	85
+2.05	5	3	1	85
+1.13	5	1	2	85
+2.08	5	2	2	85
+3.60	5	3	2	85
+0.70	1	1	1	86
+1.44	1	2	1	86
+1.85	1	3	1	86
+0.92	1	1	2	86
+1.93	1	2	2	86
+3.31	1	3	2	86
+0.69	2	1	1	86
+1.32	2	2	1	86
+1.84	2	3	1	86
+0.89	2	1	2	86
+1.84	2	2	2	86
+3.44	2	3	2	86
+0.69	3	1	1	86
+1.31	3	2	1	86
+1.85	3	3	1	86
+0.83	3	1	2	86
+1.75	3	2	2	86
+3.01	3	3	2	86
+0.74	4	1	1	86
+1.29	4	2	1	86
+1.84	4	3	1	86
+0.86	4	1	2	86
+1.99	4	2	2	86
+3.49	4	3	2	86
+0.85	5	1	1	86
+1.48	5	2	1	86
+1.96	5	3	1	86
+1.08	5	1	2	86
+2.03	5	2	2	86
+3.52	5	3	2	86
+0.75	1	1	1	87
+1.49	1	2	1	87
+1.93	1	3	1	87
+0.96	1	1	2	87
+2.03	1	2	2	87
+3.52	1	3	2	87
+0.71	2	1	1	87
+1.39	2	2	1	87
+2.03	2	3	1	87
+0.95	2	1	2	87
+2.01	2	2	2	87
+3.72	2	3	2	87
+0.76	3	1	1	87
+1.43	3	2	1	87
+2.04	3	3	1	87
+0.95	3	1	2	87
+1.85	3	2	2	87
+3.18	3	3	2	87
+0.76	4	1	1	87
+1.38	4	2	1	87
+1.81	4	3	1	87
+0.93	4	1	2	87
+2.05	4	2	2	87
+3.59	4	3	2	87
+0.91	5	1	1	87
+1.51	5	2	1	87
+1.95	5	3	1	87
+1.12	5	1	2	87
+2.06	5	2	2	87
+3.55	5	3	2	87
+0.75	1	1	1	88
+1.50	1	2	1	88
+1.91	1	3	1	88
+0.96	1	1	2	88
+2.03	1	2	2	88
+3.51	1	3	2	88
+0.71	2	1	1	88
+1.39	2	2	1	88
+2.02	2	3	1	88
+0.95	2	1	2	88
+2.01	2	2	2	88
+3.71	2	3	2	88
+0.76	3	1	1	88
+1.42	3	2	1	88
+2.02	3	3	1	88
+0.95	3	1	2	88
+1.85	3	2	2	88
+3.16	3	3	2	88
+0.76	4	1	1	88
+1.37	4	2	1	88
+1.81	4	3	1	88
+0.93	4	1	2	88
+2.03	4	2	2	88
+3.56	4	3	2	88
+0.92	5	1	1	88
+1.52	5	2	1	88
+1.96	5	3	1	88
+1.12	5	1	2	88
+2.06	5	2	2	88
+3.54	5	3	2	88
+0.71	1	1	1	89
+1.41	1	2	1	89
+1.85	1	3	1	89
+0.91	1	1	2	89
+1.91	1	2	2	89
+3.28	1	3	2	89
+0.66	2	1	1	89
+1.31	2	2	1	89
+1.81	2	3	1	89
+0.86	2	1	2	89
+1.82	2	2	2	89
+3.41	2	3	2	89
+0.67	3	1	1	89
+1.29	3	2	1	89
+1.86	3	3	1	89
+0.82	3	1	2	89
+1.76	3	2	2	89
+3.06	3	3	2	89
+0.74	4	1	1	89
+1.28	4	2	1	89
+1.85	4	3	1	89
+0.88	4	1	2	89
+2.01	4	2	2	89
+3.47	4	3	2	89
+0.85	5	1	1	89
+1.49	5	2	1	89
+1.97	5	3	1	89
+1.08	5	1	2	89
+2.02	5	2	2	89
+3.52	5	3	2	89
+0.71	1	1	1	90
+1.43	1	2	1	90
+1.87	1	3	1	90
+0.91	1	1	2	90
+1.93	1	2	2	90
+3.31	1	3	2	90
+0.70	2	1	1	90
+1.33	2	2	1	90
+1.86	2	3	1	90
+0.89	2	1	2	90
+1.85	2	2	2	90
+3.48	2	3	2	90
+0.69	3	1	1	90
+1.31	3	2	1	90
+1.87	3	3	1	90
+0.84	3	1	2	90
+1.76	3	2	2	90
+3.04	3	3	2	90
+0.74	4	1	1	90
+1.30	4	2	1	90
+1.86	4	3	1	90
+0.87	4	1	2	90
+1.97	4	2	2	90
+3.48	4	3	2	90
+0.85	5	1	1	90
+1.46	5	2	1	90
+1.93	5	3	1	90
+1.08	5	1	2	90
+2.03	5	2	2	90
+3.53	5	3	2	90
+0.72	1	1	1	91
+1.44	1	2	1	91
+1.88	1	3	1	91
+0.91	1	1	2	91
+1.93	1	2	2	91
+3.31	1	3	2	91
+0.71	2	1	1	91
+1.35	2	2	1	91
+1.93	2	3	1	91
+0.92	2	1	2	91
+1.90	2	2	2	91
+3.58	2	3	2	91
+0.70	3	1	1	91
+1.33	3	2	1	91
+1.89	3	3	1	91
+0.85	3	1	2	91
+1.77	3	2	2	91
+3.05	3	3	2	91
+0.73	4	1	1	91
+1.29	4	2	1	91
+1.84	4	3	1	91
+0.85	4	1	2	91
+1.97	4	2	2	91
+3.44	4	3	2	91
+0.86	5	1	1	91
+1.45	5	2	1	91
+1.91	5	3	1	91
+1.10	5	1	2	91
+2.04	5	2	2	91
+3.51	5	3	2	91
+0.74	1	1	1	92
+1.44	1	2	1	92
+1.89	1	3	1	92
+0.94	1	1	2	92
+2.01	1	2	2	92
+3.33	1	3	2	92
+0.70	2	1	1	92
+1.42	2	2	1	92
+1.96	2	3	1	92
+0.94	2	1	2	92
+1.95	2	2	2	92
+3.56	2	3	2	92
+0.70	3	1	1	92
+1.33	3	2	1	92
+1.91	3	3	1	92
+0.85	3	1	2	92
+1.81	3	2	2	92
+3.08	3	3	2	92
+0.73	4	1	1	92
+1.33	4	2	1	92
+1.89	4	3	1	92
+0.88	4	1	2	92
+2.07	4	2	2	92
+3.55	4	3	2	92
+0.89	5	1	1	92
+1.48	5	2	1	92
+1.97	5	3	1	92
+1.12	5	1	2	92
+2.07	5	2	2	92
+3.54	5	3	2	92
+0.73	1	1	1	93
+1.44	1	2	1	93
+1.89	1	3	1	93
+0.94	1	1	2	93
+1.94	1	2	2	93
+3.33	1	3	2	93
+0.71	2	1	1	93
+1.41	2	2	1	93
+1.97	2	3	1	93
+0.94	2	1	2	93
+1.94	2	2	2	93
+3.60	2	3	2	93
+0.71	3	1	1	93
+1.32	3	2	1	93
+1.90	3	3	1	93
+0.83	3	1	2	93
+1.79	3	2	2	93
+3.06	3	3	2	93
+0.73	4	1	1	93
+1.27	4	2	1	93
+1.83	4	3	1	93
+0.87	4	1	2	93
+2.03	4	2	2	93
+3.43	4	3	2	93
+0.87	5	1	1	93
+1.45	5	2	1	93
+1.92	5	3	1	93
+1.11	5	1	2	93
+2.05	5	2	2	93
+3.48	5	3	2	93
+0.74	1	1	1	94
+1.49	1	2	1	94
+1.88	1	3	1	94
+0.95	1	1	2	94
+2.00	1	2	2	94
+3.42	1	3	2	94
+0.69	2	1	1	94
+1.34	2	2	1	94
+1.96	2	3	1	94
+0.92	2	1	2	94
+1.98	2	2	2	94
+3.55	2	3	2	94
+0.75	3	1	1	94
+1.43	3	2	1	94
+2.02	3	3	1	94
+0.92	3	1	2	94
+1.83	3	2	2	94
+3.12	3	3	2	94
+0.72	4	1	1	94
+1.31	4	2	1	94
+1.77	4	3	1	94
+0.89	4	1	2	94
+2.01	4	2	2	94
+3.47	4	3	2	94
+0.91	5	1	1	94
+1.53	5	2	1	94
+1.97	5	3	1	94
+1.07	5	1	2	94
+2.05	5	2	2	94
+3.57	5	3	2	94
+0.73	1	1	1	95
+1.48	1	2	1	95
+1.88	1	3	1	95
+0.93	1	1	2	95
+1.94	1	2	2	95
+3.46	1	3	2	95
+0.68	2	1	1	95
+1.34	2	2	1	95
+1.96	2	3	1	95
+0.91	2	1	2	95
+1.93	2	2	2	95
+3.50	2	3	2	95
+0.75	3	1	1	95
+1.40	3	2	1	95
+1.96	3	3	1	95
+0.86	3	1	2	95
+1.79	3	2	2	95
+3.13	3	3	2	95
+0.73	4	1	1	95
+1.33	4	2	1	95
+1.80	4	3	1	95
+0.89	4	1	2	95
+2.04	4	2	2	95
+3.54	4	3	2	95
+0.90	5	1	1	95
+1.49	5	2	1	95
+1.99	5	3	1	95
+1.09	5	1	2	95
+2.06	5	2	2	95
+3.60	5	3	2	95
+0.71	1	1	1	96
+1.45	1	2	1	96
+1.86	1	3	1	96
+0.92	1	1	2	96
+1.94	1	2	2	96
+3.35	1	3	2	96
+0.71	2	1	1	96
+1.31	2	2	1	96
+1.88	2	3	1	96
+0.90	2	1	2	96
+1.89	2	2	2	96
+3.48	2	3	2	96
+0.70	3	1	1	96
+1.33	3	2	1	96
+1.86	3	3	1	96
+0.83	3	1	2	96
+1.74	3	2	2	96
+2.99	3	3	2	96
+0.74	4	1	1	96
+1.30	4	2	1	96
+1.84	4	3	1	96
+0.87	4	1	2	96
+1.99	4	2	2	96
+3.49	4	3	2	96
+0.85	5	1	1	96
+1.46	5	2	1	96
+1.94	5	3	1	96
+1.08	5	1	2	96
+2.03	5	2	2	96
+3.50	5	3	2	96
+0.76	1	1	1	97
+1.46	1	2	1	97
+1.92	1	3	1	97
+0.95	1	1	2	97
+2.00	1	2	2	97
+3.36	1	3	2	97
+0.72	2	1	1	97
+1.41	2	2	1	97
+2.01	2	3	1	97
+0.95	2	1	2	97
+1.95	2	2	2	97
+3.56	2	3	2	97
+0.71	3	1	1	97
+1.38	3	2	1	97
+1.95	3	3	1	97
+0.88	3	1	2	97
+1.84	3	2	2	97
+3.16	3	3	2	97
+0.74	4	1	1	97
+1.31	4	2	1	97
+1.87	4	3	1	97
+0.89	4	1	2	97
+2.10	4	2	2	97
+3.52	4	3	2	97
+0.89	5	1	1	97
+1.45	5	2	1	97
+1.95	5	3	1	97
+1.12	5	1	2	97
+2.09	5	2	2	97
+3.50	5	3	2	97
+0.75	1	1	1	98
+1.45	1	2	1	98
+1.90	1	3	1	98
+0.94	1	1	2	98
+1.97	1	2	2	98
+3.36	1	3	2	98
+0.73	2	1	1	98
+1.41	2	2	1	98
+2.05	2	3	1	98
+0.95	2	1	2	98
+1.96	2	2	2	98
+3.67	2	3	2	98
+0.74	3	1	1	98
+1.37	3	2	1	98
+1.93	3	3	1	98
+0.89	3	1	2	98
+1.80	3	2	2	98
+3.09	3	3	2	98
+0.73	4	1	1	98
+1.27	4	2	1	98
+1.82	4	3	1	98
+0.87	4	1	2	98
+2.02	4	2	2	98
+3.49	4	3	2	98
+0.88	5	1	1	98
+1.44	5	2	1	98
+1.90	5	3	1	98
+1.10	5	1	2	98
+2.05	5	2	2	98
+3.47	5	3	2	98
+0.73	1	1	1	99
+1.45	1	2	1	99
+1.89	1	3	1	99
+0.93	1	1	2	99
+1.97	1	2	2	99
+3.37	1	3	2	99
+0.69	2	1	1	99
+1.37	2	2	1	99
+1.95	2	3	1	99
+0.92	2	1	2	99
+1.93	2	2	2	99
+3.55	2	3	2	99
+0.71	3	1	1	99
+1.36	3	2	1	99
+1.93	3	3	1	99
+0.87	3	1	2	99
+1.80	3	2	2	99
+3.09	3	3	2	99
+0.73	4	1	1	99
+1.31	4	2	1	99
+1.84	4	3	1	99
+0.89	4	1	2	99
+2.03	4	2	2	99
+3.50	4	3	2	99
+0.89	5	1	1	99
+1.48	5	2	1	99
+1.96	5	3	1	99
+1.10	5	1	2	99
+2.06	5	2	2	99
+3.52	5	3	2	99
+\.
+
+
+--
+-- TOC entry 4097 (class 0 OID 674421)
+-- Dependencies: 232
+-- Data for Name: Temperatur; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public."Temperatur" (id, temp, aarhundrede_id, by_id) FROM stdin;
+3090	8.65	1	1
+3091	9.70	2	1
+3092	11.01	3	1
+3093	12.77	4	1
+3094	8.55	1	2
+3095	9.70	2	2
+3096	11.03	3	2
+3097	12.79	4	2
+3098	8.84	1	3
+3099	9.85	2	3
+3100	11.11	3	3
+3101	12.83	4	3
+3102	8.63	1	4
+3103	9.70	2	4
+3104	11.00	3	4
+3105	12.78	4	4
+3106	8.26	1	5
+3107	9.43	2	5
+3108	10.64	3	5
+3109	12.31	4	5
+3110	8.55	1	6
+3111	9.76	2	6
+3112	11.12	3	6
+3113	12.91	4	6
+3114	8.72	1	7
+3115	9.70	2	7
+3116	11.01	3	7
+3117	12.77	4	7
+3118	8.12	1	8
+3119	9.25	2	8
+3120	10.52	3	8
+3121	12.26	4	8
+3122	8.85	1	9
+3123	9.76	2	9
+3124	11.06	3	9
+3125	12.83	4	9
+3126	8.54	1	10
+3127	9.69	2	10
+3128	11.01	3	10
+3129	12.77	4	10
+3130	8.54	1	11
+3131	9.62	2	11
+3132	10.85	3	11
+3133	12.48	4	11
+3134	8.68	1	12
+3135	9.68	2	12
+3136	10.92	3	12
+3137	12.54	4	12
+3138	8.07	1	13
+3139	9.21	2	13
+3140	10.44	3	13
+3141	12.15	4	13
+3142	8.57	1	14
+3143	9.71	2	14
+3144	11.00	3	14
+3145	12.72	4	14
+3146	8.51	1	15
+3147	9.71	2	15
+3148	11.04	3	15
+3149	12.80	4	15
+3150	8.51	1	16
+3151	9.56	2	16
+3152	10.79	3	16
+3153	12.50	4	16
+3154	8.77	1	17
+3155	9.72	2	17
+3156	11.02	3	17
+3157	12.79	4	17
+3158	8.05	1	18
+3159	9.22	2	18
+3160	10.49	3	18
+3161	12.26	4	18
+3162	8.51	1	19
+3163	9.69	2	19
+3164	11.02	3	19
+3165	12.75	4	19
+3166	8.60	1	20
+3167	9.70	2	20
+3168	11.02	3	20
+3169	12.78	4	20
+3170	8.77	1	21
+3171	9.92	2	21
+3172	11.18	3	21
+3173	12.91	4	21
+3174	8.73	1	22
+3175	9.72	2	22
+3176	11.02	3	22
+3177	12.79	4	22
+3178	8.69	1	23
+3179	9.70	2	23
+3180	11.01	3	23
+3181	12.78	4	23
+3182	8.69	1	24
+3183	9.70	2	24
+3184	11.01	3	24
+3185	12.77	4	24
+3186	8.60	1	25
+3187	9.69	2	25
+3188	11.01	3	25
+3189	12.75	4	25
+3190	8.50	1	26
+3191	9.70	2	26
+3192	11.03	3	26
+3193	12.81	4	26
+3194	8.85	1	27
+3195	9.97	2	27
+3196	11.20	3	27
+3197	12.97	4	27
+3198	8.52	1	28
+3199	9.69	2	28
+3200	10.92	3	28
+3201	12.60	4	28
+3202	8.55	1	29
+3203	9.70	2	29
+3204	11.03	3	29
+3205	12.79	4	29
+3206	8.32	1	30
+3207	9.42	2	30
+3208	10.65	3	30
+3209	12.35	4	30
+3210	8.46	1	31
+3211	9.69	2	31
+3212	11.02	3	31
+3213	12.80	4	31
+3214	8.68	1	32
+3215	9.70	2	32
+3216	11.01	3	32
+3217	12.78	4	32
+3218	8.20	1	33
+3219	9.35	2	33
+3220	10.58	3	33
+3221	12.23	4	33
+3222	8.52	1	34
+3223	9.71	2	34
+3224	11.04	3	34
+3225	12.80	4	34
+3226	8.02	1	35
+3227	9.22	2	35
+3228	10.50	3	35
+3229	12.25	4	35
+3230	8.57	1	36
+3231	9.70	2	36
+3232	11.00	3	36
+3233	12.71	4	36
+3234	8.36	1	37
+3235	9.46	2	37
+3236	10.71	3	37
+3237	12.34	4	37
+3238	8.25	1	38
+3239	9.33	2	38
+3240	10.57	3	38
+3241	12.27	4	38
+3242	8.76	1	39
+3243	9.71	2	39
+3244	11.02	3	39
+3245	12.78	4	39
+3246	8.58	1	40
+3247	9.69	2	40
+3248	11.01	3	40
+3249	12.76	4	40
+3250	8.57	1	41
+3251	9.72	2	41
+3252	11.04	3	41
+3253	12.80	4	41
+3254	8.13	1	42
+3255	9.28	2	42
+3256	10.50	3	42
+3257	12.17	4	42
+3258	8.64	1	43
+3259	9.70	2	43
+3260	11.01	3	43
+3261	12.76	4	43
+3262	8.26	1	44
+3263	9.31	2	44
+3264	10.62	3	44
+3265	12.31	4	44
+3266	8.80	1	45
+3267	9.75	2	45
+3268	11.05	3	45
+3269	12.74	4	45
+3270	8.81	1	46
+3271	9.86	2	46
+3272	11.14	3	46
+3273	12.84	4	46
+3274	8.43	1	47
+3275	9.57	2	47
+3276	10.80	3	47
+3277	12.50	4	47
+3278	8.78	1	48
+3279	9.72	2	48
+3280	11.03	3	48
+3281	12.79	4	48
+3282	8.52	1	49
+3283	9.69	2	49
+3284	10.99	3	49
+3285	12.71	4	49
+3286	8.95	1	50
+3287	10.03	2	50
+3288	11.31	3	50
+3289	13.05	4	50
+3290	8.48	1	51
+3291	9.68	2	51
+3292	10.99	3	51
+3293	12.72	4	51
+3294	8.72	1	52
+3295	9.56	2	52
+3296	10.86	3	52
+3297	12.51	4	52
+3298	9.00	1	53
+3299	10.04	2	53
+3300	11.30	3	53
+3301	13.05	4	53
+3302	8.68	1	54
+3303	9.71	2	54
+3304	11.02	3	54
+3305	12.79	4	54
+3306	8.27	1	55
+3307	9.32	2	55
+3308	10.65	3	55
+3309	12.46	4	55
+3310	8.07	1	56
+3311	9.20	2	56
+3312	10.45	3	56
+3313	12.16	4	56
+3314	8.79	1	57
+3315	9.70	2	57
+3316	10.95	3	57
+3317	12.67	4	57
+3318	8.40	1	58
+3319	9.46	2	58
+3320	10.80	3	58
+3321	12.47	4	58
+3322	8.34	1	59
+3323	9.36	2	59
+3324	10.63	3	59
+3325	12.40	4	59
+3326	8.76	1	60
+3327	9.79	2	60
+3328	11.06	3	60
+3329	12.78	4	60
+3330	8.79	1	61
+3331	9.88	2	61
+3332	11.16	3	61
+3333	12.87	4	61
+3334	8.59	1	62
+3335	9.72	2	62
+3336	11.02	3	62
+3337	12.73	4	62
+3338	8.35	1	63
+3339	9.39	2	63
+3340	10.64	3	63
+3341	12.36	4	63
+3342	8.73	1	64
+3343	9.87	2	64
+3344	11.14	3	64
+3345	12.86	4	64
+3346	8.65	1	65
+3347	9.72	2	65
+3348	11.04	3	65
+3349	12.73	4	65
+3350	8.01	1	66
+3351	9.20	2	66
+3352	10.44	3	66
+3353	12.15	4	66
+3354	8.13	1	67
+3355	9.24	2	67
+3356	10.51	3	67
+3357	12.22	4	67
+3358	8.49	1	68
+3359	9.51	2	68
+3360	10.75	3	68
+3361	12.38	4	68
+3362	8.48	1	69
+3363	9.69	2	69
+3364	10.98	3	69
+3365	12.70	4	69
+3366	8.52	1	70
+3367	9.69	2	70
+3368	11.00	3	70
+3369	12.74	4	70
+3370	8.62	1	71
+3371	9.71	2	71
+3372	11.03	3	71
+3373	12.79	4	71
+3374	8.72	1	72
+3375	9.70	2	72
+3376	11.01	3	72
+3377	12.78	4	72
+3378	8.65	1	73
+3379	9.63	2	73
+3380	10.91	3	73
+3381	12.64	4	73
+3382	8.09	1	74
+3383	9.22	2	74
+3384	10.45	3	74
+3385	12.14	4	74
+3386	8.18	1	75
+3387	9.28	2	75
+3388	10.51	3	75
+3389	12.23	4	75
+3390	8.27	1	76
+3391	9.35	2	76
+3392	10.65	3	76
+3393	12.30	4	76
+3394	8.68	1	77
+3395	9.74	2	77
+3396	11.04	3	77
+3397	12.73	4	77
+3398	8.55	1	78
+3399	9.69	2	78
+3400	11.00	3	78
+3401	12.74	4	78
+3402	8.56	1	79
+3403	9.70	2	79
+3404	10.99	3	79
+3405	12.69	4	79
+3406	8.69	1	80
+3407	9.72	2	80
+3408	11.01	3	80
+3409	12.75	4	80
+3410	8.41	1	81
+3411	9.49	2	81
+3412	10.79	3	81
+3413	12.43	4	81
+3414	8.84	1	82
+3415	9.94	2	82
+3416	11.22	3	82
+3417	12.94	4	82
+3418	8.36	1	83
+3419	9.35	2	83
+3420	10.61	3	83
+3421	12.37	4	83
+3422	8.90	1	84
+3423	9.88	2	84
+3424	11.11	3	84
+3425	12.86	4	84
+3426	8.43	1	85
+3427	9.48	2	85
+3428	10.84	3	85
+3429	12.51	4	85
+3430	8.63	1	86
+3431	9.71	2	86
+3432	10.94	3	86
+3433	12.57	4	86
+3434	8.84	1	87
+3435	9.76	2	87
+3436	11.06	3	87
+3437	12.83	4	87
+3438	8.68	1	88
+3439	9.70	2	88
+3440	11.01	3	88
+3441	12.77	4	88
+3442	8.55	1	89
+3443	9.58	2	89
+3444	10.83	3	89
+3445	12.46	4	89
+3446	8.38	1	90
+3447	9.54	2	90
+3448	10.75	3	90
+3449	12.42	4	90
+3450	8.24	1	91
+3451	9.40	2	91
+3452	10.62	3	91
+3453	12.31	4	91
+3454	8.16	1	92
+3455	9.28	2	92
+3456	10.58	3	92
+3457	12.25	4	92
+3458	8.08	1	93
+3459	9.21	2	93
+3460	10.45	3	93
+3461	12.13	4	93
+3462	8.72	1	94
+3463	9.83	2	94
+3464	11.10	3	94
+3465	12.82	4	94
+3466	8.93	1	95
+3467	10.03	2	95
+3468	11.28	3	95
+3469	13.06	4	95
+3470	8.66	1	96
+3471	9.77	2	96
+3472	11.00	3	96
+3473	12.69	4	96
+3474	8.21	1	97
+3475	9.27	2	97
+3476	10.53	3	97
+3477	12.25	4	97
+3478	8.22	1	98
+3479	9.31	2	98
+3480	10.55	3	98
+3481	12.28	4	98
+3482	8.45	1	99
+3483	9.54	2	99
+3484	10.81	3	99
+3485	12.51	4	99
+\.
+
+
+--
+-- TOC entry 4095 (class 0 OID 433437)
+-- Dependencies: 230
+-- Data for Name: dmi_co2fremtid_danmark; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.dmi_co2fremtid_danmark (start_arr, slut_aar, co2) FROM stdin;
+2011	2040	1.34
+2041	2070	2.55
+2071	2100	4.29
+\.
+
+
+--
+-- TOC entry 4096 (class 0 OID 444664)
+-- Dependencies: 231
+-- Data for Name: dmi_danmark_temp_interpolation; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.dmi_danmark_temp_interpolation (aar, temp_procent) FROM stdin;
+2011	0.00000001
+2012	0.04655172413793104
+2013	0.09310344827586207
+2014	0.1396551724137931
+2015	0.18620689655172415
+2016	0.2327586206896552
+2017	0.2793103448275862
+2018	0.3258620689655173
+2019	0.3724137931034483
+2020	0.4189655172413793
+2021	0.4655172413793104
+2022	0.5120689655172415
+2023	0.5586206896551724
+2024	0.6051724137931035
+2025	0.6517241379310346
+2026	0.6982758620689655
+2027	0.7448275862068966
+2028	0.7913793103448277
+2029	0.8379310344827586
+2030	0.8844827586206897
+2031	0.9310344827586208
+2032	0.9775862068965517
+2033	1.024137931034483
+2034	1.0706896551724139
+2035	1.1172413793103448
+2036	1.163793103448276
+2037	1.210344827586207
+2038	1.256896551724138
+2039	1.3034482758620691
+2041	1.35
+2042	1.3944827586206898
+2043	1.4389655172413793
+2044	1.483448275862069
+2045	1.5279310344827588
+2046	1.5724137931034483
+2047	1.616896551724138
+2048	1.6613793103448278
+2049	1.7058620689655173
+2050	1.750344827586207
+2051	1.7948275862068965
+2052	1.8393103448275863
+2053	1.883793103448276
+2054	1.9282758620689657
+2055	1.9727586206896552
+2056	2.017241379310345
+2057	2.0617241379310345
+2058	2.106206896551724
+2059	2.150689655172414
+2060	2.1951724137931037
+2061	2.2396551724137934
+2062	2.2841379310344827
+2063	2.3286206896551724
+2064	2.373103448275862
+2065	2.417586206896552
+2066	2.4620689655172416
+2067	2.506551724137931
+2068	2.551034482758621
+2069	2.5955172413793104
+2071	2.64
+2072	2.700344827586207
+2073	2.760689655172414
+2074	2.8210344827586207
+2075	2.8813793103448275
+2076	2.9417241379310344
+2077	3.0020689655172412
+2078	3.062413793103448
+2079	3.1227586206896554
+2080	3.183103448275862
+2081	3.243448275862069
+2082	3.303793103448276
+2083	3.3641379310344828
+2084	3.4244827586206896
+2085	3.4848275862068965
+2086	3.5451724137931033
+2087	3.60551724137931
+2088	3.665862068965517
+2089	3.726206896551724
+2090	3.7865517241379307
+2091	3.8468965517241376
+2092	3.907241379310345
+2093	3.9675862068965513
+2094	4.027931034482759
+2095	4.088275862068965
+2096	4.148620689655172
+2097	4.208965517241379
+2098	4.269310344827586
+2099	4.329655172413792
+2100	4.39
+\.
+
+
+--
+-- TOC entry 4089 (class 0 OID 243845)
+-- Dependencies: 224
+-- Data for Name: test; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.test (foodname, hobby) FROM stdin;
+hej	bro
+gg	mm
+dsf	wq
+\.
+
+
+--
+-- TOC entry 4087 (class 0 OID 243764)
+-- Dependencies: 222
+-- Data for Name: units; Type: TABLE DATA; Schema: public; Owner: -
+--
+
+COPY public.units (unit_id, unit) FROM stdin;
+1	Bud Light Chelada
+2	Puffed Wheat
+3	Egg White
+4	Cider
+5	Venison Sirloin
+6	Squash
+7	Garlic Cream Cheese
+8	Hawaiian Pizza
+9	Hazelnut Oil
+10	Rhea
+11	Sour Cream Sauce
+12	Chicken Fried Steak
+13	Wendy’s Jr. Cheeseburger
+14	Veggie Delight
+15	Beechnut
+16	Chocolate Milkshake
+17	TaB
+18	Corn Flakes
+19	Cola
+20	McDonald’s Chicken Nuggets
+21	Currant Juice
+22	Round Steak
+23	Bun
+24	Fruit salad
+25	Rose Wine
+26	Soy Protein Powder
+27	Frosted Cheerios
+28	Rolled Oats
+29	Yoplait Mixed Berry
+30	Kebab
+31	Sweet Peas
+32	Spanakopita
+33	Nutri-Grain
+34	Yoplait Key Lime Pie
+35	Black Rice
+36	Catalina Dressing
+37	Sundae
+38	Italian Dressing
+39	Quail
+40	Roast Potatoes
+41	Powerade
+42	Budweiser
+43	Rum
+44	Egg
+45	Tangerine Juice
+46	Calzone
+47	Hot Dog Buns
+48	Kamut
+49	Cookie Crisp
+50	Almond Roca
+51	Rice Krispies
+52	Grape Leaves
+53	M&M’s
+54	Goa Bean
+55	Beef Pizza
+56	Baby Back Ribs
+57	Blueberry Muffin
+58	Milkshake (dry)
+59	Busch
+60	Green Beans
+61	Emmentaler
+62	Buffalo Chicken Pizza
+63	Sago
+64	Sambuca
+65	Chicory Greens
+66	Cayenne Pepper
+67	Crunchy Nut Cornflakes
+68	Pumpkin Cheesecake
+69	Creamy Chicken Noodle Soup
+70	Pulled Pork Sandwich
+71	BBQ Chicken Pizza
+72	Curry Sauce
+73	Beer Bread
+74	McDonald’s McChicken
+75	Gumdrops
+76	Cream Yogurt
+77	Custard Powder
+78	Crunchie McFlurry
+79	Chester
+80	Roquefort
+81	Onion Rings
+82	Horseradish
+83	Real Butter
+84	Veggie Burger
+85	Cassava
+86	I can\\’t believe it\\’s not Butter
+87	Sausage Pizza
+88	Textured Soy Protein
+89	Chicken Nuggets
+90	Honeydew
+91	Chex
+92	Shock Top
+93	Marrow Dumplings
+94	Veal Tenderloin
+95	Tomato Puree
+96	French Cruller
+97	Pork Belly
+98	Obatzda
+99	Smoked Sausage
+100	Shallots
+101	Cornstarch
+102	Hot Dogs
+103	Quaker Grits
+104	Mustard
+105	Ostrich Meat
+106	Beef Suet
+107	Shredded Coconut
+108	Riesling
+109	White Bread
+110	Rosemary
+111	Sucrose
+112	Pork Chop
+113	Tamarind
+114	Yorkshire Pudding
+115	Pancake
+116	German Chocolate Cake
+117	Cabbage
+118	Redfish
+119	Triggerfish
+120	Jelly
+121	Shepherds Pie
+122	Broth
+123	Potato Waffles
+124	Goat Cheese Pizza
+125	Wheat Germ
+126	Glenfiddich
+127	Yoplait Greek Coconut
+128	Broccoli
+129	Burger King Double Whopper with Cheese
+130	Racoon Meat
+131	Sea Bass
+132	Salt Pork
+133	Chicken Pizza
+134	Red Wine Vinegar
+135	Fried Rice
+136	Wedding Cake
+137	Turkey Stomach
+138	Sunbutter
+139	Chicken Gizzards
+140	Schweppes Ginger Ale
+141	Michelob Ultra Amber
+142	Neufchatel
+143	Red Cabbage
+144	Rigatoni
+145	Cheddar
+146	Canned Tangerines
+147	Turkey Ham
+148	Beef Tripe
+149	Pizza
+150	Diet Cherry Coke
+151	Altbier
+152	Potato Starch
+153	Shrimp Pizza
+154	Goose Liver
+155	Olive Cream Cheese
+156	Chai Tea
+157	Pistachios
+158	Coconut Oil
+159	Licorice
+160	Brown Bread
+161	Plum Juice
+162	Chai
+163	Spelt Semolina
+164	Rice Bran Oil
+165	Fish Sandwich
+166	Brittle
+167	Ice Cream Sandwich
+168	Figs
+169	English Muffin
+170	Gatorade
+171	Spinach Feta Pizza
+172	Strawberry Jam
+173	Cubed Steak
+174	Apple Pie
+175	Pecan Pie
+176	Smarties McFlurry
+177	Wahoo
+178	Andouille
+179	Acai
+180	Bitter Lemon
+181	Bratwurst
+182	Dark Beer
+183	Glass Noodles
+184	Sausage Rolls
+185	Pumpkin Bread
+186	Ice Tea
+187	Canned Peaches
+188	Pickled Herring
+189	Black Sesame Seeds
+190	Chicken Meat
+191	Burger King Whopper Jr.
+192	Spareribs
+193	Ham Sandwich
+194	Tomato Sauce
+195	Kahlua
+196	Big N’ Tasty
+197	Dairy Milk McFlurry
+198	Vanilla Milkshake
+199	Olives
+200	Lemon Pie Filling
+201	Crawfish
+202	Hot Dog
+203	Jalapeno
+204	Veal Shank
+205	Linseed Oil
+206	Philadelphia Cream Cheese
+207	Fettuccine
+208	Dextrose
+209	Cream Cheese
+210	Star Fruit
+211	Manchego Cheese
+212	Blue Cheese Dressing
+213	Tiramisu Cake
+214	Bud Light Lime
+215	Land Shark
+216	Peach Yogurt
+217	Mike and Ike
+218	Basil
+219	Angel Delight
+220	Mac and Cheese
+221	Cottage Cheese
+222	Mini Milk
+223	Cheerios
+224	Mallard Duck Meat
+225	Jif Peanut Butter
+226	Cookies
+227	Souse
+228	Panettone
+229	Safflower Seeds
+230	Sicilian Pizza
+231	Turkey Hill
+232	Durum Wheat Semolina
+233	Granola Bars
+234	Skim Milk
+235	Quark
+236	Chinese Cabbage
+237	Shortcrust Pastry
+238	Crumpet
+239	McDonald’s McDouble
+240	Poppy Seed
+241	Apple Cobbler
+242	Flaxseed Oil
+243	Wisconsin Cheese
+244	Mutton Meat
+245	Cranberries
+246	Salami
+247	Chili Bean
+248	Vanilla Cone
+249	Sorbitol
+250	Rice Chex
+251	Gouda Cheese
+252	Fried Bean Curd
+253	Greengage
+254	Karamalz
+255	Canadian Whiskey
+256	Shark
+257	Clam
+258	Ham
+259	Millet Gruel
+260	White Cheddar
+261	Canned Apricots
+262	Zesty Italian Dressing
+263	New York Style Pizza
+264	Pork Roll
+265	Brussels Sprouts
+266	Grilled Chicken Salad
+267	Mini-Wheats
+268	Pork Rib Roast
+269	Linguica
+270	Cornish Hens
+271	Beef Kidney
+272	Cheese Slices
+273	Strawberry Pie
+274	Strong Beer
+275	Orange Sauce
+276	Butter Chicken
+277	Multi-Grain Bread
+278	Agar-Agar
+279	Dumpling Dough
+280	Sausage
+281	Ling
+282	Magnum Almond
+283	Activia
+284	Ground Cinnamon
+285	Muesli
+286	Port Wine
+287	Smoked Turkey Breast
+288	Bean Burrito
+289	Hickory Nuts
+290	Palm Oil
+291	McFlurry
+292	Chocolate Cheerios
+293	Penne
+294	Blueberry Jam
+295	Trix
+296	Applesauce
+297	Chicken Breast Fillet
+298	Chocolate Chips
+299	Prosciutto
+300	Edam Cheese
+301	Avocado Oil
+302	Pinot Gris
+303	Turbot
+304	Pheasant Meat
+305	Stout Beer
+306	Swiss Roll
+307	Sparkling Wine
+308	Barley
+309	Beef Liver
+310	Creme Fraiche
+311	Spring Rolls
+312	Cocoa Puffs
+313	Pineapple Cream Cheese
+314	Menhaden Oil
+315	Blue Moon
+316	Peanut Butter Sandwich
+317	Garlic Powder
+318	Cheeseburger
+319	Gamay
+320	Milkfish
+321	Apricot Kernel Oil
+322	Ranch Dressing
+323	Raclette Cheese
+324	Surge
+325	Weisswurst
+326	Banana Bread
+327	Hazelnuts
+328	Guinness
+329	New York Strip Steak
+330	Cornmeal
+331	Chicken Stomach
+332	Toblerone
+333	Low-Fat Yogurt
+334	Sprite
+335	Turmeric
+336	Zinfandel
+337	Cracklin Oat Bran
+338	Cocoa Pebbles
+339	Canned Fruit Salad
+340	Burger King Whopper
+341	Focaccia
+342	Tomato Rice Soup
+343	Chicken Fajita
+344	Limeade
+345	Blueberry Yogurt
+346	Buttermilk
+347	Molson
+348	Smarties
+349	Worcestershire Sauce
+350	Butterfish
+351	Nutmeg
+352	Tea
+353	Golden Mushroom Soup
+354	Coco Pops
+355	Blackcurrant Jam
+356	Beef Patty
+357	Miller Genuine Draft
+358	Speculoos
+359	Cheese Pastry
+360	Maraschino Cherries
+361	Salad Dressing
+362	Jack Daniel’s
+363	Pastrami
+364	Poppy Seeds
+365	Fresca
+366	Cocoa Powder
+367	Colby-Jack Cheese
+368	Honeycomb
+369	Activia Lemon
+370	Dill Weed
+371	Fruity Pebbles
+372	Strawberry Milkshake
+373	Malt Beer
+374	Pork Shoulder Blade
+375	Minestrone
+376	Apple
+377	Raspberries
+378	Veggie Patty
+379	Sambal Oelek
+380	Beef Melt
+381	Chicken Breast
+382	Falafel
+383	Mascarpone
+384	Dry Red Wine
+385	Thai Curry Paste
+386	Starfruit
+387	Chocolate Mousse Pie
+388	Banana Juice
+389	Tongue
+390	Lemonade
+391	Lemon Cake
+392	McRib
+393	Enchiladas
+394	Passion Fruit Juice
+395	Potato Dumpling
+396	Whole Grain Wheat
+397	Chicken Bouillon
+398	Salted Butter
+399	Pad Thai
+400	Ricotta
+401	Take 5
+402	Sloppy Joe
+403	Italian BMT
+404	Porter
+405	Blue Curacao
+406	Parsnips
+407	Canned Cranberries
+408	Fortune Cookies
+409	Endive
+410	Gorgonzola
+411	Sunflower Seeds
+412	Cilantro
+413	Coffee Cake
+414	Palm Kernel Oil
+415	Pomegranate Juice
+416	Scallops
+417	Fennel
+418	Keystone Light
+419	Mutton
+420	Corn Waffles
+421	Cava
+422	Pinto Beans
+423	Cumberland Sausage
+424	Red Pepper Pizza
+425	Fol Epi
+426	Canned Sliced Pineapple
+427	Fennel Seed
+428	Milk Duds
+429	Beef Minute Steak
+430	Gluten
+431	Pink Grapefruit
+432	Strawberries
+433	Sage
+434	Savoury Biscuits
+435	Cappelletti
+436	Iodized Salt
+437	Bacon
+438	Stilton Cheese
+439	Heineken
+440	Yoplait French Vanilla
+441	Chicken Pizziola
+442	Canned Grapefruit
+443	Pecans
+444	Layer Cake
+445	Flaxseed
+446	Southern Comfort
+447	Riesling Wine
+448	Budweiser Chelada
+449	Orange Juice
+450	Chicken Thigh
+451	Diet Pepsi
+452	Chive Cream Cheese
+453	Chili
+454	O’Doul’s (N.A.)
+455	Flank Steak
+456	Romano
+457	Pimento Loaf
+458	Turkey Salami
+459	Coconut Milk
+460	Peach Cobbler
+461	Peach
+462	Squirt
+463	Pepper Cheese
+464	Leek
+465	Colt 45
+466	Fried Potatoes
+467	Skirt Steak
+468	Oxtail Soup
+469	Linguine
+470	Grouper
+471	Capicola
+472	Vegetable Shortening
+473	Potato Bread
+474	Vegetable Oil
+475	Strawberry Preserves
+476	Baked Ham
+477	Mango
+478	Shock Top Raspberry Wheat
+479	Chicken Giblets
+480	Watermelon
+481	Wholegrain Oat
+482	Crumb Cake
+483	Spaghetti
+484	Soy Noodles
+485	Samuel Adams
+486	Cranberry Juice
+487	Buttermilk Pie
+488	Cream of Onion Soup
+489	Noodle Soup
+490	Chicken Heart
+491	Curry
+492	Sole
+493	Russian Banana Potatoes
+494	Fish and Chips
+495	Dandelion
+496	Ramen
+497	Chard
+498	Raisin Bran Crunch
+499	Canned Strawberries
+500	Golden Grahams
+501	Hamburger
+502	Sesame Seeds
+503	Post Shredded Wheat
+504	Corned Beef Hash
+505	Cream of Celery Soup
+506	Honey Mustard Dressing
+507	Kashi
+508	Calabrese Pizza
+509	Celebrations
+510	American Cheese
+511	Capsicum
+512	Diet Coke
+513	Garlic Sausage
+514	Biscuit
+515	Sugar
+516	Duck Breast
+517	Bagel
+518	Frangelico
+519	Feta
+520	Chicken Caesar Salad
+521	Pork
+522	Snickers Ice Cream
+523	Poularde
+524	Vegetable Stock
+525	Minute Maid
+526	Coconut Flakes
+527	Sweet Red Wine
+528	Garlic
+529	Wheat Germ Oil
+530	Puy Lentils
+531	Special K Chocolatey Delight
+532	Vanilla Sugar
+533	Light Beer
+534	Oatibix
+535	Mustard Sauce
+536	Carvel
+537	Turkey Heart
+538	Frosties
+539	Molasses
+540	Soya Cheese
+541	Swordfish
+542	Capon
+543	Doughnut
+544	Beef Tenderloin
+545	Absinthe
+546	Magnolia
+547	Lima Beans
+548	Pinot Noir
+549	Calamari
+550	Glucose Syrup
+551	Corn Flour
+552	Dried Apricots
+553	Powdered Milk
+554	Standing Rib Roast
+555	Minced Veal
+556	Brie
+557	Gouda
+558	Sourdough Bread
+559	Mostaccioli
+560	Calf Melt
+561	Animal Crackers
+562	Gjetost
+563	Pork Blade Steak
+564	Rice Pudding
+565	Baked Potato
+566	Vinegar
+567	Baked Chicken
+568	Shreddies
+569	Canned Plums
+570	ACE Drink
+571	Puff Pastry
+572	Bacon and Eggs
+573	Ginger Ale
+574	Butternut
+575	Tuna
+576	Dried Cranberries
+577	Pizza Dough
+578	Yerba Mate
+579	Savory
+580	Pineapple Juice
+581	String Cheese
+582	French Vanilla Ice Cream
+583	Peanut Brittle
+584	Trout
+585	Cauliflower
+586	Turkey Drumsticks
+587	Danish Pastry
+588	Coffee Ice Cream
+589	Silken Tofu
+590	Tiramisu
+591	Lindt Chocolate
+592	Plantain
+593	Kielbasa
+594	Lemon Grass
+595	Punch
+596	Shiraz
+597	Cannelloni
+598	Probiotic Yogurt
+599	Froot Loops
+600	Squirrel
+601	Artichoke
+602	Strawberry Yogurt
+603	Miso
+604	White Zinfandel
+605	Tandoori Chicken
+606	Burrito
+607	Ground Round
+608	Yuba
+609	Minced Onion
+610	Frosted Flakes
+611	Corn
+612	Lager Beer
+613	Vermicelli
+614	Chicken Drumstick
+615	Caramel Cake
+616	Soy Sauce
+617	BBQ Ribs
+618	Mackerel
+619	Goat Cheese
+620	Sweet and Sour Sauce
+621	Beef
+622	Glucose
+623	Soybeans
+624	Gingerbread
+625	Mayonnaise
+626	St. Pauli Girl
+627	Asparagus
+628	Gravy
+629	Beef Sirloin
+630	Lamb Meat
+631	Safflower Oil
+632	Flatbread
+633	Jujube
+634	Cognac
+635	Creamed Spinach
+636	Anise Seed
+637	Octopus
+638	Thai Soup
+639	Hog Maws
+640	Coconut Water
+641	Beef Bouillon
+642	Sturgeon
+643	Radish Seeds
+644	Mango Lassi
+645	Squirrel Meat
+646	Penne Rigate
+647	Steel Reserve
+648	Puff
+649	Energy-Drink
+650	Mushroom Soup
+651	Pork Steaks
+652	Pike
+653	Cherry Coke
+654	Milwaukee’s Best
+655	Hurricane High Gravity
+656	Spring Roll
+657	Peanut Butter
+658	Chocolate Spread
+659	Dried Prunes
+660	Goose Meat
+661	Aloe Vera
+662	Ayran
+663	Vanilla Coke
+664	Bread Pudding
+665	Cream
+666	Cottonseed Oil
+667	Cocoa Krispies
+668	Black and White Cookie
+669	Ice Cream Cake
+670	Crystal Light
+671	Shrimp Cocktail
+672	Yogurt
+673	Empanada
+674	Soy Milk
+675	Gelatin
+676	Sweet Potato Pie
+677	Yogurt Corner
+678	Flat Iron Steak
+679	Egg Cream
+680	White Grape Juice
+681	Soy Mayonnaise
+682	Goulash
+683	Schnitzel
+684	Herring Oil
+685	Olde English
+686	Semi-skimmed Milk
+687	Butterscotch Chips
+688	Oat Bran
+689	Smuckers Strawberry Jam
+690	Mettwurst
+691	Cream Sauce
+692	Chicken Wings
+693	Candied Orange Peel
+694	Wheat Beer
+695	Canned Gooseberries
+696	Black Pudding
+697	Beetroot
+698	Poutine
+699	Club Mate
+700	Courgette
+701	Baguette
+702	Almond Milk
+703	Freekeh
+704	Egg Noodles
+705	Snickers
+706	Opera Cake
+707	Cooked Ham
+708	Sesame Ginger Dressing
+709	Havarti
+710	Maltose
+711	Cashew
+712	Balsamic Vinaigrette Dressing
+713	Rhubarb Pie
+714	Semolina
+715	Pesto Cream Cheese
+716	Jordan Almonds
+717	Pork Liver
+718	Cherry Jam
+719	Whitefish
+720	Wasabi
+721	Chicken Pot Pie
+722	Curry Ketchup
+723	Juniper
+724	Cranberry Apple Juice
+725	Hot Sausage
+726	Polenta
+727	Sweet Wines
+728	Pig Brain
+729	Bockwurst
+730	McDonald’s McMuffi Egg
+731	Cheese Spread
+732	Fanta Zero
+733	Goat Milk
+734	Beef Brisket
+735	Pig Fat
+736	Airheads
+737	Japanese Sweet Potatoes
+738	Yoplait Greek Vanilla
+739	Apple Juice
+740	Walnut Oil
+741	Chicken Legs
+742	Cucumber Juice
+743	Hawaiian Punch
+744	Brandy
+745	Chicken Liver
+746	Arby’s Reuben
+747	Pork Bacon
+748	Baked Alaska
+749	Baking Powder
+750	Bear Meat
+751	Condensed Milk
+752	Sloppy Joes
+753	Barq’s
+754	Curd
+755	Esrom (Cheese)
+756	Asiago Cheese
+757	Evian
+758	Blackberry Juice
+759	Chocolate
+760	Whole Wheat Bread
+761	Tres Leches Cake
+762	Chicken Gumbo Soup
+763	Grape Seed Oil
+764	Malbec
+765	Pomegranate
+766	Advocaat
+767	Kool-Aid
+768	Gherkin
+769	Rock Sugar
+770	Almond Extract
+771	Maggi
+772	Gruyere
+773	Sauerkraut Juice
+774	Grated Parmesan
+775	Arrowroot
+776	Jaggery
+777	Red Kidney Bean
+778	Macadamia Nuts
+779	Currants
+780	Textured Vegetable Protein
+781	Hot Fudge Sundae
+782	Jagermeister
+783	Apple Cake
+784	Onion
+785	Monterey Jack Cheese
+786	Pork Cutlet
+787	Kumquat
+788	PayDay
+789	Peanut Butter Cookies
+790	Double Rainbow
+791	Black Forest Cake
+792	Canned Pineapple
+793	Gummi Bears
+794	Sweet Potato
+795	Lucky Charms
+796	Tortilla Wrap
+797	Cabernet Sauvignon
+798	Lime Juice
+799	Mozzarella
+800	Honey
+801	Nonpareils
+802	Summer Sausage
+803	Kit Kat
+804	Alfalfa Sprouts
+805	Calf Liver
+806	Lamb
+807	Bernaise Sauce
+808	Blueberry Cobbler
+809	Garlic Salt
+810	Mustard Seed
+811	Salmon
+812	BLT
+813	Pierogi
+814	Chicken Thighs
+815	Semolina Flour
+816	Pilsner
+817	Pheasant Breast
+818	Canned Mango
+819	Whole Grain Spaghetti
+820	Canada Dry Ginger Ale
+821	Chocolate Chip Ice Cream
+822	Jelly Beans
+823	Cupcake
+824	Quaker Oatmeal Squares
+825	Capers
+826	Macadamia Oil
+827	Squid
+828	Haddock
+829	Arrabiata Sauce
+830	Spinach Pizza
+831	Friendly’s
+832	Lotus Seed
+833	Vanilla Bean
+834	Bud Select 55
+835	Canned Mandarin Oranges
+836	Azuki Bean
+837	Green Olives
+838	Newcastle
+839	Plum
+840	Canned Mixed Fruit
+841	Potato Fritter
+842	Serrano Pepper
+843	Chicken Stock
+844	White Potatoes
+845	Dim Sum
+846	Yukon Gold Potatoes
+847	Remoulade Sauce
+848	Chicken Broth
+849	Kipper
+850	Yoplait Pina Colada
+851	Yellow Lentils
+852	Emu
+853	Creamy Yogurt
+854	Wheat Semolina
+855	Meatball Sandwich
+856	Scotch
+857	Deep-Fried Tofu
+858	Carlsberg
+859	Rice Milk
+860	Potato Pancakes
+861	Cheese Tortellini
+862	Wendy’s Baconator
+863	Life Cereal
+864	Sugar Peas
+865	Turkey Giblets
+866	Tagliatelle
+867	Buffalo
+868	Pumpkin Seed Oil
+869	Peach Nectar
+870	Dill
+871	Poultry Seasoning
+872	Crayfish
+873	Horchata
+874	Pork Baby Back Ribs
+875	Miller High Life
+876	Flour
+877	Burger King Double Whopper
+878	Plum Cake
+879	Smores
+880	Vanilla Yogurt
+881	Pig’s Tail
+882	Chocolate Muffin
+883	Bran Muffins
+884	Paella
+885	Chitterlings
+886	Chicken Marsala
+887	Cheese Pizza
+888	Taco
+889	Toasties
+890	Bircher Muesli Yogurt
+891	Norland Red Potatoes
+892	Weetos
+893	Vegetable Juice
+894	Kefir
+895	Vegemite
+896	Caramel Popcorn
+897	McDonald’s Double Cheeseburger
+898	Yoplait Strawberry Banana
+899	Margherita Pizza
+900	Ghee
+901	Concord Grape
+902	Canned Mangosteen
+903	Black Bread
+904	Sponge Cake
+905	Cherry Tomato
+906	Pandesal
+907	Cellophane Noodles
+908	Yoplait Strawberry Cheesecake
+909	Maltitol
+910	Soft Tofu
+911	Lettuce
+912	Count Chocula
+913	Shirataki Noodles
+914	Boiled Potatoes
+915	Pretzel Sticks
+916	Beef Thymus
+917	Racoon
+918	Almond Butter
+919	Broccoli Soup
+920	Mushroom Pizza
+921	S’mores
+922	Pop Rocks
+923	Mint Chocolate Chip Ice Cream
+924	Spritz Cookies
+925	Bologna
+926	Merlot
+927	Zinger Burger
+928	Rolo
+929	Oatmeal Cookies
+930	Winter Squash
+931	Caribou
+932	Rosemary Potatoes
+933	Weet-Bix
+934	Brawn
+935	1000 Island Dressing
+936	Caraway Seeds
+937	Pecan
+938	Fresh Mozzarella
+939	Cornbread
+940	Wendy’s Jr. Bacon Cheeseburger
+941	Plaice
+942	Croissant
+943	Paprika
+944	Fruit Yogurt
+945	Red Pepper
+946	Chamomile Tea
+947	Smoothie
+948	Papaya Juice
+949	Filet-o-Fish
+950	Magnum White
+951	Hanuta
+952	Coffee Creamer
+953	Whole Wheat Flour
+954	Ben and Jerry’s
+955	Krave
+956	Fuze
+957	Scotch Broth
+958	Apple Pie Filling
+959	Eggy Bread
+960	Whopper
+961	Candy Cane
+962	Arugula
+963	Beef Goulash
+964	Pepperoni
+965	Tuna Pizza
+966	Sprinkles
+967	Flounder
+968	Carrot Juice
+969	Stracciatella Yogurt
+970	Ginkgo Nuts
+971	Protein Powder
+972	Bud Light
+973	Rotini
+974	Grissini
+975	Bud Select
+976	French Fingerling Potatoes
+977	Pepperoni Pizza
+978	Lemon Meringue Pie
+979	Burger King Angry Whopper
+980	Pea Soup
+981	Starch
+982	Chili Powder
+983	Fairy Cakes
+984	Kiwi
+985	Chicken Leg
+986	Cress
+987	Pineapple Orange Juice
+988	Milk
+989	Potato
+990	Chocos
+991	Yellow Tail Wine
+992	Marron
+993	Black Chickpeas
+994	Leerdammer
+995	Rye Bran
+996	Veal Shoulder
+997	Quattro Formaggi Pizza
+998	Bream
+999	Pear Juice
+1000	White Beans
+1001	Edam
+1002	Tap Water
+1003	Serrano Ham
+1004	Agave Syrup
+1005	Four Cheese Pizza
+1006	Strawberry Cheesecake
+1007	Breadfruit
+1008	Candy Corn
+1009	Tabasco
+1010	Vanilla Ice Cream
+1011	Baskin-Robbins
+1012	Quinoa
+1013	Lasagne Sheets
+1014	Red Gold Potatoes
+1015	Mullet
+1016	Rollmops
+1017	Whole Grain Noodles
+1018	Wild Boar
+1019	Spaetzle
+1020	Meat Pie
+1021	Cherry Pie
+1022	Red Potatoes
+1023	Iced Tea
+1024	Baby Ruth
+1025	Cold Stone Creamery
+1026	Chopped Ham
+1027	Potato Wedges
+1028	Beef Pancreas
+1029	Ice Milk
+1030	Rambutan
+1031	Liver Pate
+1032	Kix
+1033	Sesame Paste
+1034	Natto
+1035	Moscato Wine
+1036	McFlurry Oreo
+1037	Rutabaga
+1038	Cream Cheese with Herbs
+1039	Coca Cola
+1040	Millet Flour
+1041	Tequila
+1042	Toast
+1043	Peanut Butter Toast Crunch
+1044	Lard
+1045	Pig Heart
+1046	Busch Light
+1047	Sheep Cheese
+1048	Merlot Wine
+1049	Ziti
+1050	Poppy-Seed Cake
+1051	Tarte Flambée
+1052	Tortilla Chips
+1053	Activia Strawberry
+1054	Deviled Eggs
+1055	Coors N.A.
+1056	Profiterole
+1057	Fruit Cake
+1058	Salt
+1059	Lime
+1060	Meatloaf
+1061	Radishes
+1062	Pig Kidney
+1063	Ginger
+1064	Zinger
+1065	Almond Oil
+1066	Pumpkin Soup
+1067	Mortadella
+1068	Egg Nog
+1069	Slurpee
+1070	Rump Steak
+1071	Head Cheese
+1072	Malbec Wine
+1073	Double Cheeseburger
+1074	Hi-C
+1075	Bolognese
+1076	Sandwich Cheese
+1077	Curly Fries
+1078	Acai Juice
+1079	Cream of Tartar
+1080	Red Snapper
+1081	Nestea
+1082	Gnocchi
+1083	Firm Tofu
+1084	Blood Sausage
+1085	Maple Syrup
+1086	Crunchy Nut
+1087	Tomato Soup
+1088	Cookie Dough Ice Cream
+1089	Labatt
+1090	Amaranth
+1091	Pizza Hut Supreme Pizza
+1092	Green Lentil
+1093	Cream of Asparagus Soup
+1094	Tapenade
+1095	Vegetable Broth
+1096	Sherry
+1097	Ajvar
+1098	Maltodextrin
+1099	Fiber One
+1100	Peach Juice
+1101	Peanut Oil
+1102	Chestnut
+1103	IPA
+1104	Special K Red Berries
+1105	Soufflé
+1106	Beef Lung
+1107	Cotton Candy
+1108	Pear
+1109	Busch N.A.
+1110	Extra-Firm Tofu
+1111	Arby’s Roast Beef Classic
+1112	Chives
+1113	Milo
+1114	All-blue Potatoes
+1115	Brazil Nuts
+1116	Bechamel Sauce
+1117	Mussel
+1118	Hemp Oil
+1119	Special K Protein Plus
+1120	Apple Strudel
+1121	Dal
+1122	Applejack
+1123	Caesar Dressing
+1124	Soybean Oil
+1125	Scooters
+1126	Prosecco
+1127	Emmental
+1128	Brown Rice
+1129	Cherry Yogurt
+1130	Cupcakes
+1131	Cod Liver Oil
+1132	Puffed Rice
+1133	Hake
+1134	Lychee
+1135	Black Gram
+1136	Cantaloupe Melon
+1137	Peppermint Extract
+1138	Dark Rum
+1139	Lasagne
+1140	Blood Oranges
+1141	Pork Crown Roast
+1142	White Pepper
+1143	Champagne
+1144	Beef Prime Rib
+1145	Pine Nuts
+1146	Flourless Chocolate Cake
+1147	Boudin
+1148	Sweetener
+1149	Beef Jerky
+1150	Quince
+1151	Grand Marnier
+1152	Clausthaler (N.A.)
+1153	Goose
+1154	Sweet Rolls
+1155	Magnum Gold
+1156	Sloe Gin
+1157	Dutch Loaf
+1158	Challah
+1159	Veal
+1160	Bean Stew
+1161	Baileys
+1162	Boiled Ham
+1163	Thin Crust Pizza
+1164	Canned Oranges
+1165	Buffalo Meat
+1166	Chicken Fat
+1167	Just Right
+1168	Zander
+1169	Cream Puff
+1170	Bamboo Shoots
+1171	Apple Crisp
+1172	Cotton Seeds
+1173	Smoked Almonds
+1174	Russian Dressing
+1175	Unsalted Butter
+1176	Chocolate Bar
+1177	Pork Melt
+1178	French Fries
+1179	Blueberry Pie
+1180	Raisin Bread
+1181	Conchas/Mexican Sweet Bread
+1182	Ciabatta
+1183	Lemon
+1184	Rusk
+1185	Pretzel Roll
+1186	Old Milwaukee
+1187	Babassu Oil
+1188	Orange Soda
+1189	Corn Oil
+1190	Polish Sausage
+1191	Moose
+1192	Cabbage Soup
+1193	Corn Dog
+1194	Sierra Nevada Strong
+1195	Marmite
+1196	Kelloggs Corn Flakes
+1197	Koelsch
+1198	Malt Powder
+1199	Babybel
+1200	Soy Beans
+1201	Succotash
+1202	Milky Way
+1203	Yams
+1204	Bison
+1205	Full Throttle
+1206	Breadsticks
+1207	Plantains
+1208	Lentil Soup
+1209	Navy Bean
+1210	Burger King Premium Alaskan Fish Sandwich
+1211	Pesto
+1212	Lassi
+1213	Kumara
+1214	Tangerine
+1215	Elderflower Cordial
+1216	Cheese Platter
+1217	Irish Whiskey
+1218	Wendy’s Son of Baconator
+1219	Turkey Wings
+1220	Peter Pan Peanut Butter
+1221	Bundt Cake
+1222	Pita Bread
+1223	Yoplait Strawberry
+1224	Soy Nut Butter
+1225	Parsnip
+1226	Kohlrabi
+1227	Tomato Juice
+1228	Pearl Barley
+1229	Strawberry Rhubarb Pie
+1230	Couverture
+1231	Magnum Double Chocolate
+1232	BBQ Pizza
+1233	Sacher Torte
+1234	Skippy Peanut Butter
+1235	Pez
+1236	Canned Pears
+1237	Frosted Mini-Wheats
+1238	Shea Oil
+1239	Arby’s Grand Turkey Club
+1240	Whole Milk
+1241	Trifle
+1242	Oatmeal
+1243	Lobster Bisque Soup
+1244	Custard
+1245	Liquor
+1246	Broccoli Cheese Soup
+1247	Rib Eye Steak
+1248	Healthy Choice
+1249	Rösti
+1250	Pecan Nuts
+1251	Black Beans
+1252	Wedding Soup
+1253	Roast Beef
+1254	Pork Tongue
+1255	Grape-Nuts
+1256	Spicy Italian
+1257	Cake Flour
+1258	Bud Ice
+1259	Blackberry Jam
+1260	Cloves
+1261	Veal Heart
+1262	Galia Melon
+1263	Dosa
+1264	Vegetable Cream Cheese
+1265	Mocca Yogurt
+1266	Orange Chicken
+1267	Guava
+1268	Bourbon
+1269	Potato Salad
+1270	Sour Patch Kids
+1271	Greek Yogurt
+1272	Yoplait Harvest Peach
+1273	Roti
+1274	Michelob Lager
+1275	Malt-O-Meal
+1276	Vanilla Extract
+1277	Dutch Cheese
+1278	Triple Sec
+1279	Duck Liver
+1280	Pili Nuts
+1281	Clamato
+1282	Lasagna
+1283	Pan de Sal
+1284	Tang
+1285	Liqueur
+1286	Chicken
+1287	Nachos with Cheese
+1288	Soursop Fruit
+1289	Sweetened Condensed Milk
+1290	Alligator Meat
+1291	Bresaola
+1292	Cheesecake
+1293	Casaba Melon
+1294	Yam
+1295	Harissa
+1296	Soft Serve
+1297	Coconut
+1298	Hot Chocolate
+1299	Donut
+1300	Wheaties
+1301	Beef Tongue
+1302	Smoked Cheese
+1303	Mustard Greens
+1304	Pig Ear
+1305	Honey Brown
+1306	Liverwurst
+1307	Black Pepper
+1308	Special K
+1309	Chocolate Ice Cream
+1310	Poppy Seed Oil
+1311	Dried Fruit
+1312	Root Beer
+1313	Deep Dish Pizza
+1314	Beef Brain
+1315	Burger King Triple Whopper
+1316	Chocolate Mousse
+1317	After Eight
+1318	Pepsi
+1319	Semolina Pudding
+1320	Smelt
+1321	Apple Crumble
+1322	Samosa
+1323	Candy Apple
+1324	Diet Yogurt
+1325	Duck Egg
+1326	Apple Butter
+1327	Potato Soup
+1328	Flan
+1329	Greek Dressing
+1330	Chardonnay
+1331	Roasted Almonds
+1332	Pork Ragout
+1333	Spelt
+1334	Solero
+1335	Veal Leg
+1336	Calf Brain
+1337	Whoopie Pie
+1338	Cane Sugar
+1339	Biryani
+1340	Tomato Paste
+1341	Baking Soda
+1342	Red Velvet Cake
+1343	Soy Yogurt
+1344	Liquorice
+1345	Grilled Cheese
+1346	Prickly Pear
+1347	Schwan’s
+1348	Beef Tallow
+1349	Subway Club Sandwich
+1350	Bock Beer
+1351	Chocolate Philadelphia
+1352	Mug Root Beer
+1353	Acerola
+1354	Thyme
+1355	Multigrain Cheerios
+1356	Cointreau
+1357	Veal Roast Beef
+1358	Yoplait Mango
+1359	Laffy Taffy
+1360	Tortilla
+1361	Old Milwaukee N.A.
+1362	Magnum
+1363	Blue Cheese
+1364	Okra
+1365	Rocky Road Ice Cream
+1366	Chuck Steak
+1367	LifeSavers
+1368	Veal Breast
+1369	Canned Sour Cherries
+1370	Sauvignon Blanc
+1371	Blackberries
+1372	Butter
+1373	All Purpose Flour
+1374	Walnut Cream Cheese
+1375	Pibb Xtra
+1376	Turkey Cutlet
+1377	Asti
+1378	Porterhouse Steak
+1379	Natural Light
+1380	Turnip Greens
+1381	Wild Duck
+1382	Red Wine
+1383	Coffee
+1384	Olive Spread
+1385	Canadian-Style Bacon
+1386	Chicory
+1387	Jelly Belly
+1388	Miller Chill
+1389	Rum Cake
+1390	Pumpkin Pie
+1391	Apricot Jam
+1392	Paczki
+1393	Ham and Cheese Sandwich
+1394	Drumsticks
+1395	Feta Cream Cheese
+1396	Aubergine
+1397	Bran Flakes
+1398	Canned Grapes
+1399	Cold Pack Cheese
+1400	Venison
+1401	Banana Nut Bread
+1402	Cheez-It’s
+1403	Cinnamon Bun
+1404	Bean Sprouts
+1405	Cheese Fondue
+1406	Tilt
+1407	Butter Cheese
+1408	Mello Yello
+1409	Sweet White Wine
+1410	Wild Boar Meat
+1411	Pork Loin
+1412	Honey Ham
+1413	Raspberry Pie
+1414	Meringue
+1415	Mustard Oil
+1416	Caramel squares
+1417	Turnips
+1418	Chop Suey
+1419	Whiting
+1420	Mandarin Oranges
+1421	Meatball Soup
+1422	White American
+1423	Cracker
+1424	Cheese Whiz
+1425	Canned Blueberries
+1426	Natural Ice
+1427	Marshmallows
+1428	Mallard Meat
+1429	Young Gouda
+1430	Grilled Pizza
+1431	Anise
+1432	Magnum Double Caramel
+1433	Canola Oil
+1434	Corona
+1435	Veal Sirloin
+1436	Skittles
+1437	Apricot
+1438	Scampi
+1439	Raisin Nut Bran
+1440	Monkey Bread
+1441	Chocolate Cake
+1442	Chicken Teriyaki Sandwich
+1443	Pumpernickel
+1444	California Roll
+1445	Italian Bread
+1446	Pollack
+1447	Spam
+1448	Peanuts
+1449	Dominos Philly Cheese Steak Pizza
+1450	Strawberry Sundae
+1451	McDonald’s Filet-o-Fish
+1452	Pork Chops
+1453	Taro
+1454	Beef Stew
+1455	King Cake
+1456	Lacy Swiss Cheese
+1457	Peanut Butter Bars
+1458	Vegetable Pizza
+1459	Pork Country-Style Ribs
+1460	Napoli Pizza
+1461	Cumin
+1462	Wheat Bran
+1463	Beer
+1464	Buttermilk Ranch Dressing
+1465	Turkey Steak
+1466	Argan Oil
+1467	Noni
+1468	Black Olives
+1469	Pineapple Upside-Down Cake
+1470	Gourd
+1471	Pie
+1472	Sunflower Butter
+1473	Sea Salt
+1474	Banana
+1475	Pork Meatloaf
+1476	Hickory Ham
+1477	Chasseur Sauce
+1478	Dampfnudel
+1479	Plum Wine
+1480	Wine
+1481	Rye Bread
+1482	Reuben Sandwich
+1483	Guinea-Fowl
+1484	French Dressing
+1485	Naan
+1486	Ostrich
+1487	Ground Ginger
+1488	Shad
+1489	Monterey
+1490	Margarine
+1491	Green Onion
+1492	3 Musketeers
+1493	Buttermilk Pancakes
+1494	Pork Ribs
+1495	Candy Floss
+1496	Aloe Vera Yogurt
+1497	Flageolet
+1498	Tuna Salad
+1499	French Onion Soup
+1500	Brown Lentil
+1501	Applewood
+1502	Dumplings
+1503	Muskmelon
+1504	Jackfruit
+1505	Chocolate Cream Pie
+1506	Fruitopia
+1507	Quaker Oatmeal
+1508	Luncheon Meat
+1509	Salami Pizza
+1510	Stevia
+1511	Nectar
+1512	Cinnamon
+1513	Egg Roll
+1514	Coriander
+1515	Parmesan
+1516	McDonald’s Big Mac
+1517	Angel Food Cake
+1518	Ring Bologna
+1519	Barbecue Sauce
+1520	Yoplait Boston Cream Pie
+1521	Soft Cheese
+1522	Canned Raspberries
+1523	Waffles
+1524	Feijoa
+1525	Sparks
+1526	Coconut Cake
+1527	Key Lime Pie
+1528	Clementine
+1529	Mushrooms
+1530	Vegetarian Pizza
+1531	Pumpkin Pie Spice
+1532	Sugar Puffs
+1533	Pork Stomach
+1534	Vegetable Beef Soup
+1535	7up
+1536	Peanut Bar
+1537	Spice Cake
+1538	Veal Tongue
+1539	Almonds
+1540	Cider Vinegar
+1541	Ham Sausage
+1542	Sausage Roll
+1543	Yoplait Greek Blueberry
+1544	Shells
+1545	Bianca Pizza
+1546	Persimmon
+1547	Corn Pops
+1548	Acorn
+1549	Pâté (720), Pate
+1550	Pavlova
+1551	Hershey Kisses
+1552	Weetabix
+1553	Grapes
+1554	T-Bone Steak
+1555	Sweet Chestnut
+1556	Swiss Cheese
+1557	Carrot Cake
+1558	Oregano
+1559	Cardamom
+1560	Capricciosa Pizza
+1561	Scone
+1562	Ciao Bella
+1563	Olive Loaf
+1564	Green Gram
+1565	Post Raisin Bran
+1566	Smoked Ham
+1567	Mozzarella Pizza
+1568	Grilled Cheese Sandwich
+1569	Tomato
+1570	Bouillon
+1571	Chambord
+1572	Frankfurters
+1573	Roll
+1574	Instant Ramen
+1575	Grape Juice
+1576	Treacle Tart
+1577	Sushi
+1578	Red Beans
+1579	Soda Bread
+1580	Zucchini
+1581	Sprite Zero
+1582	Dragon Fruit
+1583	Cream of Broccoli Soup
+1584	Butter Pecan Ice Cream
+1585	Skim Milk Yogurt
+1586	Sandwich
+1587	Ice Cream Sundae
+1588	Chicory Roots
+1589	Midori
+1590	Spirelli
+1591	Wheat Starch
+1592	Maracuya
+1593	Yogurt Dressing
+1594	Chicken Tikka Masala
+1595	McDonald’s Mighty Wings
+1596	Beef Salami
+1597	Rajma
+1598	Bass
+1599	Cap’n Crunch
+1600	Tomato Seed Oil
+1601	Cinnamon Toast Crunch
+1602	Beck’s
+1603	Stuffed Crust Pizza
+1604	Latte Macchiato
+1605	Soda
+1606	Beef Heart
+1607	Spare Ribs
+1608	Seafood Pizza
+1609	Landjaeger
+1610	Buckwheat Groats
+1611	Applesauce Cake
+1612	White Wine
+1613	Chickpeas
+1614	Non-alcoholic Beer
+1615	Miller High Life Light
+1616	Funnel Cake
+1617	Bluefish
+1618	Michelob Ultra
+1619	Smoked Salmon
+1620	Parma Ham
+1621	T-Bone-Steak
+1622	Diet Dr. Pepper
+1623	Pickerel
+1624	Crystallized Ginger
+1625	Vodka
+1626	Twix
+1627	Carrot Ginger Soup
+1628	Arby’s Roast Beef Max
+1629	Cream of Chicken Soup
+1630	Rhubarb
+1631	Milwaukee’s Best Light
+1632	Evaporated Milk
+1633	Ginger Beer
+1634	Chapati
+1635	Nori
+1636	Sunkist
+1637	Corn Syrup
+1638	Chicken Sandwich
+1639	Matzo Bread
+1640	Jolt Cola
+1641	Michelob Light
+1642	Jambalaya
+1643	Goose Fat
+1644	Michelob Ultra Lime Cactus
+1645	Peppermint bark
+1646	Burger King Original Chicken Sandwich
+1647	Italian Sausage
+1648	Onion Soup
+1649	Water
+1650	McDonald’s McRib
+1651	Physalis
+1652	Coke
+1653	Onion Powder
+1654	Tzatziki
+1655	Pear Nectar
+1656	Jerky
+1657	Chili con Carne
+1658	Ginger Tea
+1659	Cobb Salad
+1660	Cherry Juice
+1661	Blueberries
+1662	Prawn Crackers
+1663	Dove
+1664	Moose Meat
+1665	Low Carb Pasta
+1666	Popcorn
+1667	Gin
+1668	Apple Spritzer
+1669	Farfalle
+1670	Filet Mignon
+1671	Dried Figs
+1672	Salmon Cream Cheese
+1673	Salt Meat
+1674	Lentils
+1675	Bakewell Tart
+1676	Cumin Seed
+1677	Pigeon
+1678	Mulled Wine
+1679	Vermouth
+1680	Beef Soup
+1681	Corned Beef
+1682	Pomelo
+1683	Kale
+1684	Okara
+1685	Paratha
+1686	Mint
+1687	Ready Brek
+1688	Tofu
+1689	Five Alive
+1690	Leerdammer Cheese
+1691	Caviar
+1692	Couscous
+1693	Wild Honey
+1694	Spelt Bran
+1695	Dippin Dots
+1696	McDonald’s Cheeseburger
+1697	Lowenbrau
+1698	Bengal Gram
+1699	Coke Zero
+1700	Bergkäse
+1701	Potato Gratin
+1702	Celery
+1703	Pound Cake
+1704	Burger King Whopper with Cheese
+1705	Carp
+1706	Roasted Soybeans
+1707	Ground Pork
+1708	Croquettes
+1709	Maltesers
+1710	Pheasant Leg
+1711	Duck
+1712	Marsala Wine
+1713	Millet
+1714	Ground Beef
+1715	Spinach Tortellini
+1716	Jarlsberg
+1717	Honey Smacks
+1718	Organic Yogurt
+1719	Sapodilla
+1720	Canned Morello Cherries
+1721	Candy canes
+1722	Fish Sticks
+1723	Soy Nuts
+1724	Stout
+1725	Dates
+1726	Canned Fruit Cocktail
+1727	Avocado
+1728	Hollandaise Sauce
+1729	Capri-Sun
+1730	Refried Beans
+1731	Mulberries
+1732	Manicotti
+1733	Turkey Liver
+1734	Garlic Bread
+1735	Pheasant
+1736	Muenster Cheese
+1737	Pretzel
+1738	Olive Oil
+1739	Philly Cheese Steak
+1740	Xylitol
+1741	Chia Seeds
+1742	Chicken Drumsticks
+1743	Honey Nut Cheerios
+1744	Michelob Amber Bock
+1745	Pork Cutlets
+1746	Mashed Potatoes
+1747	Mangosteen
+1748	Jim Beam
+1749	Chili Sauce
+1750	Wheat Gluten
+1751	Passion Fruit
+1752	Hazelnut
+1753	Beef Noodle Soup
+1754	Whisky
+1755	Hoki
+1756	Marzipan
+1757	Latkes
+1758	Pumpkin
+1759	Chimichanga
+1760	Beef Fillet
+1761	Volvic
+1762	Walnuts
+1763	Dr. Pepper
+1764	Pumpkin Seeds
+1765	Chocolate Sprinkles
+1766	Shortbread
+1767	Teriyaki Sauce
+1768	Tarte Tatin
+1769	Chicken with Rice Soup
+1770	Tempeh
+1771	Pabst Blue Ribbon
+1772	Red Wines
+1773	Lemon Juice
+1774	Sandwich Bread
+1775	Lychees
+1776	Chocolate Wine
+1777	Oatmeal Raisin Cookies
+1778	Donut/Doughnut
+1779	Marshmallow Fluff
+1780	Antelope Meat
+1781	Eel
+1782	Reeses Peanut Butter Cups
+1783	Soy Cheese
+1784	Barley Groats
+1785	Ferrero Rocher
+1786	Pig Lung
+1787	Nutella
+1788	Chocolate Mousse Cake
+1789	Malted Milk
+1790	Marjoram
+1791	Brown Sugar
+1792	BBQ Rib
+1793	Halibut
+1794	Cannoli
+1795	Fontina
+1796	Brioche
+1797	Collard Greens
+1798	Beaver Meat
+1799	Italian Cheese
+1800	Fructose
+1801	Vinaigrette
+1802	Mars Bar
+1803	Peas
+1804	Saffron
+1805	Carrot
+1806	Chicken Noodle Soup
+1807	Tortellini
+1808	Hummus
+1809	Yoplait Greek Strawberry
+1810	Amaretto
+1811	Rack of Pork
+1812	Soynut Butter
+1813	Muffin
+1814	Cream of Wheat
+1815	Cantaloupe
+1816	Vegetable Soup
+1817	Butterfinger
+1818	Bell Pepper
+1819	Red Lentils
+1820	Chocolate Milk
+1821	Durian
+1822	Calf Lung
+1823	Ground Chuck
+1824	White Pizza
+1825	Jolly Ranchers
+1826	Raisin Bran
+1827	Spaghetti Bolognese
+1828	Cherimoya
+1829	Veggie Pizza
+1830	Fanta
+1831	Ale
+1832	Yeast (dry)
+1833	Fusilli
+1834	Camembert
+1835	Minneola
+1836	Capellini
+1837	Breakfast Sausage Links
+1838	Chicken Vegetable Soup
+1839	Reindeer
+1840	Buckler (N.A.)
+1841	Beef Neck
+1842	Plum Jam
+1843	Baked Beans
+1844	Apple Turnover
+1845	Sardines
+1846	Lactose-free Milk
+1847	Bison Sirloin
+1848	Canned Blackberries
+1849	Granulated Sugar
+1850	Orzo
+1851	Lobster
+1852	Custard Apple
+1853	Pale Ale
+1854	Heavy Cream
+1855	Cottage Pie
+1856	Fuze Tea
+1857	Pork Shoulder
+1858	Turkey Legs
+1859	Miller Lite
+1860	Spinach
+1861	Pizza Hut Stuffed Crust Pizza
+1862	Redbridge (Gluten-free)
+1863	Monkfish
+1864	Canned Crushed Pineapple
+1865	Orange Peel
+1866	Anchovy
+1867	Strawberry Ice Cream
+1868	Peach Pie
+1869	Chicken Wing
+1870	Coors Light
+1871	Chorizo
+1872	Chenin Blanc
+1873	Grape Jelly
+1874	Chicken Salad
+1875	Minute Maid Light
+1876	Buckwheat
+1877	Egg Yolk
+1878	Banoffee Pie
+1879	Reindeer Meat
+1880	Dr. Brown’s
+1881	Balsamic Vinegar
+1882	Kombucha
+1883	Crepes
+1884	Maasdam Cheese
+1885	Hamburger Sauce
+1886	Flapjack
+1887	Strawberry Jelly
+1888	Sunflower Oil
+1889	Powdered Sugar
+1890	Diet Sunkist
+1891	Russet Potatoes
+1892	Macaroni
+1893	Birthday Cake
+1894	Rolling Rock
+1895	Madeira Cake
+1896	Oat Oil
+1897	Asian Pear
+1898	Knackwurst
+1899	Pork Sausage
+1900	Brownies
+1901	Bread Flour
+1902	Purple Majesty Potatoes
+1903	Sour Cream
+1904	Drambuie
+1905	Alligator
+1906	Pineapple
+1907	Turkey
+1908	Pide
+1909	Rolling Rock Light
+1910	Orange
+1911	Parsley
+1912	Apricot Nectar
+1913	Sesame Oil
+1914	Macaroni and Cheese
+1915	Tarragon
+1916	Smart Start
+1917	Sangria
+1918	Mung Beans
+1919	Plain Yogurt
+1920	Papaya
+1921	Fish Fingers
+1922	Peking Duck
+1923	Pig’s Trotter
+1924	Turkey Breast
+1925	Chicken McNuggets
+1926	Potatoes au Gratin
+1927	Canned Figs
+1928	Alphabet Soup
+1929	Cranberry Grape Juice
+1930	Beef Ribs
+1931	Omelette
+1932	Strip Steak
+1933	Yam Bean
+1934	Fried Shrimp
+1935	Chuck Roast
+1936	Tortilla Bread
+1937	Lollipop
+1938	Pepper
+1939	Roast Dinner
+1940	Fenugreek
+1941	Stew Beef
+1942	Raisins
+1943	Colby Cheese
+1944	Fajita
+1945	Victoria Sponge Cake
+1946	Chess Pie
+1947	Pork Roast
+1948	Sardine Oil
+1949	Cream of Potato Soup
+1950	Grapefruit Juice
+1951	Carrot Soup
+1952	Quail Breast
+1953	Veal Kidney
+1954	Ketchup
+1955	Pork Shank
+1956	Keystone Ice
+1957	Shredded Wheat
+1958	Tilsit
+1959	Eggplant
+1960	Provolone
+1961	Hot Pepper
+1962	Boysenberry Juice
+1963	Genesee Cream Ale
+1964	Cream of Mushroom Soup
+1965	Salmon Oil
+1966	Soy Oil
+1967	Tonic Water
+1968	Pork Leg
+1969	Slush Puppie
+1970	Bean Curd
+1971	Chicken Parmesan
+1972	Halloumi
+1973	Grapefruit
+1974	Cod
+1975	Canned Cherries
+1976	Cherries
+1977	Marble Cake
+1978	Potato Sticks
+1979	Rabbit
+1980	Bailey’s Irish Cream
+1981	Pizza Rolls
+1982	Kidney Beans
+1983	Nectarine
+1984	Pecorino
+1985	Cucumber
+1986	Orecchiette
+1987	Chocolate Yogurt
+1988	Herring
+1989	Oven-Roasted Turkey Breast
+1990	Whipped Cream
+1991	Bison Meat
+1992	Ravioli
+1993	Coors
+\.
+
+
+--
+-- TOC entry 4127 (class 0 OID 0)
+-- Dependencies: 233
+-- Name: Temperatur_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public."Temperatur_id_seq"', 3485, true);
+
+
+--
+-- TOC entry 4128 (class 0 OID 0)
+-- Dependencies: 223
+-- Name: units_unit_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+--
+
+SELECT pg_catalog.setval('public.units_unit_id_seq', 1993, true);
+
+
+--
+-- TOC entry 3955 (class 2606 OID 335901)
+-- Name: Aarhundrede Aarhundrede_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public."Aarhundrede"
+    ADD CONSTRAINT "Aarhundrede_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3957 (class 2606 OID 335903)
+-- Name: Aarstid Aarstid_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public."Aarstid"
+    ADD CONSTRAINT "Aarstid_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3959 (class 2606 OID 335905)
+-- Name: By By_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public."By"
+    ADD CONSTRAINT "By_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3961 (class 2606 OID 335907)
+-- Name: CO2 CO2_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public."CO2"
+    ADD CONSTRAINT "CO2_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3963 (class 2606 OID 674428)
+-- Name: Temperatur Temperatur_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public."Temperatur"
+    ADD CONSTRAINT "Temperatur_pkey" PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3953 (class 2606 OID 243778)
+-- Name: units unit_key; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.units
+    ADD CONSTRAINT unit_key PRIMARY KEY (unit_id);
+
+
+--
+-- TOC entry 3964 (class 2606 OID 674429)
+-- Name: Temperatur Temperatur_by_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public."Temperatur"
+    ADD CONSTRAINT "Temperatur_by_id_fkey" FOREIGN KEY (by_id) REFERENCES public."By"(id);
+
+
+-- Completed on 2021-12-16 16:22:52
+
+--
+-- PostgreSQL database dump complete
+--
+
