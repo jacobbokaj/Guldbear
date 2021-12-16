@@ -24,6 +24,7 @@
   
   <!--Section2-------------------------------->
   <div class="main" id="section2">
+    <p id="text-s2">Danmarks temperaturudvikling</p>
 
     <div id="section2-tooltip" class="hidden">
       <p3><strong>Årstal:<span id="section-tooltip-label"> </span></strong></p3>
@@ -113,7 +114,7 @@
                 <p class="positive-preflip" id="palm2"><img class="img1-s4" src="palm-tree.png" alt="palm" />Palmestranden i Frederikshavn er kåret til Danmarks ældste, da palmerne nu kan overleve vinteren udenfor</p>
               </div>
               <div class="flip-box-back">
-                <p class="negative-backflip" id="migration"><img class="img2-s4" src="migration.png" alt="flygtninge"/>Cirka 1/5 af klodens befolkning, bliver flygtninge, da deres hjemlande bliver for varme i sommermånederne</p> 
+                <p class="negative-backflip" id="migration"><img class="img2-s4" src="migration.png" alt="flygtninge"/>Cirka 1/5 af klodens befolkning bliver flygtninge, da deres hjemlande bliver for varme i sommermånederne</p> 
               </div>
             </div>
           </div>
@@ -174,22 +175,8 @@
                 .attr("height", "100%")
                 .attr("width", "100%")
                 .append("g")
-                .attr("transform", `translate(${margin.left + 300},${margin.top})`);
+                .attr("transform", `translate(${margin.left + 300},${margin.top - 350})`);
 
-
-
-    
-    var h1Dataset = ["Danmarks temperaturændring"];
-    d3.select("#section2")
-            .selectAll("section2-h1")
-            .data(h1Dataset)
-            .enter()
-            .append("h1")
-            .attr("id","section2-h1")
-            .style("left",(screen/2 - (width) - margin.left *1.5)+"px")
-            .text(function(d){
-               return d;
-             });  
 
 
 
@@ -197,9 +184,7 @@
     d3.select("#s1")
             
       
-             var section2_p_dataset = ["°C","hver år"];
-
-
+             var section2_p_dataset = ["°C","År"];
 
 
              d3.select("#section2").selectAll("section2-p")
@@ -209,14 +194,14 @@
             .attr("id","section2-p")
             .style("position","absolute")
             .style("left",function(d,i){
-                return  i == 0 ?  screen/2 - (width) - margin.left * 1.1 +"px" : screen/2 - margin.right * 8.5 + "px";
+                return  i == 0 ?  screen/2 - (width) - margin.left * 1.1 +"px" : screen/2 - (width) - margin.left * 4.5 + "px";
             })  
             .style("top",function(d,i){
-                return i == 0 ? (height - margin.top/6) + "px": (height * 2 + margin.top/10)+ "px";
+                return i == 0 ? (height - margin.top*2.6) + "px": (height - margin.bottom*2.6)+ "px";
             })  
             .text(function(d){
                 return d;
-            });      
+            });
           
       const parseTime = d3.timeParse("%Y");
           
