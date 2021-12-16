@@ -80,12 +80,6 @@ html {
     text-align:right;
   }
   
-  #section2{
-/*
-    display:flex;
-    align-items:center;
-    justify-content:center;*/
-  }
   #section-tooltip-value {
     margin: 0;
     font-family: sans-serif;
@@ -97,15 +91,10 @@ html {
     height: 70px;
     padding: 10px;
     background-color: white;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
     border-radius: 10px;
-    -webkit-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
-    -moz-box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
     box-shadow: 4px 4px 10px rgba(0,0,0,0.4);
     
     pointer-events: none;
-  
   }
 
   #section2-tooltip.hidden {
@@ -165,16 +154,16 @@ h2.section3-h2 {
   .left > *:not(:last-child) {
     margin-bottom: 0vh;
   }
+
   .right {
     float: right;
   }
-   
+  
   /*---Neden sående er kolonnerne-------------------*/
 * {
   box-sizing: border-box;
 }
 
-/* Create two equal columns that floats next to each other */
 .column {
   float: left;
   height: 80vh;
@@ -188,17 +177,6 @@ h2.section3-h2 {
   width: 40%;
 }
 
-/*
-#c1s4 {
-  width: 60%;
-}
-
-#c2s4 {
-  width: 40%;
-}
-*/
-
-/* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
@@ -239,9 +217,6 @@ h2.section3-h2 {
    margin-top: 2vh;
    position: absolute;
    left: 57.5vh;
-   
-   
-   
  } 
 
   .flip-box {
@@ -287,7 +262,6 @@ h2.section3-h2 {
     position: absolute;
     width: 100%;
     height: 100%;
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
   }
   
@@ -298,7 +272,6 @@ h2.section3-h2 {
   
   .positive-preflip {
     display: block;
-    width: -1%;
     margin-top: 3%;
     float: left;
     font-family: Georgia, serif; 
@@ -308,7 +281,6 @@ h2.section3-h2 {
   
   .negative-backflip {
     display: block;
-    width: -1%;
     margin-top: 3%;
     color: rgba(255, 0, 0, 0.8);
     float: left;
@@ -350,9 +322,7 @@ h2.section3-h2 {
   .buttons {
     height: 100px;
     width: 170px;
-    stroke-width: #fff, 2px;
     transition: all 250ms;
-    bottom: 21%;
     border: 0;
     line-height: 2.5;
     padding: 0 20px;
@@ -411,7 +381,6 @@ h2.section3-h2 {
 }
 #linkblok {
   display: inline-block;
-  color: whitesmoke;
   position: absolute;
 }
 a {
