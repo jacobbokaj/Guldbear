@@ -157,28 +157,9 @@ html {
   }
   .right {
     float: right;
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    height: fit-content;
   }
-  #section3-vl-div {
-    border-left: 2px dashed rgb(245, 245, 245);
-    height: 59.2vh;
-    display: flex;
-    top: 27.6vh;
-    }
-  #c1bars3 {
-    display: flex;
-  }
-    
-    #section3-vl2-div {
-    border-left: 2px solid rgb(245, 245, 245);
-    height: 59.2vh;
-    display: flex;
-    top: 27.6vh;
-    margin-right: 55vh;
-    }
+   
+
   
   /*---Neden sående er kolonnerne-------------------*/
 * {
