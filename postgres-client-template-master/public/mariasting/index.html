@@ -196,8 +196,8 @@
 
     const svg2 = d3.select("#section2")
                 .append("svg")
-                .attr("height", height + 120)
-                .attr("width", width + 150)
+                .attr("height", "100%")
+                .attr("width", "100%")
                 .append("g")
                 .attr("transform", `translate(${margin.left + 300},${margin.top})`);
 
@@ -211,6 +211,7 @@
             .enter()
             .append("h1")
             .attr("id","section2-h1")
+            .style("left",(screen/2 - (width) - margin.left *1.5)+"px")
             .text(function(d){
                return d;
              });  
@@ -233,10 +234,10 @@
             .attr("id","section2-p")
             .style("position","absolute")
             .style("left",function(d,i){
-                return  i == 0 ? "32%" : "71%";
+                return  i == 0 ?  screen/2 - (width) - margin.left * 1.1 +"px" : screen/2 - margin.right * 8.5 + "px";
             })  
             .style("top",function(d,i){
-                return i == 0 ? "32%" : "70%";
+                return i == 0 ? (height - margin.top/6) + "px": (height * 2 + margin.top/10)+ "px";
             })  
             .text(function(d){
                 return d;
@@ -249,7 +250,7 @@
                 .range([0, width]);
           
        svg2.append("g")
-              .attr("transform", "translate(0," + height + ")")
+              .attr("transform", "translate(" + (screen/2 - (width) - margin.left + margin.right * 2)  +"," + height *1.8 + ")")
               .call(d3.axisBottom(x));
       
 
@@ -262,6 +263,7 @@
       var textData = [0, 1];
       
     svg2.append("g")
+    .attr("transform", "translate(" + (screen/2 - (width) - margin.left + margin.right * 2)  +","+  (height * 0.8)  +")")
       .call(d3.axisLeft(y)
       );
       
@@ -277,12 +279,12 @@
       .join("circle")
       .attr("cx", function (d, i) {
        
-        return x(parseTime(d.aar));
+        return x(parseTime(d.aar)) + (screen/2 - (width) - margin.left + margin.right * 2);
         
       })
       .attr("cy", function (d, i) {
         
-        return y(parseFloat(d.temp_procent).toFixed(5));
+        return y(parseFloat(d.temp_procent).toFixed(5))+  (height * 0.8);
       })
       .attr("r", function (d,i) {
 

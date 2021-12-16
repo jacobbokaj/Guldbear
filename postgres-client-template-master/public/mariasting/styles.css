@@ -81,9 +81,10 @@ html {
   }
   
   #section2{
+/*
     display:flex;
     align-items:center;
-    justify-content:center;
+    justify-content:center;*/
   }
   #section-tooltip-value {
     margin: 0;
@@ -118,6 +119,7 @@ html {
   #section2-h1{
     position: absolute;
     top: 20%;
+
     color: whitesmoke;
     font-size: 40px;
   }
