@@ -140,11 +140,13 @@ html {
     margin-left: -1vh;
   }
 
-.section3-h2 {
+h2.section3-h2 {
   color: white;
   position: relative;
-  top: 10vh;
-  margin-bottom: 13vh;
+  top: 12.13vh;
+  margin-top: 1vh;  
+  text-align: right;
+  font-size: 4vh;
 }
 
   .row {
@@ -153,8 +155,13 @@ html {
   } 
 
   .left {
+    display:flex;
+    flex-wrap: wrap;
     float: left;
     height: 73vh;
+  }
+  .left > *:not(:last-child) {
+    margin-bottom: 0vh;
   }
   .right {
     float: right;

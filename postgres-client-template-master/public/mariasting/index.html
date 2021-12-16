@@ -383,7 +383,7 @@ var bars = svg.selectAll("rect")
         .attr("x", 2.2)
 
         .attr("y",function(d,i){
-            return (vh(12.13)) + (i * (vh(14.75))) + (vh(2.6)) * i;})
+            return (vh(12.13)) + (i * (vh(17.35))) + (vh(0)) * i;})
             
             .attr("fill", "rgb(58, 158, 78")
 
@@ -394,7 +394,7 @@ var bars = svg.selectAll("rect")
         .data(datatext)
         .enter()
         .append("text")
-        .attr("x", (vh(37.8)))
+        .attr("x", (vh(35)))
         .attr("fill", "whitesmoke")
         .attr("y",function(d,i){
             return (vh(16.5)) + (i * (vh(15.45))) + (vh(1.9)) * i;})
