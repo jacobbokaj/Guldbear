@@ -60,7 +60,7 @@
 
       <div class="column" id="c2s3" ><!--column2, section3-->
         <p class="positive-static" id="fish"><img class="img-s3" src="fish.png" alt="fish" />I Esbjerg er det muligt at fange hajer, ansjoser, tun og sværdfisk som nu trives i de danske farvande</p>
-        <p class="positive-static" id="wine"><img class="img-s3" src="wine.png" alt="wine" />Livet som vinbonde bliver særligt rentabelt. Nyborg bliver det nye Bordeaux, da druehøsten bliver fænomenal</p>
+        <p class="positive-static" id="wine"><img class="img-s3" src="wine.png" alt="wine" />Livet som vinbonde bliver særligt rentabelt. Nyborg er det nye Bordeaux, da druehøsten bliver fænomenal</p>
         <p class="positive-static" id="parrot"><img class="img-s3" src="parrot.png" alt="parrot" />Randers Regnskov kan nu udvides udendørs, da flere subtropiske dyr kan overleve i det fri</p>
         <p class="positive-static" id="palm"><img class="img-s3" src="palm-tree.png" alt="palm" />Palmestranden i Frederikshavn er kåret til Danmarks ældste, da palmerne nu kan overleve vinteren udenfor</p>
       </div>
@@ -197,7 +197,7 @@
                 return  i == 0 ?  screen/2 - (width) - margin.left * 1.1 +"px" : screen/2 - (width) - margin.left * 4.5 + "px";
             })  
             .style("top",function(d,i){
-                return i == 0 ? (height - margin.top*2.6) + "px": (height - margin.bottom*2.6)+ "px";
+                return i == 0 ? (height - margin.top*2.7) + "px": (height - margin.bottom*2.6)+ "px";
             })  
             .text(function(d){
                 return d;
@@ -354,7 +354,7 @@ function vh(v) {
   return (v * h) / 100;
 }
 
-var dinfar = data1.concat(data2,data3,data4) //Viser den fjerde bar for alle data# 🙂
+var dinfar = data1.concat(data2,data3,data4) //Viser den fjerde bar for alle data# 
 var bars = svg.selectAll("rect")
         .data(dinfar)
         .enter()
@@ -375,7 +375,7 @@ var bars = svg.selectAll("rect")
             .attr("fill", "rgb(58, 158, 78")
 
 
-        //Viser tekst til barene 🙂
+        //Viser tekst til barene 
         var datatext = [1,2,3,4];
         svg.selectAll("text")
         .data(datatext)
@@ -397,7 +397,7 @@ var bars = svg.selectAll("rect")
                 case 4:
                     return data4[0].temp+"°";
             }
-            //Viser alle 4 højeste grader 🙂
+            //Viser alle 4 højeste grader 
         });
 
     });
