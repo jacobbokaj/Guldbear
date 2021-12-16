@@ -137,7 +137,7 @@ html {
   #starttemp {
     position: absolute;
     margin-top: 8vh;
-    margin-left: 2vh;
+    margin-left: -2vh;
   }
 
 .section3-h2 {
@@ -160,21 +160,24 @@ html {
     display: flex;
     align-items: flex-start;
     flex-wrap: wrap;
+    height: fit-content;
   }
   #section3-vl-div {
     border-left: 2px dashed rgb(245, 245, 245);
     height: 59.2vh;
-    left: 82vh;
-    position: absolute;
+    display: flex;
     top: 27.6vh;
     }
+  #c1bars3 {
+    display: flex;
+  }
     
     #section3-vl2-div {
     border-left: 2px solid rgb(245, 245, 245);
     height: 59.2vh;
-    left: 29.4vh;
-    position: absolute;
+    display: flex;
     top: 27.6vh;
+    margin-right: 55vh;
     }
   
   /*---Neden sående er kolonnerne-------------------*/
@@ -196,6 +199,7 @@ html {
   width: 40%;
 }
 
+/*
 #c1s4 {
   width: 60%;
 }
@@ -203,6 +207,7 @@ html {
 #c2s4 {
   width: 40%;
 }
+*/
 
 /* Clear floats after the columns */
 .row:after {
@@ -240,41 +245,12 @@ html {
    color: whitesmoke;
    margin-top: 4vh;
  }
-
- #p-verden {
-  font-size: 4vh;  
-  font-family:Georgia, serif;
-  color: whitesmoke;
-  margin-bottom: -10vh;
- }
- #sluttemp2 {
-  position: absolute;
-  margin-top: 8vh;
-  margin-left: 53vh;
-}
-#starttemp2 {
-  position: absolute;
-  margin-top: 8vh;
-  margin-left: 2vh;
-}
-
-#section4-vl-div2 {
-  border-left: 2px dashed rgb(245, 245, 245);
-  height: 59.2vh;
-  left: 82vh;
-  position: absolute;
-  top: 26.6vh;
-  }
-  
-  #section4-vl2-div2 {
-  border-left: 2px solid rgb(245, 245, 245);
-  height: 59.2vh;
-  left: 29.4vh;
-  position: absolute;
-  top: 26.6vh;
-  }
-
  
+ .flip-box-all{
+   margin-top: 2vh;
+   margin-left: auto;
+   margin-right: auto;
+ } 
 
   .flip-box {
     background-color: transparent;
@@ -327,9 +303,6 @@ html {
     transform: rotateX(180deg);
   }
   
-  .flip-box-all{
-    margin-top: 14%;
-  } 
   
   .positive-preflip {
     display: block;
