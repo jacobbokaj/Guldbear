@@ -195,41 +195,52 @@
     const dataset_section2 = response.data;  
 
     const svg2 = d3.select("#section2")
-    .append("svg")
-    .attr("height", height + 120)
-    .attr("width", width + 150)
-    .append("g")
-    .attr("transform", `translate(${margin.left + 300},${margin.top})`);
+                .append("svg")
+                .attr("height", height + 120)
+                .attr("width", width + 150)
+                .append("g")
+                .attr("transform", `translate(${margin.left + 300},${margin.top})`);
+
+
+
     
     var h1Dataset = ["Danmarks temperaturændring"];
     d3.select("#section2")
-    .selectAll("section2-h1")
-    .data(h1Dataset)
-    .enter()
-    .append("h1")
-    .attr("id","section2-h1")
-    .text(function(d){
-      return d;
-    });  
+            .selectAll("section2-h1")
+            .data(h1Dataset)
+            .enter()
+            .append("h1")
+            .attr("id","section2-h1")
+            .text(function(d){
+               return d;
+             });  
+
+
+
+
     d3.select("#s1")
-    .on("click", function () {
+            
       
-      var section2_p_dataset = ["°C","hver år"];
-      d3.select("#section2").selectAll("section2-p")
-      .data(section2_p_dataset)
-      .enter()
-      .append("p")
-      .attr("id","section2-p")
-      .style("position","absolute")
-      .style("left",function(d,i){
-        return  i == 0 ? "32%" : "71%";
-      })  
-      .style("top",function(d,i){
-        return i == 0 ? "32%" : "70%";
-      })  
-      .text(function(d){
-            return d;
-      });      
+             var section2_p_dataset = ["°C","hver år"];
+
+
+
+
+             d3.select("#section2").selectAll("section2-p")
+            .data(section2_p_dataset)
+            .enter()
+            .append("p")
+            .attr("id","section2-p")
+            .style("position","absolute")
+            .style("left",function(d,i){
+                return  i == 0 ? "32%" : "71%";
+            })  
+            .style("top",function(d,i){
+                return i == 0 ? "32%" : "70%";
+            })  
+            .text(function(d){
+                return d;
+            });      
           
       const parseTime = d3.timeParse("%Y");
           
@@ -504,7 +515,7 @@ var bars = svg.selectAll("rect")
 //console.log(response.data[1].temp) //Viser anden temp
 //console.log(response.data[2].temp) //Viser tredje temp
 //console.log(response.data[3].temp) //Viser fjerde temp
-    });
+    
     
 
       /////FLIP BOXES
