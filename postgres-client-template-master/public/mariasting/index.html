@@ -341,8 +341,8 @@ var data4 = dataForLooper(71,72,dataset)
  // ALT HER KAN BRUGES TIL AT FINDE ET DATASET!/
 var svg = d3.select("#c1bars3")
 .append("svg")
-.attr("height", 600)
-.attr("width", 500);
+.attr("height", (vh(73)))
+.attr("width", (vh(100)));
 
 svg.append('line')
   .style("stroke", "whitesmoke")
@@ -350,15 +350,15 @@ svg.append('line')
   .attr("x1", 0)
   .attr("y1", 70)
   .attr("x2", 0)
-  .attr("y2", 410);
+  .attr("y2", (vh(71)));
 
   svg.append('line')
   .style("stroke", "whitesmoke")
   .style("stroke-dasharray", 8)
-  .attr("x1", 325)
+  .attr("x1", 365)
   .attr("y1", 70)
-  .attr("x2", 325)
-  .attr("y2", 410);
+  .attr("x2", 365)
+  .attr("y2", (vh(71)));
 
 
 //Maria's viewport funtion

@@ -143,7 +143,7 @@ html {
 .section3-h2 {
   color: white;
   position: relative;
-  top: 9vh;
+  top: 10vh;
   margin-bottom: 13vh;
 }
 
@@ -154,13 +154,12 @@ html {
 
   .left {
     float: left;
+    height: 73vh;
   }
   .right {
     float: right;
   }
    
-
-  
   /*---Neden sående er kolonnerne-------------------*/
 * {
   box-sizing: border-box;
