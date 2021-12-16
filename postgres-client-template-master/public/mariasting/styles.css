@@ -134,19 +134,21 @@ html {
   #sluttemp {
     position: absolute;
     margin-top: 8vh;
-    margin-left: 53vh;
+    margin-left: 50vh;
   }
   #starttemp {
     position: absolute;
     margin-top: 8vh;
-    margin-left: 2vh;
+    margin-left: -1vh;
   }
 
-.section3-h2 {
+h2.section3-h2 {
   color: white;
   position: relative;
-  top: 9vh;
-  margin-bottom: 13vh;
+  top: 12.13vh;
+  margin-top: 1vh;  
+  text-align: right;
+  font-size: 4vh;
 }
 
   .row {
@@ -155,30 +157,18 @@ html {
   } 
 
   .left {
+    display:flex;
+    flex-wrap: wrap;
     float: left;
+    height: 73vh;
+  }
+  .left > *:not(:last-child) {
+    margin-bottom: 0vh;
   }
   .right {
     float: right;
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
   }
-  #section3-vl-div {
-    border-left: 2px dashed rgb(245, 245, 245);
-    height: 59.2vh;
-    left: 82vh;
-    position: absolute;
-    top: 27.6vh;
-    }
-    
-    #section3-vl2-div {
-    border-left: 2px solid rgb(245, 245, 245);
-    height: 59.2vh;
-    left: 29.4vh;
-    position: absolute;
-    top: 27.6vh;
-    }
-  
+   
   /*---Neden sående er kolonnerne-------------------*/
 * {
   box-sizing: border-box;
@@ -198,6 +188,7 @@ html {
   width: 40%;
 }
 
+/*
 #c1s4 {
   width: 60%;
 }
@@ -205,6 +196,7 @@ html {
 #c2s4 {
   width: 40%;
 }
+*/
 
 /* Clear floats after the columns */
 .row:after {
@@ -242,45 +234,19 @@ html {
    color: whitesmoke;
    margin-top: 4vh;
  }
-
- #p-verden {
-  font-size: 4vh;  
-  font-family:Georgia, serif;
-  color: whitesmoke;
-  margin-bottom: -10vh;
- }
- #sluttemp2 {
-  position: absolute;
-  margin-top: 8vh;
-  margin-left: 53vh;
-}
-#starttemp2 {
-  position: absolute;
-  margin-top: 8vh;
-  margin-left: 2vh;
-}
-
-#section4-vl-div2 {
-  border-left: 2px dashed rgb(245, 245, 245);
-  height: 59.2vh;
-  left: 82vh;
-  position: absolute;
-  top: 26.6vh;
-  }
-  
-  #section4-vl2-div2 {
-  border-left: 2px solid rgb(245, 245, 245);
-  height: 59.2vh;
-  left: 29.4vh;
-  position: absolute;
-  top: 26.6vh;
-  }
-
  
+ .flip-box-all{
+   margin-top: 2vh;
+   position: absolute;
+   left: 57.5vh;
+   
+   
+   
+ } 
 
   .flip-box {
     background-color: transparent;
-    width: 75vh;
+    width: 85vh;
     height: 17vh;
 
     perspective: 1000px;
@@ -329,9 +295,6 @@ html {
     transform: rotateX(180deg);
   }
   
-  .flip-box-all{
-    margin-top: 14%;
-  } 
   
   .positive-preflip {
     display: block;
@@ -380,7 +343,7 @@ html {
     color: whitesmoke;
     font-family:Georgia, serif;
     font-size: 4vh;
-    margin-top: 15vh;
+    margin-top: 10vh;
     text-align: center;
   }
 
