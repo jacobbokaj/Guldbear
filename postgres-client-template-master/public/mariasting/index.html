@@ -191,10 +191,7 @@
     const height = 400 - margin.top - margin.bottom;
     
     var screen = window.innerWidth;
-    
-    
-  
-    
+      
     const dataset_section2 = response.data;  
 
     const svg2 = d3.select("#section2")
@@ -203,11 +200,6 @@
     .attr("width", width + 150)
     .append("g")
     .attr("transform", `translate(${margin.left + 300},${margin.top})`);
-    
-    
-    
-
-        
     
     var h1Dataset = ["Danmarks temperaturændring i %"];
     d3.select("#section2")
@@ -230,7 +222,7 @@
       .attr("id","section2-p")
       .style("position","absolute")
       .style("left",function(d,i){
-        return  i == 0 ? "34%" : "71%";
+        return  i == 0 ? "32%" : "71%";
       })  
       .style("top",function(d,i){
         return i == 0 ? "32%" : "70%";
@@ -239,21 +231,8 @@
             return d;
       });      
           
-          
-      
-          
-          
       const parseTime = d3.timeParse("%Y");
           
-     /* const x = d3.scaleLinear()
-                .domain([2010,
-                        d3.max(dataset_section2, function(d) {return 100})
-                      ])
-                .range([0, width]);
-*/
-
- 
-
       const x = d3.scaleTime()
                 .domain([parseTime(2010),parseTime(2100)])
                 .range([0, width]);
@@ -263,8 +242,7 @@
               .call(d3.axisBottom(x));
       
 
-      
-      
+         
       const y = d3.scaleLinear()
       .domain([0.0, 5.0])
       .range([height, 0]);
@@ -317,10 +295,6 @@
         if(d.temp_procent.toString().length  < 6){
 
           
-        
-
-
-
           d3.select("#section2-tooltip")
           
           .style("left", "0", +"px")
