@@ -382,7 +382,13 @@ var data4 = dataForLooper(71,72,dataset)
 var svg = d3.select("#c1bars3")
 .append("svg")
 .attr("height", 600)
-.attr("width", 300);
+.attr("width", 500);
+
+//Maria's veiwpot funtion
+function vh(v) {
+  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  return (v * h) / 100;
+}
 
 var dinfar = data1.concat(data2,data3,data4) //Viser den fjerde bar for alle data# 🙂
 var bars = svg.selectAll("rect")
@@ -391,16 +397,17 @@ var bars = svg.selectAll("rect")
         .append("rect")
         .attr("height", function(d, i){
             console.log(d.temp);
-            return 48;
+            return (vh(6.9));
            // return 100 + (i * 10) + 10 * i;
         })
         .attr("width", function(d){
-            return d.temp * 22
+            return d.temp * (vh(3.5))
         })
-        .attr("x", 20)
+        .attr("x", (vh(3.5)))
 
         .attr("y",function(d,i){
-            return 90 + (i * 120) + 15 * i;})
+            return (vh(12.13)) + (i * (vh(14.75))) + (vh(2.6)) * i;})
+            
             .attr("fill", "rgb(58, 158, 78")
 
 
@@ -410,10 +417,10 @@ var bars = svg.selectAll("rect")
         .data(datatext)
         .enter()
         .append("text")
-        .attr("x", 218)
+        .attr("x", (vh(37.8)))
         .attr("fill", "whitesmoke")
         .attr("y",function(d,i){
-            return 120 + (i * 120) + 15 * i;})
+            return (vh(16.5)) + (i * (vh(15.45))) + (vh(1.9)) * i;})
         .text(function (d,i) {
             console.log("d: "+d)
             switch (d) {
@@ -476,6 +483,11 @@ var svg = d3.select("#c1bars4")
 .attr("height", 600)
 .attr("width", 300);
 
+//Maria's veiwpot funtion
+function vh(v) {
+  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  return (v * h) / 100;
+}
 var dinfar = data1.concat(data2,data3,data4) //Viser den fjerde bar for alle data# 🙂
 var bars = svg.selectAll("rect")
         .data(dinfar)
@@ -483,16 +495,17 @@ var bars = svg.selectAll("rect")
         .append("rect")
         .attr("height", function(d, i){
             console.log(d.temp);
-            return 48;
+            return (vh(6.9));
            // return 100 + (i * 10) + 10 * i;
         })
         .attr("width", function(d){
-            return d.temp * 22
+            return d.temp * (vh(3.5))
         })
-        .attr("x", 20)
+        .attr("x", (vh(3.5)))
 
         .attr("y",function(d,i){
-            return 90 + (i * 120) + 15 * i;})
+            return (vh(12.13)) + (i * (vh(14.75))) + (vh(2.6)) * i;})
+            
             .attr("fill", "rgb(58, 158, 78")
 
 
@@ -502,10 +515,10 @@ var bars = svg.selectAll("rect")
         .data(datatext)
         .enter()
         .append("text")
-        .attr("x", 218)
+        .attr("x", (vh(37.8)))
         .attr("fill", "whitesmoke")
         .attr("y",function(d,i){
-            return 120 + (i * 120) + 15 * i;})
+            return (vh(16.5)) + (i * (vh(15.45))) + (vh(1.9)) * i;})
         .text(function (d,i) {
             console.log("d: "+d)
             switch (d) {
@@ -522,6 +535,7 @@ var bars = svg.selectAll("rect")
         });
 
     })
+
 
 
 //HER SLUTTER KODEN

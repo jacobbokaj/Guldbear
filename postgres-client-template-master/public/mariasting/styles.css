@@ -9,7 +9,7 @@
     right: 0%;
     margin-bottom: -2.5%;
     opacity:0.75;
-    z-index: index auto;
+    z-index: index 1;
     width: 9%;
   }
 
@@ -130,7 +130,7 @@ html {
   #sluttemp {
     position: absolute;
     margin-top: 8vh;
-    margin-left: 45vh;
+    margin-left: 53vh;
   }
   #starttemp {
     position: absolute;
@@ -142,7 +142,7 @@ html {
   color: white;
   position: relative;
   top: 9vh;
-  margin-bottom: 15vh;
+  margin-bottom: 13vh;
 }
 
   .row {
@@ -158,18 +158,18 @@ html {
   }
   #section3-vl-div {
     border-left: 2px dashed rgb(245, 245, 245);
-    height: 60vh;
-    left: 67vh;
+    height: 59.2vh;
+    left: 82vh;
     position: absolute;
-    top: 27.65%;
+    top: 27.6vh;
     }
     
     #section3-vl2-div {
     border-left: 2px solid rgb(245, 245, 245);
-    height: 60vh;
-    left: 170px;
+    height: 59.2vh;
+    left: 29.4vh;
     position: absolute;
-    top: 27.65%;
+    top: 27.6vh;
     }
   
   /*---Neden sående er kolonnerne-------------------*/
@@ -245,7 +245,7 @@ html {
  #sluttemp {
   position: absolute;
   margin-top: 8vh;
-  margin-left: 45vh;
+  margin-left: 53vh;
 }
 #starttemp {
   position: absolute;
@@ -257,7 +257,7 @@ html {
 color: white;
 position: relative;
 top: 9vh;
-margin-bottom: 15vh;
+margin-bottom: 13vh;
 }
 
 .row {
@@ -273,18 +273,18 @@ margin-bottom: 15vh;
 }
 #section4-vl-div2 {
   border-left: 2px dashed rgb(245, 245, 245);
-  height: 60vh;
-  left: 67vh;
+  height: 59.2vh;
+  left: 82vh;
   position: absolute;
-  top: 32.25%;
+  top: 26.6vh;
   }
   
   #section4-vl2-div2 {
   border-left: 2px solid rgb(245, 245, 245);
-  height: 60vh;
-  left: 170px;
+  height: 59.2vh;
+  left: 29.4vh;
   position: absolute;
-  top: 32.25%;
+  top: 26.6vh;
   }
 
  
@@ -437,17 +437,7 @@ margin-bottom: 15vh;
 .buttoncontainer > *:not(:last-child) {
   margin-right: 20vh;
 }
-/*
-#transport {
-  left: 18.5%;
-}
-#politik {
-  left: 41.5%;
-}
-#mad {
-  left: 66.5%;
-}
-*/
+
 #bottomline {
   float: bottom;
   position: relative; 
