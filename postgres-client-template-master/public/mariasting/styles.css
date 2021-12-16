@@ -235,13 +235,16 @@ h2.section3-h2 {
  
  .flip-box-all{
    margin-top: 2vh;
-   margin-left: auto;
-   margin-right: auto;
+   position: absolute;
+   left: 57.5vh;
+   
+   
+   
  } 
 
   .flip-box {
     background-color: transparent;
-    width: 75vh;
+    width: 85vh;
     height: 17vh;
 
     perspective: 1000px;
