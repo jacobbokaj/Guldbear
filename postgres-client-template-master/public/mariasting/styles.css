@@ -120,17 +120,18 @@ html {
     color: whitesmoke;
     margin-top: 5vh;
   }
-  #sluttemp {
-    position: absolute;
-    margin-top: 8vh;
-    margin-left: 50vh;
-  }
   #starttemp {
     position: absolute;
     margin-top: 8vh;
     margin-left: -1vh;
   }
 
+  #sluttemp {
+    position: absolute;
+    margin-top: 8vh;
+    margin-left: 50vh;
+  }
+  
 h2.section3-h2 {
   color: white;
   position: relative;
@@ -140,6 +141,8 @@ h2.section3-h2 {
   font-size: 4vh;
 }
 
+/*---Nedenstående er kolonnerne-------------------*/
+/*---De små kolonner i store kolonne1---*/
   .row {
     display: flex;
     flex-direction: row;
@@ -158,8 +161,7 @@ h2.section3-h2 {
   .right {
     float: right;
   }
-  
-  /*---Neden sående er kolonnerne-------------------*/
+/*-----De store kolonner----*/
 * {
   box-sizing: border-box;
 }
@@ -197,8 +199,7 @@ h2.section3-h2 {
     font-size: 3vh;
     font-weight: normal;
   }
-
-
+  
   .img-s3 {
     width: 10vh;
     float: left;
@@ -269,7 +270,6 @@ h2.section3-h2 {
   .flip-box-back {
     transform: rotateX(180deg);
   }
-  
   
   .positive-preflip {
     display: block;
@@ -353,6 +353,7 @@ h2.section3-h2 {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6),
                 inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
+
 .buttoncontainer {
   display: flex;
   justify-content: center;
@@ -361,11 +362,6 @@ h2.section3-h2 {
   margin-right: 20vh;
 }
 
-#bottomline {
-  float: bottom;
-  position: relative; 
-  bottom: 10%; 
-}
 #streg {
   color: whitesmoke;
   font-family: Georgia, serif;
