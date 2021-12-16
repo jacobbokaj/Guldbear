@@ -347,9 +347,9 @@ var svg = d3.select("#c1bars3")
 svg.append('line')
   .style("stroke", "whitesmoke")
   .style("stroke-width", 2)
-  .attr("x1", 18)
+  .attr("x1", 0)
   .attr("y1", 70)
-  .attr("x2", 18)
+  .attr("x2", 0)
   .attr("y2", 410);
 
   svg.append('line')
@@ -380,7 +380,7 @@ var bars = svg.selectAll("rect")
         .attr("width", function(d){
             return d.temp * (vh(3.5))
         })
-        .attr("x", (vh(3.5)))
+        .attr("x", 2.2)
 
         .attr("y",function(d,i){
             return (vh(12.13)) + (i * (vh(14.75))) + (vh(2.6)) * i;})
